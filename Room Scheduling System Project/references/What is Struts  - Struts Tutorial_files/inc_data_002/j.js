@@ -1,0 +1,1 @@
+document.write('<center><a target=_blank href="http://a.tribalfusion.com/h.click/afmxnXPPQoWWMTUUfP2F6mWaUvVqBjQaBKSVfIRr6nRWriWcbS2UytotZamYqmp3WrBQVrG2mQHodXqUHf90bnaYrJiXaeMSUMHWbUPTtUWmr3uRFJrYaJs4a7aRWMfMgxWZdU/http://a.tribalfusion.com"><img src="http://cdn5.tribalfusion.com/media/37536.gif" border=0 height=1 width=1 ><\/a><\/center>');

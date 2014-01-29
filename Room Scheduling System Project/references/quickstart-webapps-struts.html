@@ -1,0 +1,1022 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head>
+
+           
+ 
+ 
+ <script src="quickstart-webapps-struts_files/tigris.js" type="text/javascript"></script>
+ <link rel="stylesheet" type="text/css" href="quickstart-webapps-struts_files/netbeans.css"><title>Introduction to the Struts Web Framework</title>
+ 
+                                                  
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta http-equiv="Content-Style-Type" content="text/css">
+ <meta name="SourceCastVersion" content="3.5.1.19.11">
+ <link rel="shortcut icon" href="http://www.netbeans.org/favicon.ico" type="image/x-icon"><!-- -*- xhtml -*- -->
+
+
+
+
+
+
+
+  <meta name="AUTHOR" content="Geertjan Wielenga">
+  <meta name="INDEXED" content="y">
+  <meta name="DESCRIPTION" content="A short guide to creating a Struts web application."><!--      Copyright (c) 2005 Sun Microsystems, Inc. All rights reserved. --><!--     Use is subject to license terms.-->
+
+
+
+<link rel="stylesheet" type="text/css" href="quickstart-webapps-struts_files/netbeans.css" media="screen">
+<script src="quickstart-webapps-struts_files/lang-pulldown.js" type="text/javascript"></script>
+<script src="quickstart-webapps-struts_files/loginbox.js" type="text/javascript"></script>
+
+<script src="quickstart-webapps-struts_files/switcher.js" type="text/javascript"></script>
+<meta name="keywords" content="java IDE, java editor, java Platform, free, open source, java development, j2ee support, development enviroment, web development, NetBeans, IDE, java">
+
+
+ <script language="JavaScript" type="text/javascript">
+ <!--
+ var username="guest";
+ //-->
+ </script></head><body onload="startList()" class="composite blue-bg">
+     
+ 
+  
+ 
+ 
+ 
+ <!-- begin TopTabs  -->
+
+<!-- end TopTabs -->
+<!-- Begin Content Area -->
+ 
+ 
+
+ 
+
+<!-- Servlet-Specific template -->
+
+
+
+ 
+ 
+ 
+
+        
+                 
+          
+  
+
+ 
+ 
+
+
+<div style="height: 50px;"><div id="floating-logo">
+<div id="search">
+<form method="get" action="http://www.google.com/custom" style="display: inline;">
+<table>
+	<tbody><tr>
+		<td>
+		<a href="http://www.netbeans.org/community/search.html" style="color: rgb(33, 53, 82);">Search:</a> </td><td><input name="q" class="text" style="border: 1px solid rgb(11, 104, 109);" type="text">
+		</td>
+		<td>
+			<input src="quickstart-webapps-struts_files/search-button.gif" alt="Search netbeans.org" name="Button" type="image">
+			<input name="cof" value="GIMP:#FF0F12;LW:193;ALC:#FF0F12;L:http://www.netbeans.org/images/logo.gif;GFNT:#8A8DB0;LC:#0E0E76;LH:45;AH:center;VLC:#0E0E76;S:http://www.netbeans.org/;AWFID:a8753e5d03543916;" type="hidden"><input name="domains" value="netbeans.org" type="hidden"><input name="sitesearch" value="netbeans.org" type="hidden">
+		</td>
+	</tr>
+</tbody></table>
+</form>
+</div><div class="lang-dropdown"></div><div class="float-left"><a href="http://www.netbeans.org/index.html"><img src="quickstart-webapps-struts_files/nb-logo2.gif" class="logo-link" alt="netbeans.org - go to homepage" title="NetBeans.org - go to the homepage" style="padding-top: 10px;" border="0" height="60" width="159"></a></div></div></div>
+		<div id="center-container"><!-- layer centering whole page -->
+		<div id="floating-page"><!-- margins for whole page -->
+		<table id="wrap-table"><!-- top level table --><tbody><tr><td class="floating-wrap-table">
+			<div id="floating-tabs-container"><img src="quickstart-webapps-struts_files/corner-left.png" class="float-left" style="" height="26" width="11"><img src="quickstart-webapps-struts_files/corner-right.png" class="float-right" style="" height="26" width="14">
+			<div id="floating-tabs">
+<script src="quickstart-webapps-struts_files/rollover.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+op_register("optab1","/images/v6/home-off.png","/images/v6/home-over.png");
+op_register("optab2","/images/v6/products-off.png","/images/v6/products-over.png");
+op_register("optab3","/images/v6/catalogue-off.png","/images/v6/catalogue-over.png");
+op_register("optab4","/images/v6/kb-on.png","/images/v6/kb-over.png");
+op_register("optab5","/images/v6/community-off.png","/images/v6/community-over.png");
+op_register("optab6","/images/v6/partners-off.png","/images/v6/partners-over.png");
+//-->
+</script>
+
+<a href="http://www.netbeans.org/index.html" title=""><img src="quickstart-webapps-struts_files/home-off.png" alt="" class="iMenu" id="optab1" onmouseover="op_set_over('optab1')" onmouseout="op_set_normal('optab1')" border="0" height="26" width="120"></a><a href="http://www.netbeans.org/features/index.html" title="Features"><img src="quickstart-webapps-struts_files/products-off.png" alt="Features" class="iMenu" id="optab2" onmouseover="op_set_over('optab2')" onmouseout="op_set_normal('optab2')" border="0" height="26" width="120"></a><a href="http://plugins.netbeans.org/PluginPortal/" title="Plugins"><img src="quickstart-webapps-struts_files/catalogue-off.png" alt="Plugins" class="iMenu" id="optab3" onmouseover="op_set_over('optab3')" onmouseout="op_set_normal('optab3')" border="0" height="26" width="120"></a><a href="http://www.netbeans.org/kb/index.html" title="Docs&nbsp;&amp;&nbsp;Support"><img src="quickstart-webapps-struts_files/kb-on.png" alt="Docs&nbsp;&amp;&nbsp;Support" class="iMenu" id="optab4" border="0" height="26" width="120"></a><a href="http://www.netbeans.org/community/index.html" title="Community"><img src="quickstart-webapps-struts_files/community-off.png" alt="Community" class="iMenu" id="optab5" onmouseover="op_set_over('optab5')" onmouseout="op_set_normal('optab5')" border="0" height="26" width="120"></a><a href="http://www.netbeans.org/community/partners/index.html" title="Partners"><img src="quickstart-webapps-struts_files/partners-off.png" alt="Partners" class="iMenu" id="optab6" onmouseover="op_set_over('optab6')" onmouseout="op_set_normal('optab6')" border="0" height="26" width="120"></a>
+				</div>
+				</div>
+		<div id="navig-breadcrumbs" style="margin: 0px;"><a href="http://www.netbeans.org/index.html">HOME</a>  / <a href="http://www.netbeans.org/kb/index.html">Docs &amp; Support</a>  / <a href="http://www.netbeans.org/kb/50/index.html">NetBeans IDE 5.0</a> </div><table id="floating-contenttable" class="colapse">
+		<tbody><tr><td class="valign-top b-right full-width"><!-- main content column -->
+                        <!-- this is hack over the wrong IE box model - fix for problems when using 100% width -->
+                        <div id="ie-width-hack"><!-- IE hack--><div id="print"><a href="#" onclick='window.open("http://testwww.netbeans.org/kb/50/quickstart-webapps-struts.html","","left=0,top=0,scrollbars=yes,resizable=yes,toolbar=yes,location=yes,menubar=yes");'><img src="quickstart-webapps-struts_files/print.gif" alt="" border="0" height="15" width="105"></a></div><div class="f-page-auto-cell" id="doc">
+<!-- Begin Content Area -->
+<h1>Introduction to the Struts Web Framework</h1>
+
+<table class="tablebg">
+  <tbody><tr>
+    <td class="tblheader">Tutorial Downloads</td>
+  </tr>
+  <tr>
+    <td class="tbltd0">
+      <p><a href="http://www.netbeans.org/files/documents/4/778/LoginPage.zip">Tutorial end point</a></p>
+    </td>
+  </tr>
+
+</tbody></table>
+
+<p>This document takes you through the basics of using NetBeans IDE to develop
+  web applications that make use of the Struts framework. The Struts framework enables you to create
+ maintainable, extensible, and flexible web applications based on standard technologies, such as JSP pages, resource bundles,
+ and XML.</p>
+
+<p>Struts works with a <a href="http://java.sun.com/developer/technicalArticles/J2EE/despat/index.html"><b>M</b>odel, <b>V</b>iew, <b>C</b>ontroller</a> (MVC) framework, but only provides
+ the controller—a servlet, which is included in the Struts libraries that the IDE provides and
+  automatically registers in the <tt>web.xml</tt> deployment
+ descriptor when you indicate that you want to use Struts. The Struts servlet uses the <tt>struts-config.xml</tt>
+file to map incoming requests to a Struts "action" class. An action
+class receives a Struts "actionform bean" class as input, which serves
+as a transfer object between the action class and the view, which is
+typically a JavaServer Pages (JSP) page. Because many web applications
+use JSP pages for the view, Struts provides custom tag libraries which
+facilitate interaction with HTML forms. </p>
+
+
+<p>This document is designed to get you going as quickly as possible. The following topics are covered:</p>
+
+<ul>
+  <li><a href="#set">Setting Up a Struts Application</a></li>
+  <ul><li><a href="#install">Installing the Software</a></li>
+  <li><a href="#create">Creating a New Struts Application</a></li></ul>
+<li><a href="#develop">Developing a Struts Application</a></li>
+<ul><li><a href="#tags">Using Struts Custom Tag Libraries in a JSP Page</a></li>
+  <li><a href="#validate">Using Struts to Validate a Field in a JSP Page</a></li>
+ <li><a href="#navigate">Using Struts to Navigate between JSP Pages</a></li></ul>
+
+<li><a href="#buildandrun">Building and Running the Struts Application</a></li>
+
+<li><a href="#more">Adding More Functionality to the Struts Application</a></li>
+<ul>
+  <li><a href="#cancel">Using Struts to Add "Cancel" Functionality</a></li>
+ <li><a href="#logout">Using Struts to Add "Logout" Functionality</a></li>
+ <li><a href="#reset">Using Struts to Add "Reset" Functionality</a></li></ul>
+<li><a href="#plugin">Adding Your Favorite Struts Features to the IDE</a></li>
+</ul>
+
+<p>At the end of this tutorial, you will have a very simple
+semi-functioning login page. You will have learnt several basic
+features provided by Struts and you will also have learnt how these
+features are implemented via the IDE. Specifically, you will use Struts
+tags in a JSP page, validate a field using a Struts actionform bean
+class, and navigate between pages using a Struts action class. You will
+also be shown how to add various ancillary Struts functionalities, such
+as "Cancel" and "Logout".</p>
+
+<p>For specific information on how Struts works, see <a href="http://struts.apache.org/struts-action/faqs/works.html">How does it work?</a> on
+ the <a href="http://struts.apache.org/">Struts</a> website. For
+ general information on working with the IDE, see the <a href="http://www.netbeans.org/kb">Support
+  and Docs page</a> on the NetBeans website.</p>
+
+<br>
+<!-- ===================================================================================== -->
+<h2><a name="set"></a>Setting Up a Struts Application</h2>
+<p>Before you start writing code, you have to make sure you have all of the necessary software
+ and that your project is set up correctly.</p>
+<div class="indent">
+
+ <h3 class="tutorial"><a name="install"></a>Installing the Software</h3>
+
+
+      <p>Before you begin, you need to install the following software on your
+        computer:</p>
+<ul>
+     <li>NetBeans IDE 5.x (<a href="http://www.netbeans.info/downloads/index.php">download</a>).</li>
+    <li>Java Standard Development Kit (JDK™) version
+      1.4.2 (<a href="http://java.sun.com/j2se/1.4.2/download.html">download</a>)
+      or 5.0 (<a href="http://java.sun.com/j2se/1.5.0/download.jsp">download</a>)</li>
+  </ul>
+
+<p>Optionally, you can download and use the Sun Java System (SJS)
+Application Server Platform Edition, JBoss, or WebLogic. However, the
+Tomcat Web Server that is bundled with the IDE provides all the support
+you need for two-tier web applications such as the one described in
+this quick start guide. An application server (such as the SJS
+Application Server, JBoss, or WebLogic) is only required when you want
+to <a href="http://www.netbeans.org/kb/50/quickstart-j2ee.html">develop enterprise applications</a>.</p>
+
+
+
+
+    <h3 class="tutorial"><a name="create"></a>Creating a New Struts Application</h3>
+
+<p>In the IDE, a "Struts application" is nothing more than a normal web application accompanied by the Struts libraries
+ and configuration files. You create a Struts application in the same way as you create any other web application in the IDE,
+ with the additional step of indicating that you want the Struts libraries and configuration files to be included
+ in your application.</p>
+
+      <ol>
+       <li>Choose File &gt; New Project. Under Categories, select Web.
+Under Projects, select Web Application and click Next.</li>
+	<li>In the Name and Location panel, do the following:
+<ul><li>Under Project Name, enter <tt>LoginPage</tt>.</li>
+<li>Change the
+Project Location to any directory on your computer. From now
+on, this directory is referred to as <tt><i>$</i><i>PROJECTHOME</i></tt>.</li>
+<li>Select the recommendations to which your source structure will adhere, which is purely a personal preference:
+<ul><li><b>Java BluePrints.</b> For more information,
+see <a href="http://java.sun.com/blueprints/code/projectconventions.html" target="_blank">http://java.sun.com/blueprints/code/projectconventions.html</a>.</li>
+<li><b>Jakarta.</b> For more information,
+see <a href="http://jakarta.apache.org/tomcat/tomcat-5.0-doc/" target="_blank">http://jakarta.apache.org/tomcat/tomcat-5.0-doc/</a>.</li></ul></li>
+<li>Select the server to which you want to deploy your application. Only
+ servers that are registered with the IDE are listed. (To register a server, go to Tools &gt; Server Manager.)</li>
+
+<li> Notice
+that the Context Path is <tt>/LoginPage</tt>.
+
+</li></ul>
+</li><li> Click Next.
+
+</li><li>In the Frameworks panel, select Struts 1.2.7 (if you are using NetBeans IDE 5.5., the
+ supported Struts version is 1.2.9):
+
+<p><img src="quickstart-webapps-struts_files/struts-in-proj-wizard.png"></p>
+
+<p>Do not change any of the values in the
+ lower section of this panel. They serve the following purposes:
+</p><ul>
+<li><b>Action Servlet Name.</b> Hardcoded specification of the name of the servlet entry for the Struts action servlet.
+The <tt>web.xml</tt> deployment descriptor contains a servlet entry for the action
+servlet, specifying the appropriate Struts specific parameters, such as the name
+of the servlet class and the path to the <tt>struts-config.xml</tt> configuration file.
+</li><li><b>Action URL Pattern.</b> Allows the appropriate patterns which should be mapped
+ to the Struts action controller to be specified. This generates a corresponding <tt>web.xml</tt>
+servlet mapping entry to map the specified URI pattern to the action servlet. By default, only the <tt>*.do</tt>
+ pattern is mapped.
+</li><li><b>Application Resource.</b> Lets you specify the resource bundle which will be used
+ in the <tt>struts-config.xml</tt> file for localizing messages. By default, this is <tt>com.myapp.struts.ApplicationResource</tt>.
+</li><li><b>Add Struts TLDs.</b> Lets you generate tag library descriptors for the Struts tag libraries.
+ A tag library descriptor is an XML document which contains additional information about
+ the entire tag library as well as each individual tag. In general, this is not necessary, because
+ you can refer to on-line URIs rather than local TLD files.
+</li></ul>
+
+</li><li>Click Finish.
+
+</li></ol>
+
+<p>The IDE creates the <tt><i>$PROJECTHOME</i>/LoginPage</tt>
+project folder in your filesystem. As with any web application in the IDE, the project folder
+ contains all of your sources and the IDE's project metadata, such as the Ant build script.
+ However, in addition, your web application has all of the Struts libraries on its classpath. Not only
+ are they on the application's classpath, but they are included in the project and will be
+ packaged with it when you build it later in this quick start guide. </p>
+
+<p>The LoginPage project
+opens in the IDE. You can view its logical structure in the Projects window and its
+file structure in the Files window. For example, the Projects window should now look as follows:</p>
+
+<p><img src="quickstart-webapps-struts_files/initial-projects-window.png"></p>
+
+<p>In the Configuration Files node, the application includes all the
+  Struts-specific configuration files, of which <tt>struts-config.xml</tt>
+is the most important. You will use this configuration file throughout
+this quick start guide. Also in the Configuration Files node, to handle
+Struts processing, the Struts servlet (i.e., the controller in the MVC
+paradigm) is mapped in the <tt>web.xml</tt> deployment
+ descriptor:
+
+</p><p></p><pre class="examplecode">&lt;servlet&gt;
+    &lt;servlet-name&gt;action&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;org.apache.struts.action.ActionServlet&lt;/servlet-class&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;config&lt;/param-name&gt;
+        &lt;param-value&gt;/WEB-INF/struts-config.xml&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;debug&lt;/param-name&gt;
+        &lt;param-value&gt;2&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;init-param&gt;
+       &lt;param-name&gt;detail&lt;/param-name&gt;
+       &lt;param-value&gt;2&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;load-on-startup&gt;2&lt;/load-on-startup&gt;
+&lt;/servlet&gt;
+&lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;action&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;*.do&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;</pre>
+
+<p>Above, the Struts servlet (<tt>org.apache.struts.action.ActionServlet</tt>) is specified as the servlet that will control all requests for
+ the mapping <tt>.do</tt>. In addition, the <tt>web.xml</tt> file specifies that the Struts servlet is configured by means of the
+  <tt>struts-config.xml</tt> file that is found in the <tt>WEB-INF</tt> folder.
+
+
+
+
+      </p></div>
+<br>
+<!-- ===================================================================================== -->
+
+<h2><a name="develop"></a>Developing a Struts Application</h2>
+
+<div class="indent">
+
+<p>Developing a Struts application is similar to developing any other
+kind of web application in the IDE. You use components such as JSP
+pages, servlets, listeners, and filters. However, you complement your
+web development toolkit by using the facilities provided by Struts via
+the IDE. For example, you use templates in the IDE to create Struts
+action classes and Struts actionform bean classes. On top of that, the
+IDE automatically registers these classes in the <tt>struts-config.xml</tt> file and lets you extend this file very easily
+ via menu items in the Source Editor's pop-up menu.</p>
+
+     <h3 class="tutorial"><a name="tags"></a>Using Struts Custom Tag Libraries in a JSP Page </h3>
+
+<p>Many web applications use JavaServer Pages (JSP) for the view in the MVC paradigm, so Struts provides custom
+ tag libraries which facilitate interaction with HTML forms. These can very easily and smoothly
+ be set up and used in a JSP page in the IDE.</p>
+
+     <ol>
+     <li>Right-click the <tt>LoginPage</tt> project node, choose New &gt; JSP,
+     and call the new JSP page <tt>loginForm</tt>. Click Finish.
+
+     </li><li>In the Source Editor, change the default content of the <tt>&lt;H1&gt;</tt> tag to <tt>Login Form</tt>
+     and do the same for the text in the <tt>&lt;TITLE&gt;</tt> tags.
+     </li><li>Copy these first two taglib directives from the <tt>welcomeStruts.jsp</tt> file to the top
+     of your new <tt>loginForm.jsp</tt> file:
+
+<pre class="examplecode">&lt;%@ taglib uri="http://jakarta.apache.org/struts/tags-bean" prefix="bean" %&gt;
+&lt;%@ taglib uri="http://jakarta.apache.org/struts/tags-html" prefix="html" %&gt;
+</pre>
+
+</li><li>In <tt>loginForm.jsp</tt>, below the <tt>&lt;H1&gt;</tt> tags, add the following:
+
+<p></p><pre class="examplecode">&lt;html:form action="login"&gt;
+
+   &lt;html:submit value="Login" /&gt;
+
+&lt;/html:form&gt;</pre>
+
+<p>Notice that when you type the Struts tags, the IDE helps you
+by suggesting different ways of completing the code that you're typing, and further helps you by providing Struts Javadoc:
+
+</p><p><img src="quickstart-webapps-struts_files/struts-javadoc.png"></p>
+
+<p>Whenever you finish typing in the Source Editor, you can neaten the code by right-clicking in the
+ Source Editor and choosing Reformat Code:
+
+</p><p><img src="quickstart-webapps-struts_files/struts-reformat.png"></p>
+
+</li><li>In the Component Palette on the right side of the Source Editor, within the HTML section,
+ drag the Table item to just above the <tt>&lt;html:submit value="Login" /&gt;</tt>
+line. The Insert Table dialog box pops up. Set both the Rows
+and Columns to 1, so that you'll create a table consisting
+of one row and one column. Click OK. <p>The <tt>loginForm.jsp</tt> now looks as follows:
+
+</p><p></p><pre class="examplecode">&lt;html:form action="login"&gt;
+    &lt;table border="1"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;html:submit value="Login" /&gt;
+
+&lt;/html:form&gt;</pre>
+
+
+</li><li>In between the <tt>&lt;TH&gt;</tt> tags, type the
+following:
+
+<pre class="examplecode">&lt;bean:message key="login.name" /&gt;</pre>
+
+<p>In between the <tt>&lt;TD&gt;</tt> tags, type the following:
+
+</p><pre class="examplecode">&lt;html:text property="name" /&gt;</pre>
+
+<p>The body of <tt>loginForm.jsp</tt> is now as follows:
+
+</p><p><img src="quickstart-webapps-struts_files/loginform.png" alt="loginForm.jsp">
+
+</p></li><li>In the Projects window, expand the Source Packages node, expand the <tt>com.myapp.struts</tt> node,
+ and double-click the <tt>ApplicationResource.properties</tt> file so that it opens in the Source Editor.
+ Add <tt>login.name</tt> as a key, anywhere in the <tt>ApplicationResource.properties</tt> file, and add a meaningful message. For example:
+
+
+<pre class="examplecode">login.name=Name</pre>
+
+
+
+     </li></ol>
+
+
+     <h3 class="tutorial"><a name="validate"></a>Using Struts to Validate a Field in a JSP Page</h3>
+
+<p>A Struts "actionform bean" class represents data shared between the view (in this case, a JSP page) and the Struts action class.
+ An actionform bean class is available both for populating the view and for providing input to an action class.
+ An actioform bean class also has a <tt>validate</tt> method to allow input mapped from the view to be verified.
+
+     </p><ol>
+	     <li>Right-click the <tt>LoginPage</tt> project node and choose New &gt; File/Folder.
+	     In the Web category choose Struts ActionForm Bean and click Next. Notice that your actionform bean class
+ will be called "NewStrutsActionForm". Leave the default name for purposes of this tutorial. In a real
+ application, you would give your actionform bean class a new, meaningful name. Select <tt>com.myapp.struts</tt>
+	     in the Package drop-down list and click Finish.
+
+<p>The actionform bean class opens in the Source Editor. By default, the IDE provides it with
+  a <tt>String</tt> called <tt>name</tt> and an <tt>int</tt> called <tt>number</tt>. Both
+ fields also have getters and setters defined for them.
+
+	     </p></li><li>Open <tt>struts-config.xml</tt> in the Source Editor and note that it contains, among other things, the following:
+
+
+<p></p><pre class="examplecode">&lt;form-beans&gt;
+    &lt;form-bean name="NewStrutsActionForm" type="com.myapp.struts.NewStrutsActionForm"/&gt;
+&lt;/form-beans&gt;</pre>
+
+<p>Hold down the Ctrl key and move your mouse over the actionform bean class's fully qualified class name:
+
+
+</p><p><img src="quickstart-webapps-struts_files/struts-hyperlink.png" alt="hyperlink">
+
+</p><p>A hyperlink appears. Click it to navigate to the actionform bean class.
+
+</p></li><li>Now browse through the actionform bean class in the Source Editor.
+ Look at the <tt>validate</tt> method that the IDE created for you:
+
+<p></p><pre class="examplecode">   public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
+        ActionErrors errors = new ActionErrors();
+        if (getName() == null || getName().length() &lt; 1) {
+            errors.add("name", new ActionMessage("error.name.required"));
+            // TODO: add 'error.name.required' key to your resources
+        }
+        return errors;
+    }</pre>
+
+
+
+<p>Notice that the field called <tt>name</tt>
+is validated by default. If validation fails, which happens when no
+name is entered in the JSP page, a message that is identified by <tt>error.name.required</tt> is returned.
+
+</p></li><li>Following the TODO instruction that the IDE put in the <tt>validate</tt> method for you, add
+<tt>error.name.required</tt> as a key to the <tt>ApplicationResource.properties</tt> file and add a meaningful message. For example:
+
+
+<p></p><pre class="examplecode">error.name.required=Enter a name!</pre>
+
+<p>At the top of the file, to customize the formatting of your error message,
+ change the first four keys to the following:
+
+</p><p></p><pre class="examplecode">errors.header=
+errors.prefix=&lt;span style="color: red"&gt;
+errors.suffix=&lt;/span&gt;
+errors.footer=
+</pre>
+
+
+</li><li>Specify where you want
+ the error message to be rendered, by adding
+  the following line in <tt>loginForm.jsp</tt>, right above the closing <tt>&lt;/html:form&gt;</tt> tag:
+
+<p></p><pre class="examplecode">&lt;html:errors /&gt;</pre>
+
+</li></ol>
+
+<h3 class="tutorial"><a name="navigate"></a>Using Struts to Navigate between JSP Pages</h3>
+
+<p>A Struts "action" class is executed in response to a user request and commonly interacts
+  with the model through a business delegate. The responsibility of an action class is to provide navigation and forward
+ control to the appropriate view.
+
+</p><ol>
+	<li>Right-click the <tt>LoginPage</tt> project node and choose New &gt; File/Folder.
+In the Web category choose Struts Action and click Next.
+
+
+</li><li>In the Name and Location panel, notice that your action class
+ will be called "NewStrutsAction". Leave the default name for purposes of this tutorial. In a real
+ application, you would give your action class a new, meaningful name.
+
+</li><li>Select <tt>com.myapp.struts</tt> in the Package drop-down list.
+
+</li><li>Type <tt>login</tt>
+ in Action Path (the content of Action Path is therefore now <tt>/login</tt>).
+ Click Next.
+
+</li><li>In ActionForm Bean, Parameter, notice that the IDE suggests that you associate the action class
+with the actionform bean class that you created in the previous step. In Input
+Resource, browse to your <tt>loginForm.jsp</tt> page. Click Finish.
+
+</li><li>Open <tt>struts-config.xml</tt> in the Source Editor and note that it contains, among other things, the following:
+
+<p></p><pre class="examplecode">&lt;action-mappings&gt;
+   &lt;action input="/loginForm.jsp"
+            name="NewStrutsActionForm"
+            path="/login"
+           scope="session"
+            type="com.myapp.struts.NewStrutsAction"/&gt;
+   &lt;action path="/Welcome"
+        forward="/welcomeStruts.jsp"/&gt;
+&lt;/action-mappings&gt;</pre>
+
+<p>If you want the action class to function per request, instead of per session, put the cursor in the <tt>scope</tt> attribute
+ and press Ctrl-Space:
+
+</p><p><img src="quickstart-webapps-struts_files/struts-codecompletion.png" alt="conde completion">
+
+</p><p>Choose <tt>Request</tt>.
+
+</p></li><li>Hold down the Ctrl key and move your mouse over the action class's fully qualified class name:
+
+<p><img src="quickstart-webapps-struts_files/struts-hyperlink2.png" alt="hyperlink">
+
+</p><p>A hyperlink appears. Click it to navigate to the action class.
+
+</p></li><li>Browse through the action class and look at the <tt>execute</tt> method:
+
+<p></p><pre class="examplecode">public ActionForward execute(ActionMapping mapping, ActionForm  form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        return mapping.findForward(SUCCESS);
+
+}</pre>
+
+<p>Notice the definition of <tt>SUCCESS</tt>, at the top of the <tt>NewStrutsAction</tt>:
+
+</p><p></p><pre class="examplecode">private final static String SUCCESS = "success";</pre>
+
+<p>The SUCCESS String declaration specifies that this action class
+ forwards to the output view called <tt>success</tt>.
+
+</p></li><li>You need to define a page that will be displayed
+ when the output view above is called.
+ So, create another JSP in the same location as <tt>loginForm.jsp</tt> and call it <tt>loginSuccessful</tt>.
+   In the Source Editor, change the default content of the <tt>&lt;H1&gt;</tt> tags in the new JSP
+     files to <tt>Login Successful!</tt> and do the same for the text in the <tt>&lt;TITLE&gt;</tt> tags.
+
+</li><li>Open <tt>struts-config.xml</tt> in the Source Editor, right-click anywhere in the <tt>/login</tt> action mapping,
+ and choose Struts &gt; Add Forward:
+
+
+<p><img src="quickstart-webapps-struts_files/addforward.png" alt="add forward">
+
+</p><p>The Add Forward dialog box opens.
+
+</p><p>Type <tt>success</tt> in Forward Name. Browse to <tt>loginSuccessful.jsp</tt>
+ in Resource File. The dialog box should now look as follows:
+
+</p><p><img src="quickstart-webapps-struts_files/addforward2.png" alt="add forward">
+
+</p><p>Click Add.
+
+</p><p>Notice that <tt>struts-config.xml</tt>
+ now shows the following (the new code is in bold):
+
+
+</p><p></p><pre class="examplecode">&lt;action-mappings&gt;
+
+  &lt;action input="/loginForm.jsp"
+           name="NewStrutsActionForm"
+           path="/login"
+          scope="session"
+           type="com.myapp.struts.NewStrutsAction"&gt;
+       <b>&lt;forward name="success"
+                path="/loginSuccessful.jsp"/&gt;</b>
+  &lt;/action&gt;
+
+  &lt;action path="/Welcome"
+       forward="/welcomeStruts.jsp"/&gt;
+
+&lt;/action-mappings&gt;</pre>
+
+
+
+</li></ol>
+
+
+      </div>
+      <br>
+
+<!-- ======================================================================================= -->
+
+<h2><a name="buildandrun"></a>Building and Running the Struts Application</h2>
+
+<div class="indent">
+
+<p>The IDE uses an Ant build script to build and run your web application.
+The IDE generated the build script when you created the application, basing it on the options
+you entered in the New Project wizard and the project's Project Properties dialog box.</p>
+
+<ol>
+	  <li>Right-click the <tt>LoginPage</tt> project node and choose Properties.
+		In the Project Properties dialog box, click the Run node. In Relative URL, type <tt>login.do</tt>. Click OK. <p><b>Note:</b> Remember
+ that at the start of this quick start guide, you mapped the <tt>.do</tt> mapping to the Struts controller servlet. Now, when you
+ run the application and the <tt>.do</tt> mapping is used, the Struts controller servlet knows that it has to handle the request.
+	        </p></li><li>Choose Run&nbsp;&gt; Run&nbsp;Main&nbsp;Project (F6) from
+	      the Run menu.
+	      <p>The IDE builds the web application and deploys it, using the server you specified when creating the project.
+
+	      </p><p>The browser opens and displays the <tt>loginForm.jsp</tt> page:
+
+	      </p><p><img src="quickstart-webapps-struts_files/result1.png" alt="loginform.jsp">
+
+	      </p><p>Only if field-level validation succeeds, so that the action class's <tt>execute</tt> method returns the SUCCESS
+	       output view, does Struts
+	      call the <tt>loginsuccesful.jsp</tt> page. To pass validation, all that you need to do is add any value
+	      to the Name row in the <tt>loginForm.jsp</tt> page. Then, <tt>loginSuccessful.jsp</tt> is displayed:
+
+</p><p><img src="quickstart-webapps-struts_files/result2.png" alt="loginform.jsp">
+
+	      
+
+</p><p>Of course, as pointed out at the start of this quick start
+guide, this is not a complete login form; it merely shows you what the
+basis of such a form could look like in Struts. The following section
+shows you how quickly and easily the login form can be extended with a
+variety of standard functionality. </p></li></ol>
+
+
+    </div>
+
+<!-- ======================================================================================= -->
+
+<h2><a name="more"></a>Adding More Functionality to the Struts Application</h2>
+<p>Struts simplifies and organizes an application in many more ways than can be listed here. However, here
+ are some simple extensions to your existing login page, using Struts.</p>
+ <div class="indent">
+
+   <h3 class="tutorial"><a name="cancel"></a>Using Struts to Add "Cancel" Functionality</h3>
+
+     <ol>
+	     <li>In <tt>loginForm.jsp</tt>, below the <tt>&lt;html:submit&gt;</tt> line, create the Cancel button
+ by adding the following:
+
+	     <pre class="examplecode">&lt;html:cancel /&gt;</pre>
+
+	     </li><li>Add these lines to the <tt>execute</tt> method in <tt>org.myapp.struts.NewStrutsAction</tt>:
+
+	     <pre class="examplecode">if (isCancelled(request)){
+  return mapping.findForward(CANCEL);
+}</pre>
+
+<p>Press Ctrl-Space within the <tt>isCancelled</tt> method and then read the Javadoc to understand the method:
+
+</p><p><img src="quickstart-webapps-struts_files/isCancelled_javadoc.png" alt="Javadoc for isCancelled">
+
+</p><p>Declare the definition of <tt>CANCEL</tt> at the top of the <tt>NewStrutsAction</tt> class, right below the definition
+ of <tt>SUCCESS</tt>:
+
+ </p><pre class="examplecode">private final static String CANCEL = "cancel";</pre>
+
+</li><li>You need to define a page that will be displayed
+when <tt>CANCEL</tt> is called.
+ So, create another JSP in the same location as <tt>loginForm.jsp</tt> and call it <tt>loginCancel</tt>.
+   In the Source Editor, change the default content of the <tt>&lt;H1&gt;</tt> tags in the new JSP
+     files to <tt>Login Cancelled!</tt> and do the same for the text in the <tt>&lt;TITLE&gt;</tt> tags.
+
+
+</li><li>Open <tt>struts-config.xml</tt> in the Source Editor, right-click anywhere in the <tt>/login</tt> action mapping,
+ and choose Struts &gt; Add Forward. The Add Forward dialog box opens.
+
+<p>Type <tt>cancel</tt> in Forward Name. Browse to <tt>loginCancel.jsp</tt>
+ in Resource File. The dialog box should now look as follows:
+
+</p><p><img src="quickstart-webapps-struts_files/result3.png" alt="add forward">
+
+</p><p>Click Add.
+
+</p><p>Notice that <tt>struts-config.xml</tt>
+ now shows the following (the new code is in bold):
+
+
+</p><p></p><pre class="examplecode">&lt;action-mappings&gt;
+
+  &lt;action input="/loginForm.jsp"
+           name="NewStrutsActionForm"
+           path="/login"
+          scope="session"
+           type="com.myapp.struts.NewStrutsAction"&gt;
+       &lt;forward name="success"
+		path="/loginSuccessful.jsp"/&gt;
+       <b>&lt;forward name="cancel"
+                path="/loginCancel.jsp"/&gt;</b>
+  &lt;/action&gt;
+
+  &lt;action path="/Welcome"
+       forward="/welcomeStruts.jsp"/&gt;
+
+&lt;/action-mappings&gt;</pre>
+
+<p><b>Note:</b> In Struts 1.2.9 and 1.3, note the changes for cancellation, as described <a href="http://wiki.apache.org/struts/StrutsUpgradeNotes128to129#head-616210181bd28ec4cee99be6ddfcee4ba4285fce">here</a>.
+</p>
+
+</li><li>Run the application again and notice the new Cancel button:
+
+<p><img src="quickstart-webapps-struts_files/result4.png" alt="add forward">
+
+</p><p>Click it and notice that the new
+<tt>loginCancel.jsp</tt> page is opened in the browser.
+
+</p></li></ol>
+
+
+ <h3 class="tutorial"><a name="logout"></a>Using Struts to Add "Logout" Functionality</h3>
+
+     <ol>
+	     <li>In <tt>loginForm.jsp</tt>, below the <tt>&lt;H1&gt;</tt> tags, create the Logout link by adding the following:
+
+	     <pre class="examplecode">&lt;html:link action="/logout"&gt;Logout&lt;/html:link&gt;</pre>
+
+
+</li><li>You need to define a page that will be displayed
+when the Logout link is clicked.
+ So, create another JSP in the same location as <tt>loginForm.jsp</tt> and call it <tt>loginOut</tt>.
+   In the Source Editor, change the default content of the <tt>&lt;H1&gt;</tt> tags in the new JSP
+     files to <tt>Have a Nice Day!</tt> and do the same for the text in the <tt>&lt;TITLE&gt;</tt> tags.
+
+
+</li><li>Open <tt>struts-config.xml</tt> in the Source Editor, right-click anywhere,
+ and choose Struts &gt; Add Forward/Include Action. The Add Forward/Include Action dialog box opens.
+
+<p>Type <tt>logout</tt> in Action Path. Browse to <tt>loginOut.jsp</tt>
+ in Resource File. The dialog box should now look as follows:
+
+</p><p><img src="quickstart-webapps-struts_files/result5.png" alt="add forward">
+
+</p><p>Click Add.
+
+</p><p>Notice that <tt>struts-config.xml</tt>
+ now shows the following (the new code is in bold):
+
+
+</p><p></p><pre class="examplecode">&lt;action-mappings&gt;
+
+  &lt;action input="/loginForm.jsp"
+           name="NewStrutsActionForm"
+           path="/login"
+          scope="session"
+           type="com.myapp.struts.NewStrutsAction"&gt;
+       &lt;forward name="success"
+		path="/loginSuccessful.jsp"/&gt;
+       &lt;forward name="cancel"
+                path="/loginCancel.jsp"/&gt;
+  &lt;/action&gt;
+
+  <b>&lt;action forward="/loginOut.jsp"
+       path="/logout"/&gt;</b>
+
+  &lt;action path="/Welcome"
+       forward="/welcomeStruts.jsp"/&gt;
+
+&lt;/action-mappings&gt;</pre>
+
+</li><li>Run the application again and notice the new Logout link:
+
+<p><img src="quickstart-webapps-struts_files/result6.png" alt="add forward">
+
+</p><p>Click it and notice that the new
+<tt>loginOut.jsp</tt> page is opened in the browser.
+
+</p></li></ol>
+
+<h3 class="tutorial"><a name="reset"></a>Using Struts to Add "Reset" Functionality</h3>
+
+     <ol>
+	     <li>In <tt>loginForm.jsp</tt>, between the Submit and Cancel buttons, create the Reset button by adding the following:
+
+	     <pre class="examplecode">&lt;html:reset /&gt;</pre>
+
+
+
+
+</li><li>Run the application again and notice the new Reset button:
+
+<p><img src="quickstart-webapps-struts_files/result7.png" alt="add forward">
+
+</p><p>Type something in the Name row, click Reset, and notice that Struts empties the table.
+
+</p></li></ol>
+    </div>
+
+<!-- ======================================================================================== -->
+
+<h2><a name="plugin"></a>Adding Your Favorite Struts Features to the IDE</h2>
+
+
+<p>When using Struts, you are not limited to the functionality provided by the IDE. You can enhance the IDE
+by adding features that the IDE does not support. Here are some examples:
+
+</p><ul>
+	<li>You can add Struts-specific HTML snippets to the Component Palette. For example, you can add
+        the HTML code that you used to create the Submit, Reset, and Cancel buttons as snippets to the HTML palette.
+ Then, you can drag the snippets from the palette and drop them in the Source Editor. You can create a NetBeans plug-in module
+ that contains the snippets, and then share them with your colleagues. To do so, see the <a href="http://platform.netbeans.org/tutorials/nbm-palette-api1.html">NetBeans Code Snippet Module Tutorial</a>.
+
+ </li><li>Instead of adding your Struts snippets to an existing palette, you can create a completely new palette, specifically for
+ the <tt>struts-config.xml</tt> file. Again, you can share the result with your colleagues, in the form of a plug-in module. To do so, see the <a href="http://platform.netbeans.org/tutorials/nbm-palette-api2.html">NetBeans Component Palette Module Tutorial</a>.
+
+ </li><li>You
+can extend the JSP editor, to provide features specifically for use
+with the Struts framework. As with the above two suggestions, sharing
+such features with colleagues is easy, once you provide a plug-in
+module for them. For details, see the <a href="http://platform.netbeans.org/tutorials/nbm-taghandler.html">NetBeans Editor Extension Module Tutorial</a>.
+
+  </li><li>You
+can create samples of Struts applications and make them available via
+plug-in modules. This way, you can share your knowledge with others,
+who can then access your samples from the New Project wizard, in the
+same way as any other NetBeans project sample is accessed. For details,
+see the <a href="http://platform.netbeans.org/tutorials/nbm-projectsamples.html">NetBeans Project Sample Module Tutorial</a>.
+
+ </li></ul>
+
+ <p>The IDE can be enhanced to support Struts in various other ways. For details, see <a href="http://platform.netbeans.org/tutorials/index.html">Tutorials for NetBeans Module (Plug-in) and Rich Client Application Development</a>.
+
+
+ <br>
+            </p><div class="feedback-box"><a href="http://www.netbeans.org/about/contact_form.html?to=3&amp;subject=Feedback:%20Introduction%20to%20the%20Struts%20Web%20Framework">Send Us Your Feedback</a></div>
+            <br style="clear: both;">
+
+
+<!-- ======================================================================================== -->
+
+<h2><a name="nextsteps"></a>Next Steps</h2>
+
+  <p>For more information about developing web applications in NetBeans IDE 5.x, see the following resources:
+  </p>
+  <ul>
+      <li><a href="http://www.netbeans.org/kb/50/tutorial-webapps-struts.html">NetBeans IDE Tutorial
+      for Accessing Data with a Struts Data Source</a></li>
+      <li><a href="http://www.netbeans.org/kb/55/import_web.html">Importing an Existing
+      Web Application into NetBeans IDE</a></li>
+      <li><a href="http://www.netbeans.org/kb/55/tutorial-webapps.html">NetBeans
+      IDE Web Application Tutorial</a></li>
+       <li><a href="http://www.netbeans.org/kb/55/websvc-jax-ws.html">Web
+      Services (JAX-WS) in Java EE 5</a></li>
+
+
+  </ul>
+  <p>To send comments and suggestions, get support, and keep informed on the latest
+    developments on the NetBeans IDE J2EE development features, join the<script language="JavaScript" type="text/javascript"><!--
+var user = "&#110;&#98;&#106;&#50;&#101;&#101;";
+var domain = "&#110;&#101;&#116;&#98;&#101;&#97;&#110;&#115;&#46;&#111;&#114;&#103;";
+var at = "&#x40;";
+document.write(user + at + domain);
+//--></script>nbj2ee@netbeans.org<noscript>
+&#110;&#98;&#106;&#50;&#101;&#101;
+&#x40;
+&#110;&#101;&#116;&#98;&#101;&#97;&#110;&#115;&#46;&#111;&#114;&#103;
+</noscript>
+    mailing list<script language="JavaScript" type="text/javascript">
+<!--
+var user = "&#110;&#98;&#117;&#115;&#101;&#114;&#115;";
+var domain = "&#110;&#101;&#116;&#98;&#101;&#97;&#110;&#115;&#46;&#111;&#114;&#103;";
+var at = "&#x40;";
+document.write('<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;' + user + at + domain + '"></a>. For more information     about upcoming J2EE development features in NetBeans IDE, see <a href="http://j2ee.netbeans.org">j2ee.netbeans.org</a>');
+//-->
+</script><a href="mailto:nbusers@netbeans.org"></a>. For more information     about upcoming J2EE development features in NetBeans IDE, see <a href="http://j2ee.netbeans.org/">j2ee.netbeans.org</a>
+<noscript>
+<a
+href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#110;&#98;&#117;&#115;&#101;&#114;&#115;&#x40;&#110;&#101;&#116;&#98;&#101;&#97;&#110;&#115;&#46;&#111;&#114;&#103;"></a>.
+For more information about upcoming J2EE development features in
+NetBeans IDE, see <a
+href="http://j2ee.netbeans.org">j2ee.netbeans.org</a>
+</noscript>
+.</p>
+
+
+
+
+<!-- End Content Area -->
+</div></div><!-- end IE hack -->
+	</td><td class="valign-top">
+				   	<div id="floating-col-right"><!-- right content column -->
+<div class="f-page-cell b-bottom bg-face">
+<div style="margin-left: -7px; padding-bottom: 20px;"><a href="http://download.netbeans.org/netbeans/6.0/final/"><img src="quickstart-webapps-struts_files/frontpage-download-button.gif" alt="Download NetBeans" title="Download NetBeans" border="0" height="25" width="212"></a></div>
+<h2 style="border: 0px none ;">Documentation</h2>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/trails/java-se.html">Basic Java Programming</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/trails/matisse.html">Java GUIs</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/trails/web.html">Web Applications</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/trails/java-ee.html">Java EE Applications</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/trails/mobility.html">Mobile Applications</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/trails/soa.html">SOA Applications</a></div></div><div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/trails/uml.html">UML Modelling</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/trails/ruby.html">Ruby Applications</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/trails/cnd.html">C/C++ Applications</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/trails/platform.html">NetBeans Modules and Rich-Client Applications</a></div></div>
+<br>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/samples/index.html">Sample Applications</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/60/screencasts.html">Demos and Screencasts</a></div></div>
+</div>
+
+<div class="f-page-cell bg-bege b-bottom">
+<h2 style="border: 0px none ;">Training</h2>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.sun.com/training/catalog/courses/SL-275-SE6.xml?intcmp=1366">Java Programming Language</a></div></div>
+		<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.sun.com/training/catalog/courses/FJ-310.xml?intcmp=1366">Developing Applications for the Java EE Platform</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.sun.com/training/catalog/java/index.xml?intcmp=1366">All Sun Microsystem Training Courses</a></div></div>
+</div>
+
+<div class="f-page-cell bg-bege b-bottom">
+<h2 style="border: 0px none ;">Support</h2>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://wiki.netbeans.info/wiki/view/NetBeansUserFAQ">FAQs</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/support.html">Sun Microsystems Support Plans</a></div></div>
+</div>
+
+<div class="f-page-cell bg-bege b-bottom">
+<h2 style="border: 0px none ;">More</h2>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://wiki.netbeans.org/wiki/view/CommunityDocs">Contribute Documentation!</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/previous.html">Docs for Earlier Releases</a></div></div>
+</div>
+</div>
+					</td></tr></tbody></table>
+	</td></tr><tr><td class="floating-wrap-table">
+	<!-- flexible page footer -->
+	<div id="floating-footer" class="clear">
+		<img src="quickstart-webapps-struts_files/footer-floating-corner-r.png" class="float-right" style="" height="36" width="14">
+		<img src="quickstart-webapps-struts_files/footer-floating-corner-l.png" class="float-left" style="" height="36" width="10">
+		<div id="footer-text">
+			<div id="footer-navig" class="float-left font-12">
+				<a href="http://www.cafeshops.com/netbeans/">Shop</a> &nbsp;
+				<a href="http://www.netbeans.org/download/sitemaps/www_map.html">SiteMap</a> &nbsp;
+				<a href="http://www.netbeans.org/about/index.html">About Us</a> &nbsp;
+				<a href="http://www.netbeans.org/about/contact.html">Contact</a> &nbsp;
+				<a href="http://www.netbeans.org/about/legal/index.html">Legal</a> &nbsp;
+			</div>
+		<div id="tof" class="float-right">
+			By use of this website, you agree to the <a href="http://www.netbeans.org/about/legal/terms-of-use.html">NetBeans Policies and Terms of Use</a>
+		</div>
+		</div>
+	</div>
+	</td></tr></tbody></table></div>
+<div id="companion-projects">
+	<center>
+	<table>
+	<tbody><tr>
+	<td class="companions-left b-green-left valign-center">Companion <br>Projects: </td>
+        <td class="valign-center">
+	 <a href="http://www.mysql.com/"><img src="quickstart-webapps-struts_files/mysql_logo.gif" title="MySQL - Open Source Database Server" alt="MySQL Database Server" border="0" height="30" width="58"></a>&nbsp;&nbsp;
+	</td>
+	<td class="valign-center">
+	<a href="https://openjdk.dev.java.net/"><img alt="Open JDK: an Open SourceJDK" src="quickstart-webapps-struts_files/openjdk.gif" title="Open JDK: an Open SourceJDK" border="0" height="19" width="63"></a>&nbsp;&nbsp;
+	</td>
+	<td class="valign-center">
+		<a href="https://glassfish.dev.java.net/"><img alt="GlassFish Community: an Open Source Application Server" src="quickstart-webapps-struts_files/glassfish.gif" title="GlassFish Community: an Open Source Application Server" border="0" height="27" width="56"></a>&nbsp;&nbsp;&nbsp;
+	</td>
+	<td class="valign-center">
+		<a href="http://community.java.net/mobileandembedded/"><img alt="Mobile &amp; Embedded Community" src="quickstart-webapps-struts_files/mobile-duke.gif" heigh="35" title="Mobile &amp; Embedded Community" border="0" width="37"></a>&nbsp;&nbsp;&nbsp;
+	</td>
+	<td class="valign-center">
+		<a href="http://opensolaris.org/"><img alt="Open Solaris" src="quickstart-webapps-struts_files/opensolaris.gif" title="OpenSolaris" border="0" height="17" width="95"></a>&nbsp;&nbsp;
+	</td>
+	<td class="valign-center">
+		<a href="http://java.net/"><img alt="java.net - The Source for Java Technology Collaboration" title="java.net - The Source for Java Technology Collaboration" src="quickstart-webapps-struts_files/javanet.gif" heigh="36" border="0" width="80"></a>&nbsp;&nbsp;
+	</td>
+	<td class="valign-center b-green-right" style="padding-right: 20px;">
+		<a href="https://open-esb.dev.java.net/"><img alt="Open ESB - The Open Enterprise Service Bus" title="Open ESB - The Open Enterprise Service Bus" src="quickstart-webapps-struts_files/open-esb.gif" heigh="30" border="0" width="143"></a>
+	</td>
+	<td class="companions-right b-green-right valign-center align-center">Powered by<br>&nbsp;<img src="quickstart-webapps-struts_files/poweredby.gif" height="14" width="70">&nbsp;</td>
+      </tr>
+	</tbody></table>
+	</center>
+</div>
+
+	</div>
+	<!-- /Servlet-Specific template -->
+<!-- end of right navigation -->
+
+<!-- servlets and anything not on www or testwww -->
+
+
+
+
+
+ 
+ 
+ 
+
+ 
+ 
+
+<!-- Begin SiteCatalyst code -->
+<script language="JavaScript" src="quickstart-webapps-struts_files/s_code_remote.js"></script>
+<!-- End SiteCatalyst code -->
+<!-- Begin Google webtracking analytics -->
+<script src="quickstart-webapps-struts_files/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+_uacct = "UA-2149007-1";
+urchinTracker();
+</script>
+<!-- End Google webtracking analytics -->
+<!-- test issue # 121549 -->
+
+
+
+</body></html>

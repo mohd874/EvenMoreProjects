@@ -1,0 +1,8 @@
+Click on your character to select him.  If you get a green square under the 
+character, that means you have selected the right one.  If you get a square
+other than green under the character, you have not selected a character under
+your control.
+
+Once you have selected a character, Right-click on the ground to walk to that 
+square.  Click on objects in your inventory to pick them up.  Right-click on 
+the map to throw an object to that square (if you are strong enough to throw it there)

@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head>
+
+
+  
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Hibernate Support in NetBeans</title>
+   
+    <link type="text/css" href="NetBeansHibernateBeanWizard.php_files/page.css" rel="stylesheet">
+    <meta name="author" content="Petr Zajac"></head><body>
+ 
+      <div class="logobar">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tbody><tr>
+            <td align="center">
+                <a href="http://www.netbeans.org/" target="_blank"><img src="NetBeansHibernateBeanWizard.php_files/built-for-netbeans.png" alt="NetBeans IDE" border="0"></a>
+            </td>
+                
+            <td class="logobar" align="center"> <font size="16"><b>XDoclet  Hibernate <br> Project Extensions</b></font>  </td>
+            
+            <td align="right">
+              <form target="_blank" onsubmit="q.value = query.value + ' site:nbxdoclet.sourceforge.net'" action="http://www.google.com/search" method="get">
+                <table summary="search" bgcolor="#4c6c8f" border="0" cellpadding="0" cellspacing="0">
+                  <tbody><tr>
+                    <td colspan="3"><img alt="" src="NetBeansHibernateBeanWizard.php_files/spacer.gif" height="10" width="1"></td>
+                  </tr>
+                  <tr>
+                    <td><img alt="" src="NetBeansHibernateBeanWizard.php_files/spacer.gif" height="1" width="1"></td>
+                    <td class="searchcaption" nowrap="nowrap">
+                      <input name="q" type="hidden">
+                      <input size="15" id="query" type="text">
+                      <img alt="" src="NetBeansHibernateBeanWizard.php_files/spacer.gif" height="1" width="5">
+                      <input name="Search" value="Search" type="submit">
+                      <br>
+                      the NBXDoclet site
+                    </td>
+                    <td><img alt="" src="NetBeansHibernateBeanWizard.php_files/spacer.gif" height="1" width="1"></td>
+                  </tr>
+                  <tr>
+                    <td><img alt="" src="NetBeansHibernateBeanWizard.php_files/search-left.gif" border="0" height="10" width="9"></td>
+                    <td><img alt="" src="NetBeansHibernateBeanWizard.php_files/spacer.gif" height="1" width="1"></td>
+                    <td><img alt="" src="NetBeansHibernateBeanWizard.php_files/search-right.gif" border="0" height="10" width="9"></td>
+                  </tr>
+                </tbody></table>
+              </form>
+            </td>
+          </tr>
+        </tbody></table>
+      </div>
+
+                  <div class="tab">
+              <table summary="tab bar" border="0" cellpadding="0" cellspacing="0">
+                <tbody><tr>
+                                  <td width="8"><img alt="" src="NetBeansHibernateBeanWizard.php_files/spacer.gif" height="5" width="8"></td><td valign="bottom">
+                      <table summary="selected tab" style="height: 1.5em;" border="0" cellpadding="0" cellspacing="0">
+                        <tbody><tr>
+                        <td bgcolor="#4c6c8f" valign="top" width="5"><img alt="" src="NetBeansHibernateBeanWizard.php_files/tabSel-left.gif" height="5" width="5"></td><td bgcolor="#4c6c8f" valign="middle"><font color="#ffffff" face="Arial, Helvetica, Sans-serif" size="2"><b><a href="http://nbxdoclet.sourceforge.net/index.php">Home</a></b><a href="http://nbxdoclet.sourceforge.net/index.php"></a></font></td><td bgcolor="#4c6c8f" valign="top" width="5"><img alt="" src="NetBeansHibernateBeanWizard.php_files/tabSel-right.gif" height="5" width="5"></td>
+                        </tr>
+                      </tbody></table>
+                    </td>
+                                    <td width="5"><img alt="" src="NetBeansHibernateBeanWizard.php_files/spacer.gif" height="8" width="8"></td><td valign="bottom">
+                      <table summary="non selected tab" style="height: 1.4em;" border="0" cellpadding="0" cellspacing="0">
+                        <tbody><tr>
+                          <td bgcolor="#b2c4e0" valign="top" width="5"><img alt="" src="NetBeansHibernateBeanWizard.php_files/tab-left.gif" height="5" width="5"></td><td bgcolor="#b2c4e0" valign="middle"><a href="http://sourceforge.net/projects/nbxdoclet"><font face="Arial, Helvetica, Sans-serif" size="2">Project Page</font></a></td><td bgcolor="#b2c4e0" valign="top" width="5"><img alt="" src="NetBeansHibernateBeanWizard.php_files/tab-right.gif" height="5" width="5"></td>
+                        </tr>
+                      </tbody></table>
+                    </td>
+                            </tr>
+              </tbody></table>
+            </div>
+
+      <div class="bluebar"></div>
+                    
+  <div class="menucontainer">
+    <div class="menu">
+      <ul>
+              <li class="menuheader">Hibernate 
+                  <ul>
+                     <li><a href="http://nbxdoclet.sourceforge.net/FirstHibernate.htm">Flash Demo</a></li><li><a href="http://nbxdoclet.sourceforge.net/HibernateBeanWizard.php">Bean Wizard</a></li><li><a href="http://nbxdoclet.sourceforge.net/HibernateCodeCompletion.php">Code Completin</a></li><li><a href="http://nbxdoclet.sourceforge.net/HQLWizard.php">HQL Wizard</a></li>                   </ul>
+               </li>
+                <li class="menuheader">Project Extensions
+               <ul>
+                  <li><a href="http://nbxdoclet.sourceforge.net/installLibrary.php">Download/Install Library</a></li><li><a href="http://nbxdoclet.sourceforge.net/CodeCoverage.php">Code Coverage</a></li>                </ul>
+               </li>
+                <li class="menuheader">XDoclet
+                    <ul>
+                        <li><a href="http://nbxdoclet.sourceforge.net/xdoclet.php">XDoclet Support</a></li>                                         
+                     </ul>
+                 </li>
+                 <br>
+                <li class="menuheader">Download
+                  <ul>
+                    <li><a href="http://nbxdoclet.sourceforge.net/installation.php">Installation</a></li>                     <li><a href="http://sourceforge.net/project/showfiles.php?group_id=134607">Download</a></li>   
+                  </ul>
+                </li>
+              <li class="menuheader">Contributing
+                  <ul>
+                    <li><a href="http://sourceforge.net/tracker/?group_id=134607&amp;atid=730441">Bug Database</a></li>
+                    <li><a href="http://sourceforge.net/forum/?group_id=134607">Open Discusion</a></li>
+                    <li><a href="http://lists.sourceforge.net/lists/listinfo/nbxdoclet-users">Mailing List</a></li>
+                  </ul>
+              </li>
+              <li class="menuheader">Project
+                 <ul>
+                    <li><a href="http://sourceforge.net/project/stats/?group_id=134607&amp;ugn=nbxdoclet">Statistics</a></li>
+                    <li><a href="http://sourceforge.net/cvs/?group_id=134607">CVS</a> </li>     
+                 </ul>
+        </li>
+    </ul></div>
+    <img style="float: left;" alt="" src="NetBeansHibernateBeanWizard.php_files/menu-left.gif" border="0" height="10" width="10">
+    <img style="float: right;" alt="" src="NetBeansHibernateBeanWizard.php_files/menu-right.gif" border="0" height="10" width="10">
+  </div>
+      
+     
+      <div class="lightbluebar">&nbsp;</div>
+  <div class="main">
+ 
+  <h3 class="subsection"> Preparation </h3>
+  
+  <p>
+     First implementation of Hibernate support for netbeans uses J2SE netbeans
+    project. Before you create your first Hibernate Bean create new J2SE project (File|New Project) .  
+  </p>
+  <h3 class="subsection"> First Hibernate Bean</h3>  
+  <p>
+  After you created J2SE project you can create first Hibernate Bean. Select a java package in 
+  project view of your J2SE project and info <i>New File</i> wizard. Select 
+  <i> Hibernate Bean</i> from <i>Xdoclet/Hibernate</i> folder.
+  </p>
+  <img src="NetBeansHibernateBeanWizard.php_files/NHB-template.gif">
+  <p>
+  And click to next button. The <i>Name and location panel will be shown</i>.
+  </p>
+  <img src="NetBeansHibernateBeanWizard.php_files/NHB-name.gif">
+  <p>
+  Type a name of the new hibernate bean. For example <i>User</i>. Click to <i>Next</i> button. 
+  The <i>Key</i> panel will be shown. 
+  </p>
+  <img src="NetBeansHibernateBeanWizard.php_files/NHB-key.gif">
+  <p>
+  In the <i>Key</i> panel you specify the primary key for hibernate bean. The <i>name</i> field
+ is name of variable used in hibernate bean. The <i> type </i> is used java type. You can  specify
+ the internal hibernate type and name of the property. But it is not necessary to 
+ do it (The <i>name</i> will be used). You can also change the default database
+ field name in the <i>SQL type</i> fild. To  go to next panel clock to <i>Next</i>
+ button.
+  </p>
+ <img src="NetBeansHibernateBeanWizard.php_files/NHB-properties.gif">
+ <p>
+ You are now editing the persistent properties. You can skip this steps and add the properties
+ using hibernate templates in code completion dialog of hibernate class in editor.
+ If you want to add a hibernate property to the hibernate bean click to <i>Add</i>
+ button. The <i>Hibernate Property</i> customizer will be shown.
+ </p>
+ <img src="NetBeansHibernateBeanWizard.php_files/NHB-properties-newProperty.gif">
+ <p>
+ For example you want to add <code>firstName</code> property of <code>String</code>
+ java type. Set the value of <i>Name</i> field to the <code>firstName</code>. Write
+ to the <i>Type</i> field value <code>String</code>. Click to <i>Ok</i> button.
+ The new property was added into properties table. You can delete or modify the 
+ property using <i>Delete</i> od <i>Modify</i> button.
+ </p>
+ 
+ <p>
+  When all properties are specified you can click to finish button. 
+  
+  
+  </p><h3 class="section">Project extension</h3> 
+  
+Now you can customize.
+  the <i>Hibernate Extension</i> setting for the j2se. It is simplier way how to add
+  the ant task usefull for:
+  <ul>
+      <li> generating hibernate descriptors <i>hbm.xml</i> </li>
+      <li> creating db schema for database </li>
+  </ul>
+  The <i>Hibernate extension</i> will all add libraries which are necessary to 
+  compile and run Hibernate application. 
+ <p></p>
+ <p>
+ The <i>Select Hibernate Folder</i> dialog was shown.
+ </p>
+  <img src="NetBeansHibernateBeanWizard.php_files/selectinghibernatefolder.gif">
+  <p>
+  The NetBeans IDE are asking you to select unpacked folder of hibernate distribution. 
+  The hibernate distribution (Hibernate Core) can be download from 
+  <a href="http://www.hibernate.org/6.html">Hibernate download page</a>. So download
+  the distribution and unpack it. Click to <i>Browse</i> button to select unpacked 
+  filder of Hibernate distribution.  After selecting the Hibernate folder you can 
+  click to <i>Ok</i> button.
+  </p>
+  <p>
+  The dialog for initialization of jdbc driver (dialect) was shown. 
+  </p>
+  <img src="NetBeansHibernateBeanWizard.php_files/hib-driver-initializer.gif">
+  <p> 
+   Available dialects:
+     </p><ul>
+       <li>HypersonicSQL
+       </li><li>MySQL
+       </li><li>Possgres
+       </li><li>MS SQL Server
+       </li><li>Oracle 
+     </li></ul>   
+  <p></p>
+  <img src="NetBeansHibernateBeanWizard.php_files/askToDownLoadHyperSonicSQL.gif">
+  <p>
+  The waiting dialog will be shown till the driver is downloaded. After the driver is downloaded
+  it will be be checked if the xdoclet lobraries are available in <i>Library Manager</i>.
+  If the libraries are not available another questioning dialog will be shown.
+  </p>
+  <img src="NetBeansHibernateBeanWizard.php_files/askToDownloadXdoclet.gif">
+  <p>
+  Click to <i>Ok</i> button and wait till the xdoclet's libraries will be downloaded.
+  Wow, the <i>Hibernate extension</i> was added to <i> Ant's features extensions of your project</i>. 
+  The customizer was shown. 
+  </p>
+  <img src="NetBeansHibernateBeanWizard.php_files/HibernateFeatureCustomizer.gif">
+ 
+  <p>
+  In the Hibernate extension you can define:
+  </p><ul>
+      <li> used database driver </li>
+      <li> building hibernate descriptors from xml beans during building </li>
+      <li> generating database dialect during building application</li>
+      <li> initalizing database </li>
+  </ul>
+  <p>
+  To close the Properties dialog click to  <i>Ok</i> button.
+  </p>
+  <p> The Hibernate project exception was added to Project Extensions Window.
+  <img src="NetBeansHibernateBeanWizard.php_files/ProjectExtensionsComponent.gif">
+
+   
+  </p><h3 class="subsection">Generated code </h3>
+  <p> Now the code is generated. You can look at generated code of Hibernate bean:
+  </p>
+  <img src="NetBeansHibernateBeanWizard.php_files/NHB-generatedBean.gif">
+  <p> And unfolded bean...</p>
+  <img src="NetBeansHibernateBeanWizard.php_files/NHB-generatedBeanUnfolded.gif">
+ 
+ <p>
+ You can try to build your first 
+  hibernate application. Look into <i>build/classes</i> folder. There are generated hibernate descriptors.
+ </p>
+ <img src="NetBeansHibernateBeanWizard.php_files/NHB-buildClasses.gif">
+</div>
+
+  </body></html>

@@ -1,0 +1,1 @@
+INDEX VERSION 1.126+D:\myWorkspace\Pro_Android_Games-4504\workspace\.metadata\.plugins\org.eclipse.jdt.core

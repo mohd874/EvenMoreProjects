@@ -1,0 +1,49 @@
+#{extends 'main.html' /}
+#{set title:'FullText' /}
+
+<script type="text/javascript">
+
+
+
+    $.fn.highlight = function (str, className)
+
+    {
+
+        var regex = new RegExp(str, "g");
+
+        return this.each(function ()
+
+        {
+
+            if (str.length > 0) {
+
+                this.innerHTML = this.innerHTML.replace(regex, "<span class=\"" + className + "\">" + str + "</span>");
+
+            }
+
+        });
+
+    };
+
+
+
+    $(document).ready(function() {
+
+        $(".real-content").highlight("${params.highlight}", "highlight");
+
+    })
+
+
+
+</script>
+
+<style>
+    .highlight  {
+        background-color:#D81F2A;
+        color:#FFFFFF;
+    }
+</style>
+<p class="real-content">
+    Text: ${t.book}<br/>
+    Author: ${t.author}
+</p>

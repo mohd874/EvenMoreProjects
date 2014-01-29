@@ -1,0 +1,12 @@
+#{extends 'main.html' /}
+#{set title:'Search results' /}
+
+
+<p>
+   <div>Your query for <b>${search}</b> returned ${results.size()} result(s)</div>
+</p>
+<p>
+#{list items:results, as:'result'}
+ <div><a style="color : Red" href="@{Application.show(result.id,highlight)}">${result.book}</a></div>
+#{/list}
+</p>

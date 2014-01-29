@@ -1,0 +1,1271 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Getting Started with Hibernate</title>
+   <meta name="generator" content="DocBook XSL Stylesheets V1.67.2"></head><body alink="#0000ff" bgcolor="white" link="#0000ff" text="black" vlink="#840084"><div class="article" lang="en"><div class="titlepage"><div><div><h1 class="title"><a name="hibernate"></a>Getting Started with Hibernate</h1></div><div><div class="author"><h3 class="author"><span class="firstname">Alan</span> <span class="othername">P</span> <span class="surname">Sexton</span></h3><div class="affiliation"><div class="address"><p><code class="email">&lt;<a href="mailto:A.P.Sexton@cs.bham.ac.uk">A.P.Sexton@cs.bham.ac.uk</a>&gt;</code></p></div></div></div></div><div><p class="copyright">Copyright © 2005 Alan P. Sexton</p></div><div><div class="revhistory"><table summary="Revision history" border="1" width="100%"><tbody><tr><th colspan="3" align="left" valign="top"><b>Revision History</b></th></tr><tr><td align="left">Revision 1.3</td><td align="left">6 February 2005</td><td align="left">aps</td></tr></tbody></table></div></div></div><hr></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="#hibernate-intro">1. Introduction to Hibernate</a></span></dt><dt><span class="sect1"><a href="#sample-files">2. 
+      Example Hibernate Application
+    </a></span></dt><dt><span class="sect1"><a href="#interaction-pattern">3. 
+        Database Interaction Pattern
+      </a></span></dt><dt><span class="sect1"><a href="#object-lifecycle">4. The Hibernate Object Life Cycle</a></span></dt><dt><span class="sect1"><a href="#hibernate-objects">5. 
+        Hibernate Objects
+      </a></span></dt><dt><span class="sect1"><a href="#session">6. The Session</a></span></dt><dt><span class="sect1"><a href="#querying">7. 
+      Querying
+    </a></span></dt><dt><span class="sect1"><a href="#cascade">8. 
+      Cascading Persistence
+    </a></span></dt><dt><span class="sect1"><a href="#transaction">9. Transactions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#versioning">9.1. Versioning</a></span></dt></dl></dd><dt><span class="sect1"><a href="#mapping">10. Mapping Classes to the Database</a></span></dt><dd><dl><dt><span class="sect2"><a href="#simple-mapping">10.1. 
+        Mapping Simple Entity Classes without Relationships
+      </a></span></dt><dt><span class="sect2"><a href="#simple-value-mapping">10.2. 
+	Mapping Value Objects within Entities
+      </a></span></dt><dt><span class="sect2"><a href="#inheritance-mapping">10.3. 
+	Mapping Entities with Inheritance
+      </a></span></dt><dt><span class="sect2"><a href="#uni-one-way-mapping">10.4. 
+	Many-to-One, Unidirectional Associations
+      </a></span></dt><dt><span class="sect2"><a href="#one_to_many_unidir">10.5. 
+	One-to-Many, Unidirectional Associations
+      </a></span></dt><dt><span class="sect2"><a href="#many-to-one-bidir">10.6. 
+	Many-to-one, bidirectional Associations
+      </a></span></dt></dl></dd><dt><span class="sect1"><a href="#patterns">11. Patterns</a></span></dt><dt><span class="sect1"><a href="#going-further">12. Going Further</a></span></dt><dt><span class="bibliography"><a href="#d0e1631">References</a></span></dt></dl></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both;"><a name="hibernate-intro"></a>1.&nbsp;Introduction to Hibernate</h2></div></div></div><p>
+      Hibernate is an Object Relational Mapping (ORM) tool. It manages
+      the persistence of java objects in a relational database. The idea
+      is that a programmer should be able to design his business objects
+      as standard Java objects with very little interference from the
+      problems of making these objects persist in a database. Together
+      with a little help from the programmer, Hibernate saves the
+      objects into the database, retrieves them when needed and supports
+      queries on the database written in a form similar to SQL but which
+      refers to objects and object properties instead of tables and
+      column names. The end result is that the code that needs to be
+      written to interact with the database is considerably shorter and
+      simpler.
+    </p><p>
+      This document is intended to cover only the basics of Hibernate:
+      i.e., do things the way it is described here until you have
+      outgrown it. Hence many features are only referred to in passing
+      or not mentioned at all. The full reference documentation and a great
+      deal of other important information is available on line at <a href="http://www.hibernate.org/5.html" target="_top">http://www.hibernate.org/5.html:Hibernate
+      On Line Documentation</a>. However, for serious users of
+      Hibernate, a thorough study of [<a href="#BauerKing_HibernateInAction" title="[BK05]"><span class="abbrev">BK05</span></a>] is highly recommended.
+    </p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both;"><a name="sample-files"></a>2.&nbsp;
+      Example Hibernate Application
+    </h2></div></div></div><p>
+      Here we provide a fully working, but very simple, example
+      application using Hibernate. The example is based on some
+      fragments that appear in chapter 2 of [<a href="#BauerKing_HibernateInAction" title="[BK05]"><span class="abbrev">BK05</span></a>]. The files necessary are:
+      </p><div class="itemizedlist"><ul type="disc"><li><p>
+            <a href="http://www.cs.bham.ac.uk/%7Eaps/syllabi/2004_2005/issws/h03/files/Main.java" target="_top">Main.java</a>: the main
+            class that manipulates Message objects, storing them into
+            and retrieving them from the database.
+          </p></li><li><p>
+            <a href="http://www.cs.bham.ac.uk/%7Eaps/syllabi/2004_2005/issws/h03/files/Message.java" target="_top">Message.java</a>: the class defining the
+            objects that will be persisted to the database.
+          </p></li><li><p>
+            <a href="http://www.cs.bham.ac.uk/%7Eaps/syllabi/2004_2005/issws/h03/files/Message.hbm.xml" target="_top">Message.hbm.xml</a>: the
+            <span class="emphasis"><em>mapping</em></span> file that describes how the properties of a
+            message file should be mapped to columns of tables in the database (along with
+            other necessary information should as how keys are generated, what database
+            constraints and indexes should be maintained etc.)
+          </p></li><li><p>
+            <a href="http://www.cs.bham.ac.uk/%7Eaps/syllabi/2004_2005/issws/h03/files/hibernate.properties" target="_top">hibernate.properties</a>: the
+            Hibernate configuration file that specifies the database that is to be used,
+            the database connection pooling system (if any) and other configuration
+            parameters for the system.
+          </p></li><li><p>
+            <a href="http://www.cs.bham.ac.uk/%7Eaps/syllabi/2004_2005/issws/h03/files/log4j.properties" target="_top">log4j.properties</a>: the log4j
+            configuration file that sets many parameters of the logging system.
+          </p></li></ul></div><p>
+    </p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both;"><a name="interaction-pattern"></a>3.&nbsp;
+        Database Interaction Pattern
+      </h2></div></div></div><p>
+        The basic pattern of database interactions via Hibernate is
+        visible in the <code class="filename">Main.java</code> file above.
+        </p><div class="orderedlist"><ol type="1"><li><p>
+              Create a <code class="literal">Configuration</code> object, load the
+              configuration parameters from the
+              <code class="filename">hibernate.properties</code> and adjust them as required.
+            </p></li><li><p>
+              Create a <code class="literal">SessionFactory</code> object from the
+              <code class="literal">Configuration</code> object. The
+              <code class="literal">SessionFactory</code> object is a heavyweight,
+              thread safe object. You would normally share one such object
+              between all your threads in a web application.
+            </p></li><li><p>
+              For each unit of work (normally one use case) use the
+              <code class="literal">SessionFactory</code> object to obtain a
+              <code class="literal">Session</code> object. This is an extremely
+              lightweight, non-thread safe object. It will be associated
+              with a database connection but it only obtains that
+              connection lazily, i.e., only when (and if) it is required.
+              <code class="literal">Session</code> objects must <span class="strong"><strong>not</strong></span> be shared between different threads.
+            </p></li><li><p>
+              Inside a try block, get a <code class="literal">Transaction</code> object by calling
+              <code class="literal">beginTransaction()</code> on the
+              <code class="literal">Session</code> object.
+            </p></li><li><p>
+              Interact with the database:
+              </p><div class="itemizedlist"><ul type="disc"><li><p>
+                    explicitly by calling methods of <code class="literal">Session</code> to
+                    associate objects to the database (i.e., map them to
+                    the database), execute queries, load, save, delete mapped
+                    objects etc.
+                  </p></li><li><p>
+                    implicitly by calling property mutators on mapped
+                    objects that will lead to the database being updated.
+                  </p></li><li><p>
+                    implicitly by referencing non-mapped objects from
+                    mapped objects which (in certain circumstances) can
+                    cause the non-mapped objects to be added to the
+                    database.
+                  </p></li><li><p>
+                    implicitly by unreferencing mapped objects from other
+                    mapped objects which (in certain circumstances) can
+                    cause the unreferenced objects to be deleted from the database.
+                  </p></li></ul></div><p>
+            </p></li><li><p>
+              Call <code class="literal">commit()</code> on the
+              <code class="literal">Transaction</code> object and close the try
+              block, handling exceptions and closing the
+              <code class="literal">Session</code> object in the usual way.
+            </p></li></ol></div><p>
+      </p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both;"><a name="object-lifecycle"></a>4.&nbsp;The Hibernate Object Life Cycle</h2></div></div></div><p>
+      </p><div class="itemizedlist"><ul type="disc"><li><p>
+            <span class="emphasis"><em>Transient</em></span> objects do not (yet) have any
+            association with the database. they act like any normal Java
+            object and are not saved to the database. When the last
+            reference to a transient object is lost, the object itself
+            is lost and is (eventually) garbage collected. There is no
+            connection between transactions and such objects:
+            <code class="literal">commit</code>s and
+            <code class="literal">rollback</code>s have no effects on them. They
+            can be turned into <span class="emphasis"><em>persistent</em></span> objects
+            via one of the <code class="literal">save</code> method calls if the
+            <code class="literal">Session</code> object or by adding a reference
+            from a persistent object to this object.
+          </p></li><li><p>
+            <span class="emphasis"><em>Persistent</em></span> objects do have an
+            association with the database. They are always associated
+            with a persistence
+            manager, i.e., a <code class="literal">Session</code> object and
+            they always participate in a transaction. Actual updates of
+            a database from the persistent object may occur at any time
+            between when the object is updated to the end of the
+            transaction: it does not necessarily happen immediately.
+            However, this feature, which allows important optimizations
+            in database interactions, is essentially invisible to the
+            programmer. For example, one place where one might expect to
+            notice the difference between the in-memory persistent
+            object and the database version is at the point of executing
+            a query. In such a case, Hibernate will, if necessary,
+            synchronise any dirty objects with the database (i.e., save
+            them) in order to ensure that the query returns the correct results.
+          </p><p>
+            A persistent object has a primary key value set, whether or
+            not it has been actually saved to the database yet.
+          </p><p>
+            Calling the <code class="literal">delete</code> method of the
+            <code class="literal">Session</code> object on a persistent object
+            will cause its removal from the database and will make it transient.
+          </p></li><li><p>
+            <span class="emphasis"><em>Detached</em></span> objects are objects that were
+            persistent but no longer have a connection to a
+            <code class="literal">Session</code> object (usually because you
+            have closed the session). Such an object contains data that
+            was synchronised with the database at the time that the
+            session was closed, but, since then, the database may have
+            changed; with the result that this object is now
+            <span class="emphasis"><em>stale</em></span>.
+          </p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><table summary="Important" border="0"><tbody><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Important]" src="hibernate_files/important.png"></td><th align="left">Important</th></tr><tr><td colspan="2" align="left" valign="top"><p>
+              A <span class="emphasis"><em>detached</em></span> object may be re-attached
+              later to another <code class="literal">Session</code> object to
+              become persistent again. Thus, in essence, these objects
+              can happily exist, and be used, without concern for being
+              inside a transaction. This mechanism, in fact, is the
+              basis for letting business objects which are stored
+              persistently in the database, to escape up to higher
+              levels in the system without having to add extra value
+              beans (also known as <span class="emphasis"><em>Data Transfer Objects
+              (DTOs)</em></span> which exist to copy the data of objects
+              tied to one layer in the system to objects tied to another
+              layer. Without this mechanism, one typically has to create
+              a number of classes for each business object, where the
+              instance variables are all basically the same, but which
+              differ in the layer specific details.
+            </p></td></tr></tbody></table></div></li></ul></div><p>
+    </p><div class="mediaobject"><img src="hibernate_files/objectStates.png" alt="The Hibernate Object Life Cycle"><div class="caption"><p>
+          The Hibernate Object Life Cycle
+        </p></div></div><p>
+      Given a pair of (persistent) objects of the same class, we now
+      have three concepts of identity to consider.
+      </p><div class="itemizedlist"><ul type="disc"><li><pre class="programlisting">a==b  <em class="lineannotation"><span class="lineannotation">Java Identity</span></em></pre></li><li><pre class="programlisting">a.equals(b)  <em class="lineannotation"><span class="lineannotation">Java Equality</span></em></pre></li><li><pre class="programlisting">a.getId().equals(b.getId())  <em class="lineannotation"><span class="lineannotation">Database Identity</span></em></pre></li></ul></div><p>
+      The rule for Hibernate, is that if, within a single session, you
+      request two objects which have the same database identifier, then
+      you will get references to the same actual objects. However, if
+      you reattach a object to a session, you have a potential source of
+      confusion in that you could end up with two different persistent
+      objects (different as defined by Java Equality), which should be stored
+      in the same database row.
+    </p><p>
+      Since the programmer can define the meaning of <span class="emphasis"><em>Java
+      Equality</em></span>, it is important <span class="strong"><strong>not</strong></span> to use the <code class="literal">id</code>
+      field in that definition if the <code class="literal">id</code> field is a
+      surrogate key. This is because Hibernate only sets the field when
+      saving the object. Hence, for example, if you add the object to
+      some set collection, then saving the object will result in its
+      identity changing, and part of the rules about using the set
+      collection class is that the contained object's identity must not
+      change while it is in the collection.
+    </p><p>
+      In fact, this situation is almost certain to occur because of the
+      frequent use of collection classes to represent the
+      <span class="emphasis"><em>many</em></span> side of <code class="literal">one-to-many</code>
+      or <code class="literal">many-to-many</code> relationships. Therefore we use
+      the Java Equality concept to define when two objects should really
+      be the same database object.
+    </p><p>
+      However, there are other problems with using all the non-id values
+      of an object in the equality test: you really want the test to
+      return true if the objects map to the same row of the the same
+      table in the database (i.e. they represent the same real world
+      concept). But two objects may represent the same real world object
+      and have some different values. For example, two
+      <code class="literal">Customer</code> objects may differ in the value of a
+      password property (because the two objects date from different
+      instances in time between which the customer has change her
+      password). But they still refer to the same real world concept:
+      i.e., the same customer.
+    </p><p>
+      The solution is to decide on a <span class="emphasis"><em>Business Key</em></span>
+      for a class. This is like a database key, but involves no
+      generated surrogate keys. Instead it consists of those
+      "real-world" properties of the class that the programmer considers
+      to uniquely identify a particular record. It is not a requirement
+      that the business key absolutely never changes, merely that it
+      changes will not change within the period in which it might be
+      stored in memory in a collection class. For the <code class="literal">Customer</code>
+      class on a web application, an appropriate business key might be
+      the customer's email address. This, of course, can change, in
+      which case the customer will be treated as a new different
+      customer. However, this is rarely a significant problem, and if it
+      is, one can always provide a mechanism to reconnect the old data
+      about the customer to the new customer record. More importantly,
+      from our point of view, a change of customer email address is
+      extremely unlikely to affect any reattachment of a detached
+      Customer object to a new session.
+    </p><p>
+      Note that Hibernate does not know or care anything about your business
+      keys. As far as it is concerned, reattaching an object works by
+      checking the <code class="literal">id</code> property of the object. If it
+      is <code class="literal">null</code>, then the object is a new one that
+      could be added to the database but certainly cannot be reattached.
+      Otherwise, the object can be matched up with a record in the
+      database and, on reattachment, the contents of the object are used
+      to update the contents of the corresponding database record(s).
+    </p><p>
+      In writing an equals method, there are two important
+      considerations to bear in mind:
+      </p><div class="itemizedlist"><ul type="disc"><li><p>
+            If you write an <code class="literal">equals</code> method, you must
+            write a <code class="literal">hashCode</code> method which always
+            returns the same value for two objects which
+            <code class="literal">equals</code> decides are equal.
+          </p></li><li><p>
+            When referring to instance variables of the argument object,
+            always use the accessor method rather than the raw instance
+            variable: this is because, in an environment such as a web
+            application or service, you may actually be dealing with
+            a proxy object rather than the actual object you expect for
+            reasons of, for example, distributed load balancing or
+            scalability to very large service loads.
+          </p></li></ul></div><p>
+      Given that, the <code class="literal">equals</code> and
+      <code class="literal">hashCode</code> methods should be
+      written as follows:
+      </p><pre class="programlisting">public class Customer
+{
+    …
+    public boolean equals(Object other)
+    {
+        if (this==other)
+            return true;
+        if (other==null)
+            return false;
+        if (!(other instanceof Customer))
+            return false;
+        final Customer o = (Customer) other;
+        return this.emailAddress.equals(o.getEmailAddress());
+    }
+
+    public int hashCode()
+    {
+        return emailAddress.hashCode();
+    }
+}</pre><p>
+    </p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both;"><a name="hibernate-objects"></a>5.&nbsp;
+        Hibernate Objects
+      </h2></div></div></div><p>
+        A Hibernate object, suitable for mapping into a database, is a
+        normal java bean with a number of extra requirements.
+      </p><div class="itemizedlist"><ul type="disc"><li><p>
+            There must be a default constructor for the class.
+          </p></li><li><p>
+            There must be accessors and mutators for all the instance
+            variables of the class. Actually this is overstating the
+            requirement but is a good base rule: read the Hibernate
+            documentation for the full details.
+          </p></li><li><p>
+            The class should implement
+            <code class="literal">Serializable</code>. Strictly speaking, this
+            is not a requirement. However, in practice you will normally
+            want your Hibernate objects to be serializable so that they
+            can be (potentially) migrated around a multiprocessor
+            cluster or saved and restored across a web server reboot etc.
+          </p></li><li><p>
+            The class should have an <code class="literal">id</code> instance
+            variable, usually of type <code class="literal">Long</code>. Again
+            this is not a true requirement but it is recommended to use
+            automatically generated surrogate keys and, if so, to use an
+            instance variable called <code class="literal">id</code> to hold it.
+            Certainly, alternatives are possible.
+          </p></li><li><p>
+            The mutator for the <code class="literal">id</code> property should
+            be private, not public. Again not a requirement but good
+            practice. You should never update the
+            <code class="literal">id</code> property directly but rather rely on
+            Hibernate updating it for you. In practice, it is the value
+            of this field that Hibernate uses to decide if an object has
+            been mapped to a database record or not. Change the property
+            yourself and you could seriously confuse Hibernate.
+          </p></li><li><p>
+            You should decide on a business key for the object and
+            implement the <code class="literal">equals</code> and
+            <code class="literal">hashCode</code> methods for it.
+          </p></li><li><p>
+            You should add any extra type specific constructors (which
+            should leave the <code class="literal">id</code> field
+            <code class="literal">null</code>) and business rule methods you like.
+          </p></li><li><p>
+            You should not make the class <code class="literal">final</code> if
+            you want to be able to use <span class="emphasis"><em>lazy loading</em></span>
+            for objects of the class.
+          </p></li></ul></div></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both;"><a name="session"></a>6.&nbsp;The Session</h2></div></div></div><p>
+      Once you have a <code class="literal">Session</code> object, and are
+      executing inside a <code class="literal">Transaction</code>, there are a
+      number of ways you can interact with the database.
+      </p><div class="itemizedlist"><ul type="disc"><li><p>
+            <code class="literal">session.get</code> is used to create a new
+            persistent object by <code class="literal">id</code> from the database. It
+            returns <code class="literal">null</code> if there was no such
+            object in the database. <code class="literal">session.load</code> is
+            similar except that if there was no such object in the
+            database it throws an exception.
+            </p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><table summary="Important" border="0"><tbody><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Important]" src="hibernate_files/important.png"></td><th align="left">Important</th></tr><tr><td colspan="2" align="left" valign="top"><p><a name="lazy-loading"></a>
+                Conceptually, these methods do not
+                <span class="emphasis"><em>just</em></span> get the object requested but
+                also all objects that it refers to through its
+                properties, and, transitively, all objects that they
+                refer to as well, and so on. If the database is large,
+                and there is a path of associations from every object to
+                every other object, then fetching one object could try
+                to load in the entire database. There are two issues to
+                consider:
+                </p><div class="orderedlist"><ol type="1"><li><p>
+                      Controlling what really gets loaded while still
+                      making everything work as if everything referred
+                      to has been loaded. This is done by a technique of
+                      <span class="emphasis"><em>lazy</em></span> loading using
+                      <span class="emphasis"><em>proxies</em></span>. To specify the use
+                      of proxies for a class, the attribute
+                      <code class="literal">lazy="true"</code> must be specified
+                      for that class in the mapping file. 
+                    </p><p>
+                      Using lazy fetching, however, now means that such
+                      lazy associations can only be turned into eager
+                      associations (by a process called
+                      <span class="emphasis"><em>initialisation</em></span>) <span class="strong"><strong>within</strong></span> a session. Within
+                      a session, simply accessing a
+                      non-<code class="literal">id</code> property of a
+                      persistent (although possibly lazy)
+                      object initialises it. But once the object is
+                      detached, any request for a lazy and
+                      uninitialised property will throw an exception.
+                      There is a static method,
+                      <code class="literal">Hibernate.initialise</code>, which can
+                      be used to ensure that a lazy or proxy object is
+                      materialised before closing the
+                      <code class="literal">session</code>, and another
+                      <code class="literal">Hibernate.isInitialised</code>, to
+                      test its initialisation state. However, these methods do not
+                      work recursively over the whole object graph.
+                      Therefore, the programmer must do one of the
+                      following:
+                      </p><div class="itemizedlist"><ul type="circle"><li><p>
+                            Recursively walk over the object graph,
+                            initialising objects on the way.
+                          </p></li><li><p>
+                            Re-attach the object to a session before
+                            de-referencing potentially uninitialised
+                            objects.
+                          </p></li><li><p>
+                            Load the objects in a query in which the
+                            fetch strategy has been changed to an eager
+                            one. This runtime mechanism can override the
+                            <span class="emphasis"><em>lazy</em></span> setting for the
+                            objects in the mapping file.
+                          </p></li><li><p>
+                            Keep the session open until any possible
+                            chain of dereferences of the properties of
+                            the object has been completed.
+                          </p></li></ul></div><p>
+                      
+                    </p><p>
+                      The standard advice ([<a href="#BauerKing_HibernateInAction" title="[BK05]"><span class="abbrev">BK05</span></a>]) is to make
+                      all associations lazy by default in the mapping
+                      files and override this at runtime, where
+                      necessary, with queries that force eager fetching.
+                    </p></li><li><p>
+                      Loading parts of the object graph efficiently. The
+                      naïve approach would be for Hibernate to
+                      simply load the object requested, get the
+                      <code class="literal">id</code>s of the objects referred to,
+                      load them and so on, with each load being a
+                      separate SQL query. Hibernate provides that
+                      strategy as an option, but a possibly significantly
+                      more efficient strategy is also available: that of
+                      executing an outer join to get the first object
+                      and the objects it refers to in one query. This is
+                      specified in the mapping file with the attribute
+                      <code class="literal">outer-join="true"</code> on the
+                      association elements, i.e.,
+                      <code class="literal">one-to-one</code>
+                      <code class="literal">many-to-one</code>,
+                      <code class="literal">one-to-many</code> and
+                      <code class="literal">many-to-many</code>. For detailed
+                      semantics and other parameters of this feature,
+                      see the manual <a href="http://www.hibernate.org/5.html" target="_top">http://www.hibernate.org/5.html:Hibernate
+                      On Line Documentation</a>.
+                    </p></li></ol></div><p>
+              </p></td></tr></tbody></table></div><p>
+          </p></li><li><p>
+            <code class="literal">session.delete</code> will cause the database
+            row corresponding to a persistent (or even a detached!)
+            object to be deleted and the object will become transient.
+            What happens to persistent objects it refers to depends on
+            the cascade properties of the mapping configuration for that
+            reference.
+          </p></li><li><p>
+            <code class="literal">session.save</code> on a transient item will
+            assign it a <code class="literal">id</code> and make the object
+            persistent: i.e., ensure it, and any
+            other objects it refers to, get saved to the database. This
+            operation essentially calls an <code class="literal">SQL
+            INSERT</code> to be executed. Any further calls to the
+            mutators of the object within the transaction will cause an
+            <code class="literal">SQL UPDATE</code> to be invoked.
+          </p></li><li><p>
+            <code class="literal">session.lock</code> and
+            <code class="literal">session.update</code> are both intended for
+            reattaching a detached object. Normally you should use
+            <code class="literal">session.update</code> which triggers an
+            <code class="literal">SQL UPDATE</code> to the database row with
+            <code class="literal">id</code> equal to that of the object. Thus
+            if the database and the object disagreed on the values
+            contained, then the object overrides the database.
+            <code class="literal">session.lock</code> simply reattaches the
+            object (to the session) without checking or updating the
+            database on the assumption that the database is still fully
+            in synch with the object. Generally, do not use this method
+            unless you are absolutely sure that nothing has changed the
+            database state of the object since it was detached or if it
+            does not matter because you will be overwriting all columns
+            that could have changed anyway later on in the transaction.
+          </p></li><li><p>
+            <code class="literal">session.saveOrUpdate</code> is a convenience
+            method that checks whether the object is transient, in which case
+            it acts like <code class="literal">session.save</code>, or detached,
+            in which case it acts like <code class="literal">session.update</code>.
+          </p></li></ul></div><p>
+    </p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both;"><a name="querying"></a>7.&nbsp;
+      Querying
+    </h2></div></div></div><p>
+      So far, our discussions above show how to fetch an object from the
+      database if we know its <code class="literal">id</code>. Obviously we need
+      more powerful querying facilities.
+    </p><p>
+      As describe above, one of the simplest ways of querying is simply
+      by invoking a chain of accessor methods on a persistent object:
+      </p><pre class="programlisting">X x = z.getY().getX()</pre><p>
+    </p><p>
+      The most critical type of access that is not covered above is
+      finding an object (or collection of objects) when you have some
+      information about them but not the identifier and you do not have
+      a persistent object available that refers to them. For example, if
+      we want to find the customers whose email address match a given
+      one. Here we can use the <code class="literal">session.find</code> method.
+      This method always returns a (possibly empty) list of the
+      appropriate result objects. There are three forms of find:
+      </p><div class="orderedlist"><ol type="1"><li><p>
+            <code class="literal">session.find(queryString)</code> where
+            queryString is a <code class="literal">String</code> containing no
+            "?" parameter placeholders. In this case the query takes no
+            parameters and can be executed directly.
+          </p></li><li><p>
+            <code class="literal">session.find(queryString, pObject, pType)</code> where
+            queryString is a <code class="literal">String</code> containing one
+            "?" parameter placeholder, <code class="literal">pObject</code> is an object of the
+            required type to use as the indicated parameter and <code class="literal">pType</code> is
+            the corresponding Hibernate type constant (e.g.
+            <code class="literal">Hibernate.STRING</code>, 
+            <code class="literal">Hibernate.DATE</code>, etc.). In this case the
+            object is substituted into the query in much the same way
+            that JDBC preparedStatement queries have their parameters
+            substituted in.
+          </p></li><li><p>
+            <code class="literal">session.find(queryString, pObjectArray,
+            pTypeArray)</code> where queryString is a
+            <code class="literal">String</code> containing one or more "?"
+            parameter placeholders, <code class="literal">pObjectArray</code> is
+            an array of objects of the required size and types to use as
+            the indicated parameters and <code class="literal">pTypeArray</code>
+            is the corresponding array of Hibernate type constants,
+            which again must match. In this case the objects from the
+            object array are substituted into the query in much the same
+            way that JDBC preparedStatement queries have their
+            parameters substituted in.
+          </p></li></ol></div><p>
+    </p><p>
+      Finally, the query string format is not <span class="emphasis"><em>SQL</em></span>
+      but <span class="emphasis"><em>HQL</em></span>. <span class="emphasis"><em>HQL</em></span> is
+      Hibernate's query language which looks very similar to SQL but
+      where, instead of names of tables and columns, the query uses
+      names of java objects and properties. Of course there is a great
+      deal more to it that that and full details can be found in <a href="http://www.hibernate.org/5.html" target="_top">http://www.hibernate.org/5.html:Hibernate
+      On Line Documentation</a> or [<a href="#BauerKing_HibernateInAction" title="[BK05]"><span class="abbrev">BK05</span></a>]
+    </p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both;"><a name="cascade"></a>8.&nbsp;
+      Cascading Persistence
+    </h2></div></div></div><p>
+      We have said, a number of times, that when an object is made
+      persistent, that the objects it refers to are also made
+      persistent. This was an oversimplification. In the mapping files
+      for the classes, there is an attribute,
+      <code class="literal">cascade</code> that lets us control how much, or how
+      little, of a reference graph gets automatically persisted, deleted
+      or updated. The values that it can be set to, and their meanings,
+      are as follows:
+      </p><div class="itemizedlist"><ul type="disc"><li><p>
+            <code class="literal">none</code>: no automatic action on the
+            referenced object takes place.
+          </p></li><li><p>
+            <code class="literal">save-update</code>: automatically save or
+            update the referenced object when the referencing object is
+            saved or the transaction commits.
+          </p><p>
+            <code class="literal">delete</code>: automatically delete the
+            referenced object when <code class="literal">delete()</code> is
+            called on the referencing object. Note that, if the
+            referencing object is not deleted but merely removes its
+            reference to the referenced object, then this option will
+            not do anything and, potentially, a garbage (or orphan)
+            object will be left in the database.
+          </p></li><li><p>
+            <code class="literal">delete-orphan</code>: automatically delete any
+            object for whom the reference has been removed from the
+            referencing object.
+          </p></li><li><p>
+            <code class="literal">all</code>: take the same actions as
+            <code class="literal">save-update</code> and
+            <code class="literal">delete</code> but not that of
+            <code class="literal">delete-orphan</code>.
+          </p></li><li><p>
+            <code class="literal">all-delete-orphan</code>: take the same action
+            as <code class="literal">save-update</code>,
+            <code class="literal">delete</code> and
+            <code class="literal">delete-orphan</code>.
+
+          </p></li></ul></div><p>
+    </p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both;"><a name="transaction"></a>9.&nbsp;Transactions</h2></div></div></div><p>
+      As we have seen, the standard pattern for executing a use case is
+      to get a <code class="literal">Session</code> from the
+      <code class="literal">SessionFactory</code>, get a
+      <code class="literal">Transaction</code> from the
+      <code class="literal">Session</code>, interact with the database via the
+      <code class="literal">Session</code>, <code class="literal">commit</code> the
+      <code class="literal">Transaction</code> and close the
+      <code class="literal">Session</code>. Details of the exception handling have
+      been given above. This is fine for normal, fully serialised
+      database transactions but there are two situations when it is not
+      fine:
+      </p><div class="orderedlist"><ol type="1"><li><p>
+            When using an isolation level other than full
+            <span class="emphasis"><em>serializable</em></span>. There are 4 standard
+            transaction isolation levels: <span class="emphasis"><em>Read
+            Uncommitted</em></span>, <span class="emphasis"><em>Read Committed</em></span>,
+            <span class="emphasis"><em>Repeatable Read</em></span> and
+            <span class="emphasis"><em>Serializable</em></span>. They indicate different
+            levels of locking strategies used within transactions and
+            effect just how isolated one transaction really is from
+            other transactions running simultaneously. Thus
+            <span class="emphasis"><em>Serializable</em></span> means that two
+            transactions run as if one had completely finished
+            (committed or rolled back) before the other had started. In
+            practice, providing this level of isolation requires
+            considerable resources and causes problems with scalability
+            of applications. For this reason, most applications use a
+            weaker form of isolation and use other strategies to
+            overcome the consequent problems that can arise.
+          </p><p>
+            The most common isolation level used, and the default
+            obtained with a PostgreSQL JDBC connection, is
+            <span class="emphasis"><em>Read Committed</em></span>. This ensures that one
+            transaction can not see any value which has been written by
+            another transaction if that other transaction has not yet
+            committed. Therefore we don't have to worry about the other
+            transaction rolling back with the result that we would have
+            to roll back this transaction. With this level, the
+            isolation problems that can occur are:
+            </p><div class="itemizedlist"><ul type="disc"><li><p>
+                  Lost Updates: tx 1 reads a row, tx 2 reads the
+                  same row, tx1 writes the row and commits, tx 2 writes
+                  the row and commits, the value written by tx1 is lost.
+                  This can be dealt with using
+                  <span class="emphasis"><em>versioning</em></span> (see below).
+                </p></li><li><p>
+                  Unrepeatable Reads: Transaction (tx) 1 reads a row, tx
+                  2 writes the row and commits, tx 1 reads the same row
+                  and gets a different result from last time. The fact
+                  that Hibernate uses a cache, and, adding to that, the
+                  use of <span class="emphasis"><em>versioning</em></span>, will handle
+                  this situation.
+                </p></li><li><p>
+                  Phantom Read: tx 1 executes a
+                  <code class="literal">Select</code> query. tx 2 inserts or
+                  deletes new rows in the database and commits, tx 1
+                  executes the same query again and finds a different
+                  set of rows from what was there last time. There is
+                  very little that you can do about this except to be
+                  aware, when you design your transactions, of the issue.
+                </p></li></ul></div><p>
+          </p></li><li><p>
+            When long transactions are required. Here the problem is
+            usually that some user interaction, which could take a
+            considerable period of time, is required in a use case with
+            database accesses taking place both before and after the user
+            interaction. The issue is that we should not keep a database
+            transaction open for a long period of time (i.e., for more
+            than a fraction of a second), whereas a user interaction
+            could take from minutes to hours. The solution is to break
+            the long transaction up into two (or more) database
+            transactions, and to use detached objects from the first
+            transaction to carry the necessary information to the
+            presentation layer. These objects get modified, outside any
+            transaction, as part of the user interaction and then
+            reattached to the second transaction to cause the necessary
+            updates.
+          </p><p>
+            If we left it at that, then all the isolation problems
+            described above could occur, as well as the nastier one of a
+            <span class="emphasis"><em>Dirty Read</em></span>: Consider a long transaction
+            and a normal transaction: the first contains two database
+            transactions <code class="literal">tx1a</code> and
+            <code class="literal">tx1b</code> (perhaps the first is to book a
+            flight, the second to book a hotel). The other transaction,
+            <code class="literal">tx2</code> might be to order meals for the
+            passengers on the flight (okay; not very realistic but you
+            get the idea). Now <code class="literal">tx1a</code> could update a
+            row and commit and <code class="literal">tx2</code> could read it. Now
+            <code class="literal">tx1b</code> decides to roll back (perhaps there
+            were no hotels available). This only rolls back
+            <code class="literal">tx1b</code> itself, because
+            <code class="literal">tx1a</code> is committed and cannot be rolled
+            back, but since this is part of a long transaction, the
+            programmer has written explicit code to undo the effects of
+            <code class="literal">tx1a</code> when <code class="literal">tx1b</code> rolls
+            back (such an undo operation is normally called a
+            <span class="emphasis"><em>compensating</em></span> transaction: it may not
+            even really undo the original transaction, it might only make
+            up for it in some way such as authorizing a reimbursement or
+            a voucher if a promised booking cannot be honoured). Now
+            <code class="literal">tx2</code> has executed, read data from a long
+            transaction, which has since been undone, and has committed.
+            To be correct, the effects of this second transaction should
+            be undone as well but there is no way of knowing this.
+          </p><p>
+            The safe solution here is only to allow database
+            writes in the last database transaction of a long
+            transaction, and to use <span class="emphasis"><em>versioning</em></span>
+            there. Under certain application specific circumstances,
+            more relaxed strategies can be taken but the above rule of
+            thumb is safe and simple and should only be ignored with
+            very careful analysis.
+          </p></li></ol></div><p>
+    </p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="versioning"></a>9.1.&nbsp;Versioning</h3></div></div></div><p>
+        The idea of versioning is very simple and particularly easy to
+        handle with the support Hibernate provides:
+        </p><div class="itemizedlist"><ul type="disc"><li><p>
+              Add a version instance variable, and corresponding
+              accessor and mutator methods, to your objects. An
+              <code class="literal">int</code> or <code class="literal">long</code> is
+              recommended although some people prefer a
+              <code class="literal">TimeStamp</code> or
+              <code class="literal">Calendar</code>. The latter two have slightly
+              worse performance and are not absolutely guaranteed to
+              work correctly (one might end up with two updates made so
+              close together in time that they have the same
+              <code class="literal">TimeStamp</code> value - although some
+              operating systems ensure that this can not the case), but
+              they have the advantage that you can easily see exactly
+              when the update was made.
+            </p></li><li><p>
+              declare the version instance variable in your mapping file
+              for the class. This requires the following element added to
+              the mapping file immediately after your
+              <code class="literal">id</code> element (assuming your instance
+              variable is called "version" and you want it in a column
+              in the database called "version"):
+              </p><pre class="programlisting">&lt;version name="version" column="version"&gt;</pre><p>
+            </p></li></ul></div><p>
+      </p><p>
+        Now whenever you make an object dirty in memory, Hibernate will
+        update its version (in memory). Whenever the object gets flushed
+        to disk (e.g., at the end of a transaction or because you call
+        <code class="literal">session.update</code> or
+        <code class="literal">session.saveOrUpdate</code> to re-attach a detached
+        object, Hibernate will throw a
+        <code class="literal">StaleObjectStateException</code> if the version
+        number of the object on disk is not the same as it was when the
+        object was loaded. By catching that exception, the programmer
+        can then decide what to do about the conflict (e.g., report back
+        to the user that the choice he/she has just made is, in fact, no longer
+        available and could they please make another one).
+      </p></div></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both;"><a name="mapping"></a>10.&nbsp;Mapping Classes to the Database</h2></div></div></div><p>
+      Hibernate objects, i.e., objects whose persistence Hibernate will
+      manage, can be divided into two types.
+      </p><div class="orderedlist"><ol type="1"><li><p>
+            <span class="emphasis"><em>Entity</em></span> beans are objects which have a persistent identity:
+            i.e., usually and identifier field which is managed by
+            Hibernate. These are typically the central business objects
+            in an application such as User, Customer, Order etc.
+          </p><p>
+            <span class="emphasis"><em>Value</em></span> beans are objects which only exist in relationship to
+            an <span class="emphasis"><em>entity</em></span> bean. These are typically
+            support objects for the entity objects such as Address.
+          </p></li></ol></div><p>
+    </p><p>
+      The connection between <span class="emphasis"><em>entity</em></span> beans and database
+      tables and columns is described in a mapping file: usually
+      named <code class="literal">X.hbm.xml</code> for class <code class="literal">X</code>
+      and stored in the same directory as the compiled file <code class="filename">X.class</code>.
+    </p><p>
+      The connection between <span class="emphasis"><em>value</em></span> beans and the
+      database is usually described in the mapping file for the corresponding
+      <span class="emphasis"><em>entity</em></span> bean.
+    </p><p>
+      In the following sections, we will look at the details of how to
+      specify mappings for different types of mappings and classes. We
+      only cover the basic situations. There are many variations
+      possible and great flexibility in For all the options and more
+      complex situations
+    </p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="simple-mapping"></a>10.1.&nbsp;
+        Mapping Simple Entity Classes without Relationships
+      </h3></div></div></div><p>
+        A basic mapping file is as follows:
+        </p><div class="programlistingco"><pre class="programlisting">&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd"&gt;
+&lt;hibernate-mapping package="a.b.c"&gt;                                            <span class="co"><img src="hibernate_files/1.png" alt="(1)"></span>
+        &lt;class name="User" table="user" lazy="true"&gt;                           <span class="co"><img src="hibernate_files/2.png" alt="(2)"></span>
+                &lt;id name="id" column="id" type="long"&gt;                         <span class="co"><img src="hibernate_files/3.png" alt="(3)"></span>
+                        &lt;generator class="sequence"/&gt;
+                &lt;/id&gt;
+                &lt;version  name="version"     column="version"/&gt;                <span class="co"><img src="hibernate_files/4.png" alt="(4)"></span>
+                &lt;property name="dateOfBirth" column="dob" type="date"/&gt;        <span class="co"><img src="hibernate_files/5.png" alt="(5)"></span>
+                &lt;property name="username"    not-null="true" unique="true"/&gt;   <span class="co"><img src="hibernate_files/6.png" alt="(6)"></span>
+                &lt;property name="gender"/&gt;                                      <span class="co"><img src="hibernate_files/7.png" alt="(7)"></span>
+        &lt;/class&gt;
+&lt;/hibernate-mapping&gt;</pre><div class="calloutlist"><table summary="Callout list" border="0"><tbody><tr><td align="left" valign="top" width="5%"><a name="package"></a><img src="hibernate_files/1.png" alt="1" border="0"></td><td align="left" valign="top"><p>
+              The <code class="literal">package</code> attribute is optional but
+              using it defines a default package prefix for all classes
+              mentioned in this class mapping specification
+            </p></td></tr><tr><td align="left" valign="top" width="5%"><a name="class"></a><img src="hibernate_files/2.png" alt="2" border="0"></td><td align="left" valign="top"><p>
+              The <code class="literal">class</code> element is to specify the
+              class that will be persisted. The <code class="literal">name</code>
+              attribute is required. The column attribute is optional
+              (it defaults to a suitable SQL name based on the class
+              name). The <code class="literal">lazy</code> attribute is optional
+              (it defaults to <code class="literal">false</code>) and specifies
+              that lazy loading of this class via proxies should take
+              place as described <a href="#lazy-loading">previously</a>.
+            </p></td></tr><tr><td align="left" valign="top" width="5%"><a name="id"></a><img src="hibernate_files/3.png" alt="3" border="0"></td><td align="left" valign="top"><p>
+              The <code class="literal">id</code> element defines what the primary
+	      key of the table should be (again the
+	      <code class="literal">column</code> attribute is optional). There
+	      are a number of options for <code class="literal">type</code> and
+	      the identifier generator algorithm but leaving it as shown
+	      here (i.e., using the database supplied sequence or
+	      automatic number generator) is a safe option.
+            </p></td></tr><tr><td align="left" valign="top" width="5%"><a name="version"></a><img src="hibernate_files/4.png" alt="4" border="0"></td><td align="left" valign="top"><p>
+	      The use of the optional <code class="literal">version</code> element
+	      to specify optimistic concurrency control was discussed
+	      <a href="#versioning" title="9.1.&nbsp;Versioning">above</a>. Without this
+	      element, no check for lost updates or unrepeatable reads
+	      will be made, and therefore such problems may occur, when
+	      reattaching detached objects (irrespective of the
+	      transaction isolation level) or when updating the database
+	      from a modified persistent object (when the isolation
+	      level is <span class="emphasis"><em>read committed</em></span> or less).
+            </p></td></tr><tr><td align="left" valign="top" width="5%"><a name="dob"></a><img src="hibernate_files/5.png" alt="5" border="0"></td><td align="left" valign="top"><p>
+              Types for columns do not need to be specified if they are
+	      simple and can be deduced by inspecting the class
+	      properties. However, sometimes you want to override the
+	      default or specify something a bit more sophisticated.
+            </p></td></tr><tr><td align="left" valign="top" width="5%"><a name="username"></a><img src="hibernate_files/6.png" alt="6" border="0"></td><td align="left" valign="top"><p>
+	      We can specify whether a column should be unique (which
+	      will create a database constraint) and/or whether it can
+	      be null.
+            </p></td></tr><tr><td align="left" valign="top" width="5%"><a name="gender"></a><img src="hibernate_files/7.png" alt="7" border="0"></td><td align="left" valign="top"><p>
+              Finally, the simplest case is where we specify nothing but
+	      the property name — everything else is taken care
+	      of by the defaults.
+            </p></td></tr></tbody></table></div></div><p>
+      </p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="simple-value-mapping"></a>10.2.&nbsp;
+	Mapping Value Objects within Entities
+      </h3></div></div></div><p>
+	Sometimes on has properties of entity beans which are more
+	complex than simple base types but which are totally owned by
+	the entity. The standard example is that of an
+	<code class="literal">Address</code> object stored as a property of a
+	<code class="literal">Person</code> object. In this case there is only one
+	<code class="literal">Address</code> object for the Person object.
+	</p><div class="mediaobject"><img src="hibernate_files/component.png" alt="Value Component"><div class="caption"><p>
+	      A Value Component
+	    </p></div></div><p>
+      </p><p>
+	While there are a number of ways this can be handled, but the
+	simplest, which Hibernate calls <span class="emphasis"><em>components</em></span>
+	is to store both the parent object (<code class="literal">Person</code>)
+	and the child (<code class="literal">Address</code>) in the same database
+	row, to construct and connect the two objects on reading this
+	row from the database and to coalesce the two objects and write
+	them together when saving or updating either of them. To specify
+	this, you use a <code class="literal">component</code> sub-element for the
+	child object in the class element for the parent object instead
+	of the usual <code class="literal">property</code> element. Thus, instead
+	of something like
+	</p><pre class="programlisting">&lt;property name="address" type="string"/&gt;</pre><p>
+        one would enter:
+	</p><pre class="programlisting">&lt;component name="address" class="Address"&gt;
+    &lt;property name="street"   column="user_street"/&gt;
+    &lt;property name="postcode" column="user_postcode"/&gt;
+&lt;/component&gt;</pre><p>
+      </p><p>
+	Some details to be aware of are:
+	</p><div class="orderedlist"><ol type="1"><li><p>
+	      These child objects are wholly owned by their
+	      parents: you cannot have two different parents.
+	    </p></li><li><p>
+	      A null child property is represented in the database by
+	      setting to <code class="literal">null</code> all the fields
+	      corresponding to the child object. Thus loading such a row
+	      will result in a parent object with a null child property,
+	      not a parent object with a child object whose properties
+	      are all null.
+	    </p></li><li><p>
+	      Not only can you have multiple components in a class, but
+	      one can have multiple components of the same (child) class
+	      in a class: simply make sure that the component names are
+	      different and that the database field names (the
+	      <code class="literal">column</code> attributes are different for the
+	      different components
+	    </p><p>
+	      Normally, the child object has no way to reference its
+	      parent object. However, if you want a property of the
+	      child object to refer to its parent, add a element of the
+	      form
+	      </p><pre class="programlisting">&lt;parent name="person"/&gt;</pre><p>
+	      to make a <code class="literal">person</code> property of the child
+	      object refer to its parent object.
+	    </p></li></ol></div><p>
+      </p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="inheritance-mapping"></a>10.3.&nbsp;
+	Mapping Entities with Inheritance
+      </h3></div></div></div><p>
+	Again there are a number of ways Hibernate can handle
+	inheritance. These are based on the standard techniques for
+	reducing generalisation hierarchies in entity-relationship
+	diagrams[<a href="#BatiniCeriNavathe_ConceptualDatabaseDesign" title="[BCN91]"><span class="abbrev">BCN91</span></a>].
+      </p><p>
+	The simplest is to use one table for the whole hierarchy. With
+	this design, each row of the table can hold an object of any
+	type from the hierarchy. There is one column for each of the
+	properties in the union of the sets of properties of all the
+	classes in the hierarchy and there is one
+	<code class="literal">discriminator</code> column which contains a value
+	(usually of type string, character or integer)
+	used to tell which actual type of object is stored in this
+	particular row. One normally does not make this discriminator a
+	property of the class: it is used only by Hibernate to record
+	and detect the type of the object that a row represents.
+	</p><div class="mediaobject"><img src="hibernate_files/inheritance.png" alt="An Inheritance Class Hierarchy"><div class="caption"><p>
+	      An Inheritance Class Hierarchy
+	    </p></div></div><p>
+	</p><pre class="programlisting">&lt;class name="Person" table="people" discriminator-value="P"&gt;
+    &lt;id name="id" column="id" type="long"&gt;
+        &lt;generator class="sequence"/&gt;
+    &lt;/id&gt;
+    &lt;version  name="version"         column="version"/&gt;
+    &lt;discriminator column="subclass" type="character"/&gt;
+    &lt;property name="dateOfBirth"     column="dob" type="date"/&gt;
+    &lt;property name="name"/&gt;
+    &lt;property name="gender"/&gt;
+    &lt;subclass name="Lecturer" discriminator-value="L"&gt;
+        &lt;property name="office" type="string"/&gt;
+        &lt;property name="telephone" type="string"/&gt;
+    &lt;/subclass&gt;
+    &lt;subclass name="Student" discriminator-value="D"&gt;
+        &lt;property name="studentID" type="integer"/&gt;
+    &lt;/subclass&gt;
+&lt;/class&gt;
+</pre><p>
+      </p><p>
+      Here one may not specify any of the subclass fields as not null
+      because the corresponding column will be null in the table for any
+      object of the hierarchy which is not of the subclass that contains
+      the relevant property for that column.
+      </p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="uni-one-way-mapping"></a>10.4.&nbsp;
+	Many-to-One, Unidirectional Associations
+      </h3></div></div></div><p>
+        This corresponds to the standard Java reference to one object
+	from another.
+	</p><div class="mediaobject"><img src="hibernate_files/unidir_many_to_one.png" alt="A Many-to-One, Unidirectional Association"><div class="caption"><p>
+	      A Many-to-One, Unidirectional Association
+	    </p></div></div><p>
+      </p><p>
+        In the diagram above, we represent the relationship between
+	students and their thesis supervisors. In this design, a student
+	can have no more than one supervisor but may not (yet) have any.
+	However, a lecturer may have any number, including zero, of
+	students to supervise. Furthermore, we only allow a one
+	directional link: Student has a property (say
+	<code class="literal">getSupervisor/setSupervisor</code>) but there is no
+	direct way, starting with a <code class="literal">Lecturer</code> object,
+	to find the students that the lecturer supervises.
+      </p><p>
+	If we start with the simple, non-related, base entity mapping
+	files for <code class="literal">Student</code> and
+	<code class="literal">Lecturer</code>, we add this association by adding
+	the following, as a sub-element of the class element, to the mapping file for
+	<code class="literal">Student</code>:
+	</p><pre class="programlisting">&lt;many-to-one name="supervisor"	column="supervisor"/&gt;</pre><p>
+	This element acts very much like a normal property element in
+	that it defines the mapping between the
+	<code class="literal">supervisor</code> property of
+	<code class="literal">Student</code> and the column in the
+	<code class="literal">students</code> table. However, it also sets up the
+	relationship so that, after getting a <code class="literal">Student</code>
+	object from the database, if we use the
+	<code class="literal">supervisor</code> accessor of that
+	<code class="literal">Student</code> object, we will get the corresponding
+	<code class="literal">Lecturer</code> object (or a proxy thereof if we
+	have enabled lazy loading of the <code class="literal">Lecturer</code>
+	objects). Finally, it ensures that the underlying database is
+	created with a foreign key constraint that the
+	<code class="literal">supervisor</code> column is a foreign key into the
+	<code class="literal">lecturers</code> table.
+      </p><p>
+	As things stand, there is now a question of what you want the
+	<code class="literal">cascade</code> behaviour of the relationship to be
+	(see the section on <a href="#cascade" title="8.&nbsp;
+      Cascading Persistence
+    ">cascade</a>
+	above). Without adding the optional <code class="literal">cascade</code>
+	attribute to the <code class="literal">many-to-one</code> element, then
+	the <code class="literal">Lecturer</code> object on the other end of the
+	association is ignored when the <code class="literal">Student</code>
+	object is saved, updated, deleted or when its
+	<code class="literal">supervisor</code> property is reset away from it.
+	Certainly we would not want the lecturer to be removed from the
+	database when the student is deleted or when the student no
+	longer has that lecturer as his or her supervisor; so none of
+	the <code class="literal">delete</code> or <code class="literal">all</code> options
+	are appropriate. But what about <code class="literal">save-update</code>?.
+	There are two scenarios under which this might have an effect:
+	</p><div class="orderedlist"><ol type="1"><li><p>
+	      If you create a new (transient) lecturer and make a
+	      persistent student refer to it. In fact, for this
+	      particular object design, one would never do such a thing:
+	      the obvious semantics of the situation dictate that you
+	      cannot just invent new lecturers on demand: you would
+	      always have to have the lecturer as a currently existing
+	      object in the database before setting the student's
+	      supervisor property to that lecturer. Since the scenario
+	      will never arise, this is neither a vote for or against
+	      using the <code class="literal">save-update</code> option.
+	    </p></li><li><p>
+	      If the <code class="literal">Student</code>, and associated
+	      <code class="literal">Lecturer</code> objects were detached, and now
+	      you reattach the <code class="literal">Student</code> object, then
+	      you need the <code class="literal">save-update</code> option if you
+	      want the <code class="literal">Lecturer</code> object to be
+	      reattached automatically. Without that, you need to
+	      reattach it directly yourself — an easy task to
+	      overlook and therefore a source of bugs. This therefore,
+	      is a vote for set the
+	      <code class="literal">cascade="save-update"</code> option.
+	    </p></li></ol></div><p>
+      </p><p>
+	Note that you can specify <code class="literal">unique="true"</code> as an
+	attribute of the <code class="literal">many-to-one</code> element. This
+	has the effect of disallowing the possibility of having two
+	student rows with the same <code class="literal">supervisor</code> values,
+	i.e., turning the "*" on the <code class="literal">Student</code> side of
+	the class diagram into a "0..1" or limiting each lecturer to
+	having at most one supervisee. Similarly, specifying
+	<code class="literal">not-null="true"</code> adds the requirement that
+	every student must have a valid supervisor, i.e., it changes the
+	"0..1" on the <code class="literal">Lecturer</code> side of the diagram to a "1".
+      </p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="one_to_many_unidir"></a>10.5.&nbsp;
+	One-to-Many, Unidirectional Associations
+      </h3></div></div></div><p>
+	This relationship is essentially the same as last one, but now
+	we choose the opposite direction for navigating the connection.
+	Thus our <code class="literal">Lecturer</code> object now has a property
+	which is a collection of <code class="literal">Student</code> objects while the
+	<code class="literal">Student</code> objects have no properties which
+	refer to their supervising <code class="literal">Lecturer</code>.
+	</p><div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><table summary="Warning" border="0"><tbody><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Warning]" src="hibernate_files/warning.png"></td><th align="left">Warning</th></tr><tr><td colspan="2" align="left" valign="top"><p>
+	    For reasons described below, we would (almost) never use
+	    such an association: it is inefficient and there is almost
+	    no overhead in converting it to a much more efficient
+	    bidirectional association. Nonetheless, it is useful to
+	    discuss this case as a first step towards the bidirectional
+	    version of the association.
+	  </p></td></tr></tbody></table></div><p>
+	</p><div class="mediaobject"><img src="hibernate_files/unidir_one_to_many.png" alt="A One-to-Many, Unidirectional Association"><div class="caption"><p>
+	      A One-to-Many, Unidirectional Association
+	    </p></div></div><p>
+      </p><p>
+	As far as the database is concerned, there is no difference
+	between this and the unidirectional
+	<code class="literal">many-to-one</code> association: there will still be
+	a single column in the table holding the
+	<code class="literal">Student</code> objects that contains a foreign key
+	into the table holding the <code class="literal">Lecturer</code> objects.
+      </p><p>
+	Now that entities are being stored in collections, it becomes
+	critical that you have appropriately implemented
+	<code class="literal">equals</code> and <code class="literal">hashCode</code>
+	methods for those entities. In particular, you should ensure that
+	these methods are independent of the generated surrogate keys
+	and that trivial changes to the object do not effect the
+	methods while the objects are in the collections.
+      </p><p>
+	The simplest collection, for our purposes, is a
+	<code class="literal">Set</code>. To create the association, we add a
+	<code class="literal">Set</code> valued property to
+	<code class="literal">Lecturer</code>
+	</p><pre class="programlisting">&lt;set name="advisees" cascade="save-update" lazy="true"&gt;
+    &lt;key column="lecturer_id"/&gt;
+    &lt;one-to-many class="Student"/&gt;
+&lt;/set&gt;</pre><p>
+	Here, we define a property of <code class="literal">Lecturer</code> which
+	is <code class="literal">Set</code> valued. The name of the property is
+	<code class="literal">advisees</code>. This property is to capture a
+	<code class="literal">one-to-many</code> association to the
+	<code class="literal">Student</code> class and it this association is to be implemented in the
+	database as a foreign key to the table holding
+	<code class="literal">Lecturer</code> objects stored in the column
+	<code class="literal">lecturer_id</code> in the table holding
+	<code class="literal">Student</code> objects.
+      </p><p>
+	There are a number of constraints imposed by the use of this
+	<code class="literal">one-to-many</code> association which arises from the
+	fact that it is represented by this "reverse" link from the
+	contained object side of the association:
+	</p><div class="orderedlist"><ol type="1"><li><p>
+	      From a Java point of view, we could potentially have two
+	      different <code class="literal">Lecturer</code> objects, both of
+	      which have the same <code class="literal">Student</code> object in
+	      their container. However, this is not possible for a
+	      <code class="literal">one-to-many</code> association because, in the
+	      database, each <code class="literal">Student</code> row refers to
+	      the single <code class="literal">Lecturer</code> row which contains
+	      it. If you want the true Java semantics, you have to
+	      represent the association as a
+	      <code class="literal">many-to-many</code> one.
+	    </p></li><li><p>
+	      You cannot have the same object multiple times in the same
+	      collection. This is obvious when the collection property
+	      is of type <code class="literal">Set</code>, but one could use other
+	      types, such as List. However, the implementation of
+	      association by the reverse foreign key makes this
+	      impossible. Again, a <code class="literal">many-to-many</code>
+	      association can provide the appropriate semantics
+	    </p></li></ol></div><p>
+      </p><p>
+	Finally, there is the question of why
+	<code class="literal">one-to-many</code> associations between entities cause
+	problems. Consider the following code:
+	</p><pre class="programlisting">tx = session.beginTransaction();
+Lecturer lect = new Lecturer("Gordon Brown") ;
+lect.getAdvisees().add(new Student("Tony Blair")) ;
+lect.getAdvisees().add(new Student("Michael Howard")) ;
+session.save(lect);
+tx.commit();</pre><p>
+        Note that the association <span class="emphasis"><em>belongs</em></span> to the
+	<code class="literal">Lecturer</code> class (as it is defined in
+	<code class="literal">Lecturer</code>'s mapping file). This means that
+	adding a student to a lecturer's advisees is considered an
+	operation on a lecturer, not on a student. Thus the
+	<span class="emphasis"><em>SQL</em></span> statements that would be generated for
+	the above statements would include an insert for the lecturer
+	object, together with an insert each for the two connected
+	student objects (because the students are referred to by the
+	lecturer and we have put the <code class="literal">cascade="save-update"</code>
+	declaration in the <code class="literal">Lecturer</code>'s mapping file.
+	But because the association does not belong to the students, the
+	saving of the students would not set the foreign key value to the
+	advising lecture. Thus there would be two extra update statements for adding
+	the lecturer's foreign key value into the student records. These
+	extra two update statements are not just an efficiency problem:
+	If every student should have a supervisor, then we would like to
+	add the <code class="literal">not-null="true"</code> attribute to the
+	<code class="literal">key</code> element in the mapping file for the
+	association. However this would cause errors as the above
+	sequence of inserts and updates does insert nulls (if only to
+	immediately update them) where they should never occur.
+      </p><p>
+	The solution is to only create such
+	<code class="literal">one-to-many</code> associations as the inverse end
+	of a bidirectional <code class="literal">many-to-one</code> association.
+	This gives ownership of the association to the
+	<code class="literal">Student</code> end and, as we see below, leads to
+	the foreign key being created as part of the initial insert of
+	the <code class="literal">Student</code> record instead of after it as a
+	consequence of the <code class="literal">Lecturer</code> insert.
+      </p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="many-to-one-bidir"></a>10.6.&nbsp;
+	Many-to-one, bidirectional Associations
+      </h3></div></div></div><p>
+	In this case we allow navigation in both directions between the
+	two classes. On the <span class="emphasis"><em>Many</em></span> side it is a
+	standard java reference. on the <span class="emphasis"><em>One</em></span> side it
+	is a collection. However, the two associations are not
+	independent of each other but rather, one is the inverse of the
+	other and the same foreign key column is used for both associations.
+	Thus our <code class="literal">Lecturer</code> object now has a property
+	which is a collection of <code class="literal">Student</code> objects while the
+	<code class="literal">Student</code> objects have a properties which
+	refers to the <code class="literal">Student</code>'s supervising <code class="literal">Lecturer</code>.
+	</p><div class="mediaobject"><img src="hibernate_files/bidir_many_to_one.png" alt="A Many-to-One, bidirectional Association"><div class="caption"><p>
+	      A Many-to-One, bidirectional Association
+	    </p></div></div><p>
+      </p><p>
+	To achieve this, we start by using the
+	<code class="literal">many-to-one</code> element as before in the mapping
+	file for the <code class="literal">Student</code> class, and the
+	<code class="literal">Set</code> element as before in the mapping file for
+	the <code class="literal">Lecturer</code> class, ensuring that both
+	associations use the same column in <code class="literal">Student</code>'s
+	table to encode the association. Then we add a new attribute,
+	<code class="literal">inverse="true"</code> to the <code class="literal">set</code>
+	element in <code class="literal">Lecturer</code>'s mapping file. Without
+	this, adding a new <code class="literal">Student</code> as an advisee to a
+	<code class="literal">Lecturer</code> would trigger Hibernate to set the
+	foreign key column of the <code class="literal">Student</code> table
+	twice: once for each association that has been changed. The
+	<code class="literal">inverse</code> attribute tells hibernate that
+	<code class="literal">Student</code> owns the association and that
+	Hibernate should not trigger updates of the foreign key column
+	when it changes on the <code class="literal">Lecturer</code> side.
+      </p><p>
+	Thus the mapping file for <code class="literal">Lecturer</code> looks like this:
+	</p><pre class="programlisting">&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE hibernate-mapping PUBLIC
+          "-//Hibernate/Hibernate Mapping DTD//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd"&gt;
+&lt;hibernate-mapping&gt;
+    &lt;class name="Lecturer" table="lecturers"&gt;
+        &lt;id name="id" column="lecturer_id"&gt;
+            &lt;generator class="sequence"/&gt;
+        &lt;/id&gt;
+        &lt;version name="version" column="version"/&gt;
+        &lt;property name="name" column="name"/&gt;
+        &lt;set name="advisees" inverse="true" cascade="save-update" lazy="true"&gt;
+            &lt;key column="lecturer_id"/&gt;
+            &lt;one-to-many class="Student"/&gt;
+        &lt;/set&gt;
+    &lt;/class&gt;
+&lt;/hibernate-mapping&gt;</pre><p>
+      </p><p>
+	The mapping file for student is as follows:
+	</p><pre class="programlisting">&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE hibernate-mapping PUBLIC
+          "-//Hibernate/Hibernate Mapping DTD//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd"&gt;
+&lt;hibernate-mapping&gt;
+    &lt;class name="Student" table="students"&gt;
+        &lt;id name="id" column="student_id"&gt;
+            &lt;generator class="sequence"/&gt;
+        &lt;/id&gt;
+        &lt;version name="version" column="version"/&gt; 
+        &lt;property name="name" column="name"/&gt;
+        &lt;property name="regNo" column="reg_no"/&gt;
+        &lt;many-to-one name="advisor" column="lecturer_id" cascade="save-update"/&gt;
+    &lt;/class&gt;
+&lt;/hibernate-mapping&gt;</pre><p>
+       </p><p>
+	Now all the programmer has to do is to ensure that, when the
+	<code class="literal">Lecturer</code>'s <code class="literal">advisee</code>
+	property property is changed, the corresponding correct changes
+	are made to the appropriate <code class="literal">Student</code>'s
+	<code class="literal">advisor</code> property. So long as both are done
+	together, the Java object graph will be correct and the correct
+	update on disk will be made as well. Furthermore, since the
+	association belongs to the <code class="literal">Student</code>, there
+	will never be an insert of a <code class="literal">Student</code> record
+	with a null <code class="literal">Lecturer</code> foreign key if the
+	<code class="literal">Student</code> has an advisor, thus avoiding
+	not-null constraint breaking. To ensure that these updates are
+	made together, it is usual to add some convenience methods: in
+	<code class="literal">Lecturer</code>, change the <code class="literal">getAdvisees()</code> and
+	<code class="literal">setAdvisees()</code> methods to
+	<code class="literal">private</code> and add a convenience method to
+	update the object graph correctly when adding a new <code class="literal">Student</code>
+	advisee to a <code class="literal">Lecturer</code>:
+	</p><pre class="programlisting">    public void addAdvisee(Student st)
+    {
+        Lecturer oldAdvisor = st.getAdvisor() ;
+        if (oldAdvisor != this)
+        {
+            if (oldAdvisor != null)
+                oldAdvisor.getAdvisees().remove(st) ;
+            st.setAdvisor(this);
+            advisees.add(st) ;
+        }
+    }</pre><p>
+        Note how we are careful to correctly handle removal of a
+        <code class="literal">Student</code> from a previous advising
+        <code class="literal">Lecturer</code> before adding it to this one.
+	Whether you need to do something similar for your code will
+	depend on your detailed design.
+      </p><p>
+	If we have a true composition relationship, i.e., a parent-child
+	relationship where if the parent gets deleted then the child
+	should also be deleted etc., then we should change the
+	<code class="literal">cascade</code> attribute on the
+	<code class="literal">set</code> element in the
+	<code class="literal">Lecturer</code> mapping file to be <code class="literal">all-delete-orphan</code>.
+      </p></div></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both;"><a name="patterns"></a>11.&nbsp;Patterns</h2></div></div></div><p>
+      
+    </p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both;"><a name="going-further"></a>12.&nbsp;Going Further</h2></div></div></div><p>
+      There is still plenty more to learn about Hibernate. There are
+      one-to-one and many-to-many associations, value (as opposed to
+      entity) collections, outer-join and batch fetching,
+      <span class="emphasis"><em>Iterate</em></span> queries,
+      <span class="emphasis"><em>Criteria</em></span> queries and the whole of the
+      <span class="emphasis"><em>HQL</em></span> query language, not to mention explicit
+      <span class="emphasis"><em>SQL</em></span> queries. There are alternative strategies
+      for inheritance hierarchy mapping and polymorphism handling. There
+      are user-defined data types and mappings, Interceptors, caching
+      and all the Hibernate related tools. All of this and more are
+      discussed on the Hibernate web site and in the book.
+    </p></div><div class="bibliography"><div class="titlepage"><div><div><h2 class="title"><a name="d0e1631"></a>References</h2></div></div></div><div class="biblioentry"><a name="BatiniCeriNavathe_ConceptualDatabaseDesign"></a><p>[<span class="abbrev">BCN91</span>] <span class="authorgroup"><span class="firstname">Carlo</span> <span class="surname">Batini</span>, <span class="firstname">Stefano</span> <span class="surname">Ceri</span>, and <span class="firstname">Shamkant</span> <span class="surname">Navathe</span>. </span><span class="title"><i>
+        Conceptual Database Design
+      </i>. </span><span class="publisher"><span class="publishername">Benjamin Cummings. </span></span><span class="pubdate">1991. </span><span class="isbn">0805302441. </span></p></div><div class="biblioentry"><a name="BauerKing_HibernateInAction"></a><p>[<span class="abbrev">BK05</span>] <span class="authorgroup"><span class="firstname">Christian</span> <span class="surname">Bauer</span> and <span class="firstname">Gavin</span> <span class="surname">King</span>. </span><span class="title"><i>
+        Hibernate in Action
+      </i>. </span><span class="publisher"><span class="publishername">Manning Publications Co.. </span></span><span class="pubdate">2005. </span><span class="isbn">1932394-15-X. </span></p></div></div></div></body></html>

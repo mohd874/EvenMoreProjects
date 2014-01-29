@@ -1,0 +1,11 @@
+Default Data:
+
+- Add Admin account 
+
+- Add Admin Role
+
+- Add Periods
+
+- Add Permissions (Add,Edit,Delete,Decline,Remove,Accept,AccessAdministration,AccessReservation,Remove)
+
+

@@ -1,0 +1,109 @@
+jIsoMan
+Jason G
+jgmath2000@hotmail.com
+
+Version 0.30
+-Revamped a lot of the code to make it faster and a little less object oriented.
+-Walls are back to being walls instead of doodads (that was a dumb idea).
+-Problems with heights and level mappings were fixed
+
+Version 0.26
+-Fixed bugs with renderer.
+
+Version 0.25
+-Turned walls into Doodads
+
+Version 0.23
+-Fixed a bug where picking up items in your inventory could cause a server split.
+-Improved the Projectile collision detection algorithm.
+-Improved memory consumption
+
+Version 0.22
+-Changed threading so the frame rate is variable.
+
+Version 0.21
+-Fixed a bug where you could click exactly n screens to the left or right 
+   of an avatar, and select that avatar.
+
+
+Version 0.20
+-Made some Graphics Optimizations
+-Commented a lot of the code.
+
+Version 0.19
+-Fixed some thread sync issues
+-Implemented throwing items
+-Collision between Projectiles and walls is not 100%, but it is implemented.
+
+Version 0.18
+-Fixed Bug where one player picking up an item would have every other player pick it up too.
+-Fixed bug where exiting locked up server.
+-Fixed bug where a selected avatar moving out of view crashed client.
+-Fixed bug where disconnecting/closing client while holding a weapon lost that weapon forever.
+
+Version 0.17
+-Changed IDs to Integer from int
+-Wrote inventory code + GUI
+-Wrote Objective system
+
+Version 0.16
+-Generalized Items so that items and item types can be created without changing existing code.
+-Completed the map XML so it now reads/saves items as well.
+
+Version 0.15
+-Rewrote the entire frontend-code
+-Now uses XML to pull back user names and passwords for verification.
+-username "test" password "test" is a test player account
+-username "testbuilder" password "testbuilder" is a test builder account
+-maps can save and load, except items do not get loaded yet.
+-login is only 1/2 done, since xml for players hasn't been built yet.
+
+Version 0.14
+-Fixed bug where moving player off of screen crashed game
+-Improved on algorithm that "skins off" floors that occlude the player
+-Re-Orginized all of the code.
+
+Version 0.13
+-Items are implemented.  Please see the README inside the Items directory for details.
+
+Version 0.12
+-Various small fixes to bugs
+-Implemented pixel-drawing algorithm to create color keys for selecting avatars.
+-Uses VolatileImage instead of BufferedImage for the main buffers so there is a huge speed increase.
+-Added an updateer to update stats
+
+Version 0.11
+-Fixed a bug where pathfinding would crash the server thread
+
+Version 0.1
+-Added 3D Support with multiple layers use the buttons in the options tab to change levels.
+
+Version 0.07
+-Fixed various connection bugs
+-Tiles do not have to store their location
+-Wrote a small app to make metadata for walls and tiles (SpriteCreator)
+-Gave attributes to walls and tiles
+-Made the path-finding algorithm go through passable walls and tiles, but not impassable
+
+Version 0.06
+-Thread Synchronization is implemented so no more random null pointer references I hope
+-worked on collision path-around-finding
+-Fixed a bug where it was creating 2 sockets for a player
+
+Version 0.05
+-Pathfinding is implemented =)
+-Changed the way markings are drawn.
+-Now when you move an avatar you don't lose focus on the avatar.
+
+Version 0.04
+-Fixed a bug where Player applets were not exiting properly
+-Various small fixes
+
+Version 0.03
+-Rewrote most of the code.  Code is client-server based and graphics engine uses bitmasks.
+
+Version 0.02
+-Gave up on JAR idea, went to straight directories.
+
+Version 0.01
+-Project Created

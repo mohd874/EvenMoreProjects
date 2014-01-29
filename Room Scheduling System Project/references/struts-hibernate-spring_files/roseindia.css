@@ -1,0 +1,191 @@
+
+h1 {
+  font-size: 20pt;
+  color: #000080;
+}
+
+body {
+color: #000080;
+}
+
+
+a:link {
+    color : #00a ;
+}
+a:visited {
+    color : #009 ;
+}
+a:hover {
+    color : #000 ;
+    background-color : pink ;
+}
+
+/* New Links*/
+/* Bg Color */
+
+.dark-garybg{
+background-color:#e2e2e2;
+}
+
+
+/*font Start here */
+
+.font-10-lblue{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:10px;
+font-weight:bold;
+text-decoration:none;
+color:#0083b3;
+text-align:left;
+}
+
+.font-10-lblue:hover{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:10px;
+font-weight:bold;
+text-decoration:none;
+color:#FF0000;
+text-align:left;
+}
+
+.font-12-dblue{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:12px;
+font-weight:bold;
+text-decoration:none;
+color:#004e6d;
+text-align:left;
+padding-left:5px;
+padding-top:5px;
+padding-bottom:5px;
+}
+
+
+
+.font-12-black{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:12px;
+font-weight:bold;
+text-decoration:none;
+color:#000000;
+text-align:left;
+}
+
+/* New Links Ends*/
+
+
+.leftads{
+border-color:#88AED6;
+border-style:solid;
+border-width:0px;
+}
+
+
+
+.borderall{
+border-color:#88AED6;
+border-style:solid;
+border-width:1px;
+}
+
+.bottomborder{
+border-bottom-color:#88AED6;
+border-bottom-style:solid;
+border-bottom-width:1px;
+}
+
+.f12{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:12px;
+color:#093B97;
+font-weight:bold;
+}
+
+.f10{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:10px;
+color:#558AED;
+text-decoration:none;
+
+}
+
+
+.f10:hover{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:10px;
+color:#093B97;
+text-decoration:none;
+}
+
+
+.left_box_top{
+background-image:url(images/left_box_top.gif);
+background-repeat:no-repeat;
+}
+
+.left_box_left{
+background-image:url(images/left_box_left.gif);
+background-repeat:repeat;
+}
+
+.left_box_right{
+background-image:url(images/left_box_right.gif);
+background-repeat:repeat;
+}
+.left_box_bottom{
+background-image:url(images/left_box_bottom.gif);
+background-repeat:no-repeat;
+}
+
+.left_button_text{
+font-family:Verdana;
+text-align:center;
+font-weight:normal;
+text-decoration:none;
+font-size:11px;
+color:#000000;
+padding-top:5px;
+padding-bottom:5px;
+}
+
+.left_button_text:hover{
+font-family:Verdana;
+text-align:center;
+font-weight:normal;
+text-decoration:none;
+font-size:11px;
+color:#000000;
+padding-top:5px;
+padding-bottom:5px;
+background-color:#E5F1FB
+}
+
+.left_button_bullet{
+background-image:url(images/left_bullet.gif);
+background-repeat:no-repeat;
+padding-top:3px;
+}
+
+.white-line{
+background-image:url(images/white_line.gif);
+background-repeat:repeat;
+}
+
+.categorylinks {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 5px auto 10px 18px; PADDING-TOP: 0px
+}
+.categorylinks LI {
+	PADDING-BOTTOM: 1px
+}
+.categorylinks LI A {
+	PADDING-RIGHT: 1px; DISPLAY: block; PADDING-LEFT: 0px; FONT-WEIGHT: NONE; FONT-SIZE: 14px; PADDING-BOTTOM: 0px; MARGIN-LEFT: -1px; COLOR: #003366; PADDING-TOP: 0px; BORDER-BOTTOM: #ececec 1px solid; TEXT-DECORATION: none
+}
+.categorylinks A:visited {
+	COLOR: #003366;
+}
+.categorylinks A:hover {
+	BACKGROUND: #FFEBDD; COLOR: #003366; TEXT-DECORATION: none
+}
+#leftbar .headers {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; FONT: bold 110% Arial; COLOR: white; PADDING-TOP: 2px; BACKGROUND-COLOR: #E87817; TEXT-ALIGN: center
+}	

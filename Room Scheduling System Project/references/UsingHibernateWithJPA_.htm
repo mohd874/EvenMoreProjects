@@ -1,0 +1,801 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><title>NetBeans Wiki: UsingHibernateWithJPA</title>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="screen, projection, print" type="text/css" href="UsingHibernateWithJPA__files/jspwiki.css"><!-- INCLUDERESOURCES (stylesheet) --><!-- INCLUDERESOURCES (inlinecss) -->
+  
+
+  
+
+  <script src="UsingHibernateWithJPA__files/jspwiki-common.js" type="text/javascript"></script><!-- INCLUDERESOURCES (script) -->
+  
+
+  <link rel="search" href="http://wiki.netbeans.org/FindPage" title="Search NetBeans Wiki">
+  <link rel="help" href="http://wiki.netbeans.org/TextFormattingRules" title="Help">
+  <link rel="start" href="http://wiki.netbeans.org/Main" title="Front page">
+  <link rel="alternate" type="application/rss+xml" title="RSS wiki feed for the entire site." href="http://wiki.netbeans.org/rss.rdf">
+<link rel="alternate" type="application/rss+xml" title="RSS wiki feed for page NetBeans Wiki: UsingHibernateWithJPA." href="http://wiki.netbeans.org/rss.jsp?page=UsingHibernateWithJPA&amp;mode=wiki">
+
+
+
+
+
+
+
+<script type="text/javascript">Wiki.loadBrowserSpecificCSS("http://wiki.netbeans.org/","nbwiki","UsingHibernateWithJPA");</script>
+
+
+<script type="text/javascript">
+function runOnLoad()
+{ 
+  TabbedSection.onPageLoad();
+  SearchBox.onPageLoad();
+  Wiki.onPageLoad();
+  Sortable.onPageLoad();
+  ZebraTable.onPageLoad();
+  HighlightWord.onPageLoad();
+  Collapsable.onPageLoad();
+  GraphBar.onPageLoad();
+  /* INCLUDERESOURCES (jsfunction) */
+
+}
+
+window.onload = runOnLoad;
+</script></head><body class="view" bgcolor="#ffffff">
+<a name="Top"></a>
+
+<div id="wikibody">
+  
+
+<div id="header">
+
+  <div class="pagename">UsingHibernateWithJPA</div>
+
+  <div class="searchbox">
+
+
+<form action="http://wiki.netbeans.org/Search.jsp" onsubmit="SearchBox.submit( this.query.value )" onmouseover="document.getElementById('searchboxMenu').style.visibility='visible'" onmouseout="document.getElementById('searchboxMenu').style.visibility='hidden'" name="searchForm" id="searchForm" accept-charset="UTF-8">
+  <div>
+  
+  <input onblur="if( this.value == '' ) { this.value = 'Search'}; " onfocus="if( this.value == 'Search' ) { this.value = ''}; " value="Search" name="query" size="20" accesskey="f" type="text">
+  </div>  
+  <div id="searchboxMenu" style="visibility: hidden;">
+    <div>
+      <a href="javascript://nop/" onclick="SearchBox.navigation( 'http://wiki.netbeans.org/__PAGEHERE__','UsingHibernateWithJPA' );return false;" title="View the selected page">view</a> 
+      | 
+      <a href="javascript://nop/" onclick="SearchBox.navigation( 'http://wiki.netbeans.org/Edit.jsp?page=__PAGEHERE__','UsingHibernateWithJPA' );return false;" title="Edit the selected page">edit</a> 
+      | 
+      <a href="javascript://nop/" onclick="SearchBox.navigation( 'http://wiki.netbeans.org/Search.jsp?query=__PAGEHERE__','UsingHibernateWithJPA' );return false;" title="Advanced Search">find</a> 
+      [ f ]
+    </div>
+    <div id="recentSearches"> </div>
+  </div>
+
+</form></div>
+
+  <div class="breadcrumbs">Your trail: </div>
+
+  <div id="actionsTop">
+
+
+
+<div class="pageactions">
+    
+  
+    
+      
+
+    
+
+    
+      
+        
+          
+        
+      
+      <span>
+        
+          <a class="pageinfo" href="http://wiki.netbeans.org/PageInfo.jsp?page=UsingHibernateWithJPA" accesskey="" title="">Page Info</a>
+        
+      </span>
+    
+
+    
+      <span>
+        
+        <a href="http://wiki.netbeans.org/PlainView.jsp?page=UsingHibernateWithJPA" title="Plain View">Plain View</a>
+      </span>
+    
+
+    
+      
+        <span>
+          <a class="wikipage" href="http://wiki.netbeans.org/UserPreferences" accesskey="" title="">My Prefs</a>
+        </span>
+      
+    
+   
+ 
+    
+      
+        <span>
+          <a href="http://wiki.netbeans.org/Login.jsp?redirect=UsingHibernateWithJPA">Log in</a>
+        </span>
+      
+    
+    
+    
+  
+    
+      <div class="pageInfo">
+        
+           This page (revision-) last changed on
+           <a href="http://wiki.netbeans.org/Diff.jsp?page=UsingHibernateWithJPA&amp;r1=28&amp;r2=1">
+             &lt;never&gt;
+           </a>
+           by unknown.
+        
+  
+        
+  
+        
+  
+      </div>
+    
+</div>
+</div>
+
+  <div style="clear: both; height: 0pt;"> </div>
+
+</div>
+
+  <div id="favorites">
+
+
+  
+
+<a href="http://wiki.netbeans.org/" title="Front page">
+    <img src="UsingHibernateWithJPA__files/logo.gif" id="companylogo" alt="NetBeans Wiki">
+</a>
+
+<!--<div class="block">-->
+<div>
+  
+  <div class="leftmenu">
+     
+<p>
+</p><p><a class="wikipage" href="http://wiki.netbeans.org/FrontPage">Front Page</a><br>
+</p>
+<hr>
+<a class="wikipage" href="http://wiki.netbeans.org/NetBeansUserFAQ">User FAQ </a><br>
+<a class="wikipage" href="http://wiki.netbeans.org/NetBeansDeveloperFAQ">Developer FAQ </a><br>
+<a class="wikipage" href="http://wiki.netbeans.org/CommunityDocs">Community Docs</a><br>
+<a class="wikipage" href="http://wiki.netbeans.org/PopularProjects">Popular Projects</a><br>
+<hr>
+<a class="wikipage" href="http://wiki.netbeans.org/Development">Development</a><br>
+<a class="wikipage" href="http://wiki.netbeans.org/Quality">Quality</a><br>
+<a class="external" href="http://wiki.netbeans.org/dashboard/">Bug DashBoard</a><br>
+<a class="external" href="http://deadlock.netbeans.org/hudson/">Hudson</a><br>
+<a class="external" href="http://hg.netbeans.org/main/">Sources</a><br>
+<a class="external" href="http://bits.netbeans.org/download/trunk/nightly/latest/">Nightly</a><br>
+<hr>
+<a class="wikipage" href="http://wiki.netbeans.org/WikiEtiquette">Wiki Etiquette</a><br>
+<a class="wikipage" href="http://wiki.netbeans.org/TextFormattingRules">Formatting Rules</a><br>
+<a class="wikipage" href="http://wiki.netbeans.org/TermsOfUse">Terms Of Use</a><br>
+<hr>
+<a class="wikipage" href="http://wiki.netbeans.org/UnusedPages">Unlinked Pages</a><br>
+<a class="wikipage" href="http://wiki.netbeans.org/UndefinedPages">Undefined Pages</a><br>
+<a class="wikipage" href="http://wiki.netbeans.org/WikiCategory">Categories</a><br>
+<a class="wikipage" href="http://wiki.netbeans.org/PageIndex">Page Index</a><br>
+<a class="wikipage" href="http://wiki.netbeans.org/RecentChanges">Recent Changes</a><br>
+<a class="wikipage" href="http://wiki.netbeans.org/FindPage">Find Page</a><br>
+
+    
+  </div>
+
+  <div class="username">
+    
+  </div>
+  
+  
+  <div class="leftmenufooter">
+    <p>
+    
+  </p></div>
+<hr>
+  <div class="rssfeed"><a href="http://wiki.netbeans.org/rss.rdf"><img src="UsingHibernateWithJPA__files/xml.png" alt="[RSS]" title="Aggregate the RSS feed of the entire wiki" border="0"></a></div>
+
+</div>
+</div>
+  <div id="page">
+
+
+
+<div id="pagecontent">
+  
+
+  
+
+  
+
+  <h3 id="section-UsingHibernateWithJPA-UsingHibernateSpecificFeaturesWithJPA">Using Hibernate-specific features with JPA</h3>
+<p>The Java Persistence API offers a powerful standard for persisting
+POJOs.It includes all the most important features which you would
+expect from an object-relational mapping tool, but there are still some
+areas where you might need to use vendor-specific features. In this
+tutorial, we will show how to use Hibernate-specific features for
+validating and querying while using the standard API for the rest.
+</p>
+<h4 id="section-UsingHibernateWithJPA-Prerequisites">Prerequisites</h4>
+<p>This tutorial assumes you have some basic knowledge of, or programming experience with, the following technologies:
+</p>
+<ul><li> Java Server Faces
+</li><li> Java Persistence API.
+</li><li> NetBeans IDE
+</li></ul><p>This tutorial is partly based on the <a class="external" href="http://www.netbeans.org/kb/articles/hibernate-javaee.html">Using Hibernate With Java Persistence API</a> tutorial, you might want to go through it first.
+</p>
+<h4 id="section-UsingHibernateWithJPA-SoftwareNeededForTheTutorial">Software Needed for the Tutorial</h4>
+<p>Before you begin, you need to install the following software on your computer:
+</p>
+<ul><li> NetBeans IDE 5.5.1 (<a class="external" href="http://www.netbeans.info/downloads/dev.php">download</a>)
+</li><li> Sun Java System Application Server, Platform Edition 9 (<a class="external" href="http://www.sun.com/software/products/appsrvr_pe/index.xml">download</a>)
+</li><li> Hibernate Core 3.2.1.GA, Hibernate EntityManager 3.2.1.GA(<a class="external" href="http://www.hibernate.org/6.html">download</a>)
+</li></ul><h4 id="section-UsingHibernateWithJPA-SettingUpYourEnvironment">Setting up your Environment</h4>
+<p>First we will create a library in the IDE for the Hibernate entity manager.
+</p>
+<ol><li> Unzip the Hibernate JAR files to any temporary location
+</li><li> Choose Tools &gt; Library Manager from the main menu. Click New Library, name the library Hibernate, and click OK.
+</li><li> In the Libraries pane of the Library Manager dialog box, select the Hibernate library you just created.
+</li><li> Click the Classpath tab and then click Add JAR/Folder and locate the following JAR files:
+</li></ol><ul><li> From Hibernate EntityManager:
+<ul><li> hibernate-entitymanager.jar 
+</li><li> lib/hibernate-annotations.jar
+</li><li> lib/jboss-archive-browsing.jar
+</li><li> lib/javassist.jar
+</li></ul></li><li> From Hibernate Core:
+<ul><li> hibernate3.jar
+</li><li> lib/antlr-2.7.6.jar
+</li><li> lib/asm-attrs.jar
+</li><li> lib/asm.jar
+</li><li> lib/c3p0-0.9.0.jar
+</li><li> lib/cglib-2.1.3.jar
+</li><li> lib/commons-collections-2.1.1.jar
+</li><li> lib/concurrent-1.3.2.jar
+</li><li> lib/commons-logging-1.0.4.jar
+</li><li> lib/dom4j-1.6.1.jar
+</li><li> lib/ehcache-1.2.3.jar
+</li><li> lib/log4j-1.2.11.jar
+</li></ul></li></ul><p>
+</p><h4 id="section-UsingHibernateWithJPA-CreatingAWebApplication">Creating a Web Application</h4>Next
+we will create a web application with entity classes and a JSF
+interface. To speed up the process, we will use the CRUD generators in
+the IDE.
+<ul><li> Choose File &gt; New Project (Ctrl-Shift-N). Select Web Application from the Web category.
+</li><li> Name the project HibernateWithJPA, set the server to Sun Java
+System Application Server, the Java EE version to Java EE 5 and make
+sure that the Set Source Level to 1.5 checkbox is checked. Click Next.
+</li><li> Select the JavaServer Faces framework and click Finish.
+</li><li> Add the Hibernate library we created earliead to the project
+by right-clicking the project node and choosing Properties &gt;
+Libraries &gt; Add Library &gt; Hibernate
+</li><li> In the Projects window, right-click the project node and choose New &gt; Entity Classes from Database.
+</li><li> In the Data Source drop-down, select the <tt>jdbc/sample</tt> database. If
+    prompted for a user name and password, use app and app. Select the <tt>CUSTOMER</tt> table from the list, click Add and then click Next. * Leave the tables and class names as their default, and set the package to
+    <tt>sample.entities</tt>.
+</li><li> Now it is time to create the persistence unit. Click the Create Persistence
+    Unit button. Accept the default name, select
+    Hibernate as the persistence provider, and select None as the table generation strategy.
+    Click OK.
+</li><li> Click Finish in the Entity Classes from Database wizard. The IDE creates
+    the persistence unit (<tt>persistence.xml</tt> under Configuration Files node)
+    and the entity classes (under Source Packages).
+</li><li> Set a correct SQL dialect for Hibernate. Double-click <tt>persistence.xml</tt>
+    and click the XML button at the top of the editor to switch to the XML view.
+    Add the following property to the persistence unit:
+</li></ul><pre>        &amp;lt;property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect" /&amp;gt;
+</pre>
+<h4 id="section-UsingHibernateWithJPA-CodingTheJSFInterface">Coding the JSF Interface</h4>
+<p>Now we can quickly generate JSF pages for the entity classes with the NetBeans IDE CRUD generation.
+</p>
+<ol><li> Right-click the project node and choose New &gt; JSF Pages from Entity Class.
+    Add both <tt>Customer.java</tt> and <tt>DiscountCode.java</tt> to the list
+    of selected classes and click Next. 
+</li><li> Change the package to <tt>sample.controller</tt> and click Finish.
+</li></ol><img class="inline" src="UsingHibernateWithJPA__files/jsf-from-entities.png" alt="JSF from entities">
+<h4 id="section-UsingHibernateWithJPA-TestingTheProject">Testing the Project</h4>
+<p>At this point we will try to run the application and see whether everything is working as expected.
+</p>
+<ol><li> Right-click the project and choose Run Project. The IDE starts the application
+    server, builds and deploys the application, and shows <tt>index.jsp</tt> in
+    the external web browser.
+</li><li> Click the List of Customer link and you should see the following web page:
+</li></ol><img class="inline" src="UsingHibernateWithJPA__files/list-of-customers.png" alt="list of customers">
+<ul><li> Use the New Customer link to create a customer
+</li></ul><h4 id="section-UsingHibernateWithJPA-AddingValidation">Adding validation</h4>
+<p>When creating a new customer you might have noticed that values were
+not validated before attempting to persist the newly created customer.
+We could use the validation facilities in JSF for ensuring that only
+correct values are inserted, but since this tutorial is about Hibernate
+we will instead demonstrate how to use the Hibernate validation
+framework. This approach has an additional advantage that the
+validation rules need to be specified only once even if another type of
+client is added.
+</p>
+<p>Open <tt>Customer.java</tt> in the editor and add the following annotations on its member variables:
+</p>
+<pre>    @Column(name = "STATE")
+    @Length(min=2, max=2, message="not a valid state")
+    private String state;
+
+    @Column(name = "EMAIL")
+    @Email
+    private String email;
+</pre>
+For simplicity's sake we will only add validation to <tt>state</tt> and <tt>email</tt> properties. The <tt>@Length</tt> annotation validates that the length of the property will be within the range specified by <tt>min</tt> and <tt>max</tt> attributes. We apply it on the <tt>state</tt>  property to make sure that it is exactly 2 characters long. We also specify a value for the <tt>message</tt> attribute, it will be the shown error message when the validation fails. The <tt>@Email</tt> annotation in turn validates that the property represents a valid email address, as you might have guessed.
+<p>Now that we have our domain object annotated, we need to add handling of validation errors to our controller class. So open <tt>CustomerController.java</tt> and add the following method there:
+</p>
+<pre>    /**
+     * Validates the given customer.
+     * @return true if there were no validation errors, false otherwise.
+     */ 
+    private boolean validate(Customer customer){
+        ClassValidator customerValidator = new ClassValidator(Customer.class);
+        // get the invalid values 
+        InvalidValue[] msgs = customerValidator.getInvalidValues(customer);
+        if (msgs.length &gt; 0){
+            for(InvalidValue msg : msgs){
+                // add an error message for each invalid value, these
+                // messages will be shown to the user
+                addErrorMessage(msg.getMessage());
+            }
+            return false;
+        }
+        return true;
+    }
+</pre>This method will first create a class validator for our Customer
+class and then process the validation rules we specified earlier when.
+We collect the invalid value messages and add each of them as error
+messages to the <tt>FacesContext</tt> (this is done by the <tt>addErrorMessage</tt>
+method). If there were no validation errors the will return true, false
+otherwise. Of course, as such this method is not very useful unless we
+invoke it in the right places. We probably want to validate the values
+both when a new customer is created and when an existing customer is
+edited. So let's first modify the <tt>create</tt> method to check whether there were any validation errors before attempting to persist:
+<pre>    public String create() {
+        if (!validate(customer)){
+            // return to the input page if there were any validation errors
+            return null;
+        }
+        EntityManager em = getEntityManager();
+        try {
+            utx.begin();
+            em.joinTransaction();
+            em.persist(customer);
+ ... 
+</pre>
+<p>As you can see, we return <tt>null</tt> if any errors were found - this means JSF will display the same page again. Make a similar modification to the <tt>edit</tt>
+method as well and run the application. Try to create a new customer
+with an invalid email address and with a 3 characters long state code.
+This is what you should see: <img class="inline" src="UsingHibernateWithJPA__files/not-valid-customer.png" alt="not a valid customer">
+ 
+</p>
+<h4 id="section-UsingHibernateWithJPA-QueryByExample">Query by Example</h4>
+<p>While the Java Persistence QL is an impressive query language, there
+are cases when a different kind of API is more suitable. Luckily, in
+addition to JPQL support, Hibernate features a criteria query API which
+you can leverage for the cases it is needed and stick to the standard
+API elsewhere in the application. In the following example we will
+demonstrate the Query By Example approach using Hibernate's Criteria
+API.
+</p>
+<p>First we need to create a new page for our new query functionality. Create a new page named <tt>Query.jsp</tt> in the customer folder and paste the following to it:
+</p>
+<pre>&lt;%@page contentType="text/html"%&gt;
+&lt;%@page pageEncoding="UTF-8"%&gt;
+&lt;%@taglib uri="http://java.sun.com/jsf/core" prefix="f" %&gt;
+&lt;%@taglib uri="http://java.sun.com/jsf/html" prefix="h" %&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+        &lt;title&gt;Query By Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;f:view&gt;
+            &lt;h1&gt;Query By Example&lt;/h1&gt;
+            &lt;h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/&gt;
+            &lt;h:form&gt;
+                &lt;h:panelGrid columns="2"&gt;
+                    &lt;h:outputText value="Zip:"/&gt;
+                    &lt;h:inputText id="zip" value="#{customer.customer.zip}" converter="stringConverter" title="Zip" /&gt;
+                    &lt;h:outputText value="Name:"/&gt;
+                    &lt;h:inputText id="name" value="#{customer.customer.name}" converter="stringConverter" title="Name" /&gt;
+                    &lt;h:outputText value="State:"/&gt;
+                    &lt;h:inputText id="state" value="#{customer.customer.state}" converter="stringConverter" title="State" /&gt;
+                &lt;/h:panelGrid&gt;
+                &lt;h:commandLink action="#{customer.queryByExample}" value="Search"/&gt;
+            &lt;/h:form&gt;
+            &lt;h:form&gt;
+                &lt;a href="/HibernateWithJPA/index.jsp"&gt;Back to index&lt;/a&gt;
+                &lt;br&gt;
+                &lt;h:dataTable value='#{customer.model}' var='item' border="1" cellpadding="2" cellspacing="0"&gt;
+                    &lt;h:column&gt;
+                        &lt;f:facet name="header"&gt;
+                            &lt;h:outputText value="CustomerId"/&gt;
+                        &lt;/f:facet&gt;
+                        &lt;h:commandLink action="#{customer.detailSetup}" value="#{item.customerId}"/&gt;
+                    &lt;/h:column&gt;
+                    &lt;h:column&gt;
+                        &lt;f:facet name="header"&gt;
+                            &lt;h:outputText value="Zip"/&gt;
+                        &lt;/f:facet&gt;
+                        &lt;h:outputText value="#{item.zip}"/&gt;
+                    &lt;/h:column&gt;
+                    &lt;h:column&gt;
+                        &lt;f:facet name="header"&gt;
+                            &lt;h:outputText value="Name"/&gt;
+                        &lt;/f:facet&gt;
+                        &lt;h:outputText value="#{item.name}"/&gt;
+                    &lt;/h:column&gt;
+                    &lt;h:column&gt;
+                        &lt;f:facet name="header"&gt;
+                            &lt;h:outputText value="Addressline1"/&gt;
+                        &lt;/f:facet&gt;
+                        &lt;h:outputText value="#{item.addressline1}"/&gt;
+                    &lt;/h:column&gt;
+                    &lt;h:column&gt;
+                        &lt;f:facet name="header"&gt;
+                            &lt;h:outputText value="Addressline2"/&gt;
+                        &lt;/f:facet&gt;
+                        &lt;h:outputText value="#{item.addressline2}"/&gt;
+                    &lt;/h:column&gt;
+                    &lt;h:column&gt;
+                        &lt;f:facet name="header"&gt;
+                            &lt;h:outputText value="City"/&gt;
+                        &lt;/f:facet&gt;
+                        &lt;h:outputText value="#{item.city}"/&gt;
+                    &lt;/h:column&gt;
+                    &lt;h:column&gt;
+                        &lt;f:facet name="header"&gt;
+                            &lt;h:outputText value="State"/&gt;
+                        &lt;/f:facet&gt;
+                        &lt;h:outputText value="#{item.state}"/&gt;
+                    &lt;/h:column&gt;
+                    &lt;h:column&gt;
+                        &lt;f:facet name="header"&gt;
+                            &lt;h:outputText value="Phone"/&gt;
+                        &lt;/f:facet&gt;
+                        &lt;h:outputText value="#{item.phone}"/&gt;
+                    &lt;/h:column&gt;
+                    &lt;h:column&gt;
+                        &lt;f:facet name="header"&gt;
+                            &lt;h:outputText value="Fax"/&gt;
+                        &lt;/f:facet&gt;
+                        &lt;h:outputText value="#{item.fax}"/&gt;
+                    &lt;/h:column&gt;
+                    &lt;h:column&gt;
+                        &lt;f:facet name="header"&gt;
+                            &lt;h:outputText value="Email"/&gt;
+                        &lt;/f:facet&gt;
+                        &lt;h:outputText value="#{item.email}"/&gt;
+                    &lt;/h:column&gt;
+                    &lt;h:column&gt;
+                        &lt;f:facet name="header"&gt;
+                            &lt;h:outputText value="CreditLimit"/&gt;
+                        &lt;/f:facet&gt;
+                        &lt;h:outputText value="#{item.creditLimit}"/&gt;
+                    &lt;/h:column&gt;
+                    &lt;h:column&gt;
+                        &lt;f:facet name="header"&gt;
+                            &lt;h:outputText value="DiscountCode"/&gt;
+                        &lt;/f:facet&gt;
+                        &lt;h:outputText value="#{item.discountCode}"/&gt;
+                    &lt;/h:column&gt;
+                    &lt;h:column&gt;
+                        &lt;h:commandLink value="Destroy" action="#{customer.destroy}"&gt;
+                            &lt;f:param name="customerId" value="#{item.customerId}"/&gt;
+                        &lt;/h:commandLink&gt;
+                        &lt;h:outputText value=" "/&gt;
+                        &lt;h:commandLink value="Edit" action="#{customer.editSetup}"&gt;
+                            &lt;f:param name="customerId" value="#{item.customerId}"/&gt;
+                        &lt;/h:commandLink&gt;
+                    &lt;/h:column&gt;
+                &lt;/h:dataTable&gt;
+            &lt;/h:form&gt;
+        &lt;/f:view&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>There are a couple of things to note here. Firstly, we have
+specified "stringConverter" converter for the input fields. Secondly,
+the 'search' link will try to execute <tt>customer.queryByExample</tt> method, which we haven't yet implemented. Thirdly, the data table uses <tt>customer.model</tt>
+as its underlying model. We will get back to these in a minute, but
+before that we still need to create a link to our new page. To keep
+things simple, we will just add it to the <tt>customer/List.jsp</tt> page, right after the link to the New Customer page:
+<pre>&lt;h:commandLink action="#{customer.createSetup}" value="New Customer"/&gt;
+&lt;br&gt;
+&lt;h:commandLink action="#{customer.querySetup}" value="Query Customers"/&gt;
+</pre>
+<p>Now, this link will cause <tt>querySetup</tt> method to be invoked in the <tt>CustomerController.java</tt>, so let's implement it next. To do that, add the following to the <tt>CustomerController.java</tt>:
+</p>
+<pre>   public String querySetup(){
+        this.customer = new Customer();
+        this.model = null;
+        return "customer_query";
+    }
+</pre>
+<p>And to complete the UI side of things,  we still need to add a navigation rule to <tt>faces-config.xml</tt>:
+</p>
+<pre>  &lt;navigation-rule&gt;
+    &lt;navigation-case&gt;
+      &lt;from-outcome&gt;customer_query&lt;/from-outcome&gt;
+      &lt;to-view-id&gt;/customer/Query.jsp&lt;/to-view-id&gt;
+    &lt;/navigation-case&gt;
+  &lt;/navigation-rule&gt;
+</pre>
+<p>What is still missing is the actual implementation of the query, and
+the converter we mentioned earlier. Let's tackle the implementation of
+the query method first. In the <tt>Query.jsp</tt> page we defined that the 'Search' link will invoke <tt>customer.queryByExample</tt> method and that <tt>customer.model</tt> will be used for the data table. To satisfy the latter, we just need to create a getter for the model in <tt>CustomerController.java</tt> - press <tt>ctrl-space</tt> and choose <tt>'create getter getModel for field model'</tt>. After that, add the following method:
+</p>
+<pre>    /**
+     * Queries customers based on the values in our &lt;code&gt;customer&lt;/code&gt;.
+     */
+    public String queryByExample(){
+        // get the native hibernate session
+        Session session = (Session) getEntityManager().getDelegate();
+        // create an example from our customer, exclude all zero valued numeric properties 
+        Example customerExample = Example.create(customer).excludeZeroes();
+        // create criteria based on the customer example
+        Criteria criteria = session.createCriteria(Customer.class).add(customerExample);
+        // perform the query and set the result to our model.
+        this.model = new ListDataModel(criteria.list());
+        
+        return "customer_query";
+    }
+</pre>
+<p>You can see how easily you can access Hibernate's native API - just invoke <tt>getDelegate()</tt> on the entity manager and cast it to <tt>org.hibernate.Session</tt>. Once we have the access to <tt>Session</tt>
+we can take advantage of the Criteria API. In the above method we
+create an example criteria based on the customer and execute the query.
+If you are not familiar with the Criteria API, it is probably worth
+explaining a bit. By default, all <tt>null</tt> values will be excluded, which means that the properties on our <tt>customer</tt> that were <tt>null</tt>,
+will not be part of the criteria. In addition, we specify that all zero
+valued numeric properties will be excluded as well. Here it gets a bit
+complicated: since JSF by default converts strings without values to
+empty strings (instead of nulls), we need to create a special converter
+for dealing with the conversion of strings from the query page. The
+implementation of the converter is as simple as:
+</p>
+<pre>package sample.controller;
+
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+
+/**
+ * A converter for string values that does not 
+ * convert &lt;code&gt;null&lt;/code&gt; values to empty strings.
+ */ 
+public class StringConverter implements Converter{
+    
+    /** Creates a new instance of StringConverter */
+    public StringConverter() {
+    }
+
+    public Object getAsObject(FacesContext context, UIComponent component, String value) {
+        if(value == null || "".equals(value)){
+            return null;
+        }
+        return value;
+    }
+
+    public String getAsString(FacesContext context, UIComponent component, Object value) {
+        return value != null ? value.toString() : null;
+    }
+}
+</pre>
+<p>Don't forget to register the converter in <tt>faces-config.xml</tt>:
+</p>
+<pre>&amp;lt;converter&amp;gt;
+    &amp;lt;converter-id&amp;gt;stringConverter&amp;lt;/converter-id&amp;gt;&gt;
+    &amp;lt;converter-class&amp;gt;sample.controller.StringConverter&amp;lt;/converter-class&amp;gt;
+  &amp;lt;/converter&amp;gt;
+</pre>
+<p>Finally, we are ready to run the application once again and test the new functionality:
+</p>
+<p><img class="inline" src="UsingHibernateWithJPA__files/query-by-example.png" alt="query by exmpale">
+</p>
+<h4 id="section-UsingHibernateWithJPA-Troubleshooting">Troubleshooting</h4>
+In case you are using NetBeans 5.5 instead of 5.5.1, you might run into <a class="external" href="http://www.netbeans.org/issues/show_bug.cgi?id=90031">issue 90031</a>, which causes silent failures when inserting data. The workaround is to upgrade to 5.5.1 or to manually add <span style="font-family: monospace; white-space: pre;">em.joinTransaction()</span> after each call to <span style="font-family: monospace; white-space: pre;">utx.begin()</span> in the generated controller classes.
+<p>
+</p><p>
+</p><p>Download the source code for this tutorial <a class="attachment" href="http://wiki.netbeans.org/attach/UsingHibernateWithJPA/HibernateWithJPA.zip">here</a><a href="http://wiki.netbeans.org/PageInfo.jsp?page=UsingHibernateWithJPA/HibernateWithJPA.zip"><img src="UsingHibernateWithJPA__files/attachment_small.png" alt="(info)" border="0"></a>
+ 
+</p>
+
+  
+
+</div>
+
+
+  <div id="attachments">
+    <h3>Attachments</h3>
+    <div class="zebra-table">
+      <table>
+        
+          <tbody><tr>
+            <td><a class="attachment" href="http://wiki.netbeans.org/attach/UsingHibernateWithJPA/HibernateWithJPA.zip" accesskey="" title="">HibernateWithJPA.zip</a></td>
+            <td><a class="pageinfo" href="http://wiki.netbeans.org/PageInfo.jsp?page=UsingHibernateWithJPA/HibernateWithJPA.zip" accesskey="" title=""><img src="UsingHibernateWithJPA__files/attachment_big.png" alt="Info on HibernateWithJPA.zip" border="0"></a></td>
+            <td>46352 bytes</td>
+          </tr>
+        
+          <tr>
+            <td><a class="attachment" href="http://wiki.netbeans.org/attach/UsingHibernateWithJPA/jsf-from-entities.JPG" accesskey="" title="">jsf-from-entities.JPG</a></td>
+            <td><a class="pageinfo" href="http://wiki.netbeans.org/PageInfo.jsp?page=UsingHibernateWithJPA/jsf-from-entities.JPG" accesskey="" title=""><img src="UsingHibernateWithJPA__files/attachment_big.png" alt="Info on jsf-from-entities.JPG" border="0"></a></td>
+            <td>50178 bytes</td>
+          </tr>
+        
+          <tr>
+            <td><a class="attachment" href="http://wiki.netbeans.org/attach/UsingHibernateWithJPA/jsf-from-entities.png" accesskey="" title="">jsf-from-entities.png</a></td>
+            <td><a class="pageinfo" href="http://wiki.netbeans.org/PageInfo.jsp?page=UsingHibernateWithJPA/jsf-from-entities.png" accesskey="" title=""><img src="UsingHibernateWithJPA__files/attachment_big.png" alt="Info on jsf-from-entities.png" border="0"></a></td>
+            <td>151411 bytes</td>
+          </tr>
+        
+          <tr>
+            <td><a class="attachment" href="http://wiki.netbeans.org/attach/UsingHibernateWithJPA/list-of-customers.JPG" accesskey="" title="">list-of-customers.JPG</a></td>
+            <td><a class="pageinfo" href="http://wiki.netbeans.org/PageInfo.jsp?page=UsingHibernateWithJPA/list-of-customers.JPG" accesskey="" title=""><img src="UsingHibernateWithJPA__files/attachment_big.png" alt="Info on list-of-customers.JPG" border="0"></a></td>
+            <td>185621 bytes</td>
+          </tr>
+        
+          <tr>
+            <td><a class="attachment" href="http://wiki.netbeans.org/attach/UsingHibernateWithJPA/list-of-customers.png" accesskey="" title="">list-of-customers.png</a></td>
+            <td><a class="pageinfo" href="http://wiki.netbeans.org/PageInfo.jsp?page=UsingHibernateWithJPA/list-of-customers.png" accesskey="" title=""><img src="UsingHibernateWithJPA__files/attachment_big.png" alt="Info on list-of-customers.png" border="0"></a></td>
+            <td>314586 bytes</td>
+          </tr>
+        
+          <tr>
+            <td><a class="attachment" href="http://wiki.netbeans.org/attach/UsingHibernateWithJPA/not-valid-customer.JPG" accesskey="" title="">not-valid-customer.JPG</a></td>
+            <td><a class="pageinfo" href="http://wiki.netbeans.org/PageInfo.jsp?page=UsingHibernateWithJPA/not-valid-customer.JPG" accesskey="" title=""><img src="UsingHibernateWithJPA__files/attachment_big.png" alt="Info on not-valid-customer.JPG" border="0"></a></td>
+            <td>32670 bytes</td>
+          </tr>
+        
+          <tr>
+            <td><a class="attachment" href="http://wiki.netbeans.org/attach/UsingHibernateWithJPA/not-valid-customer.png" accesskey="" title="">not-valid-customer.png</a></td>
+            <td><a class="pageinfo" href="http://wiki.netbeans.org/PageInfo.jsp?page=UsingHibernateWithJPA/not-valid-customer.png" accesskey="" title=""><img src="UsingHibernateWithJPA__files/attachment_big.png" alt="Info on not-valid-customer.png" border="0"></a></td>
+            <td>84493 bytes</td>
+          </tr>
+        
+          <tr>
+            <td><a class="attachment" href="http://wiki.netbeans.org/attach/UsingHibernateWithJPA/query-by-example.JPG" accesskey="" title="">query-by-example.JPG</a></td>
+            <td><a class="pageinfo" href="http://wiki.netbeans.org/PageInfo.jsp?page=UsingHibernateWithJPA/query-by-example.JPG" accesskey="" title=""><img src="UsingHibernateWithJPA__files/attachment_big.png" alt="Info on query-by-example.JPG" border="0"></a></td>
+            <td>81683 bytes</td>
+          </tr>
+        
+          <tr>
+            <td><a class="attachment" href="http://wiki.netbeans.org/attach/UsingHibernateWithJPA/query-by-example.PNG" accesskey="" title="">query-by-example.PNG</a></td>
+            <td><a class="pageinfo" href="http://wiki.netbeans.org/PageInfo.jsp?page=UsingHibernateWithJPA/query-by-example.PNG" accesskey="" title=""><img src="UsingHibernateWithJPA__files/attachment_big.png" alt="Info on query-by-example.PNG" border="0"></a></td>
+            <td>152412 bytes</td>
+          </tr>
+        
+          <tr>
+            <td><a class="attachment" href="http://wiki.netbeans.org/attach/UsingHibernateWithJPA/query-by-example.png" accesskey="" title="">query-by-example.png</a></td>
+            <td><a class="pageinfo" href="http://wiki.netbeans.org/PageInfo.jsp?page=UsingHibernateWithJPA/query-by-example.png" accesskey="" title=""><img src="UsingHibernateWithJPA__files/attachment_big.png" alt="Info on query-by-example.png" border="0"></a></td>
+            <td>152355 bytes</td>
+          </tr>
+        
+      </tbody></table>
+    </div>
+  </div>
+
+
+</div>
+  
+
+<div id="footer">
+
+  <div id="actionsBottom">
+
+
+
+<div class="pageactions">
+    
+  
+    
+      
+
+    
+
+    
+      
+        
+          
+        
+      
+      <span>
+        
+          <a class="pageinfo" href="http://wiki.netbeans.org/PageInfo.jsp?page=UsingHibernateWithJPA" accesskey="" title="">Page Info</a>
+        
+      </span>
+    
+
+    
+      <span>
+        
+        <a href="http://wiki.netbeans.org/PlainView.jsp?page=UsingHibernateWithJPA" title="Plain View">Plain View</a>
+      </span>
+    
+
+    
+      
+        <span>
+          <a class="wikipage" href="http://wiki.netbeans.org/UserPreferences" accesskey="" title="">My Prefs</a>
+        </span>
+      
+    
+   
+ 
+    
+      
+        <span>
+          <a href="http://wiki.netbeans.org/Login.jsp?redirect=UsingHibernateWithJPA">Log in</a>
+        </span>
+      
+    
+    
+    
+  
+    
+      <div class="pageInfo">
+        
+           This page (revision-) last changed on
+           <a href="http://wiki.netbeans.org/Diff.jsp?page=UsingHibernateWithJPA&amp;r1=28&amp;r2=1">
+             &lt;never&gt;
+           </a>
+           by unknown.
+        
+  
+        
+  
+        
+  
+      </div>
+    
+</div>
+</div>
+
+  <div class="copyright"></div>
+
+  <div class="wikiversion">
+  </div>
+
+  <div style="clear: both; height: 0px;"> </div>
+
+</div>
+
+  <div style="clear: both; height: 0px;"> </div>
+</div>
+<a name="Bottom"></a>
+
+<script src="UsingHibernateWithJPA__files/urchin.js" type="text/javascript"> </script>
+<script type="text/javascript"> _uacct = "UA-650452-1"; urchinTracker(); </script>
+
+<!-- Begin SiteCatalyst code -->
+<script language="JavaScript" src="UsingHibernateWithJPA__files/s_code_remote.js" type="text/javascript"></script>
+<!-- End SiteCatalyst code -->
+
+</body></html>

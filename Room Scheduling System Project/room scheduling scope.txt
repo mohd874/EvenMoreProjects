@@ -1,0 +1,15 @@
+Scope:
+
+- the system will help the faculty to select the unused hours for a classrooms and reserve it
+
+- the reservation officer will accept/reject the reservation request based on the business logic
+
+- the system will generate reports for the classrooms. e.g. room schedule
+
+- the system will check both banner and local databases for validation to avoid the overlapping
+
+- the security will be role based
+
+- the system will send a notifcation to the faculty(accept/decline)
+
+- the system will allow the officer to delete a reservation after accepting it.

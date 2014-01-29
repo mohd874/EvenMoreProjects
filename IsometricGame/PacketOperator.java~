@@ -1,0 +1,19 @@
+/*
+ * PacketOperator.java
+ *
+ * Created on July 9, 2003, 9:50 AM
+ */
+
+package IsometricGame;
+
+/**
+ *
+ * @author  jgauci
+ */
+public interface PacketOperator {
+    //for server
+    final byte CREATE_WALL=0,DELETE_WALL=1,CREATE_TILE=2,CREATE_OBJECT=3,DELETE_OBJECT=4,SAVE_MAP_REQUEST=5,LOAD_MAP_REQUEST=6,SEND_MAP=7;
+    
+    //for client
+    final byte ROOM_CREATED=64,WALL_CHANGED=65,OBJECT_CHANGED=66,OBJECT_MOVED=67,MAP_SENT=68;
+}

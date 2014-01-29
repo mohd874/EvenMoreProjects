@@ -1,0 +1,17 @@
+# you describe your data using the YAML notation here 
+# and then load them using Fixtures.load("data.yml")
+
+# Test Data 
+Post(t1):
+ book: FT1
+ author: This is Full Text
+
+Post(t2):
+ book: FT2
+ author: Search for me!!
+
+Post(t3):
+ book: FT1
+ author: I am here
+
+

@@ -1,0 +1,16 @@
+@charset "UTF-8";
+/* CSS Document */
+
+#solsect {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	}
+
+#solsect a {
+	color: #333333;
+	font-size: 10px;
+	text-decoration: none;
+	}
+
+#solsect a:hover {
+	text-decoration: underline;
+	}

@@ -1,0 +1,141 @@
+/*
+ * IsometricMapCreator.java
+ *
+ * Created on July 11, 2003, 6:43 PM
+ */
+
+package IsometricGame;
+
+import java.awt.*;
+import java.awt.image.*;
+import java.awt.event.*;
+import java.awt.geom.*;
+import javax.swing.*;
+import java.util.*;
+import java.io.*;
+
+/**
+ *
+ * @author  jgauci
+ */
+public class IsometricMapServer extends IsometricMap implements PacketOperator {
+    GameServer owner;
+    int nextID;
+    
+    /** Creates a new instance of IsometricMapCreator */
+    public IsometricMapServer(int width,int height,GameServer owner) {
+        super(width,height);
+        this.owner = owner;
+        nextID = 0;
+    }
+    
+    public void sendMap(DataOutputStream outStream) throws IOException {
+        outStream.writeInt(height);
+        outStream.writeInt(width);
+        for(int a=0;a<height+1;a++) {
+            for(int b=0;b<width+1;b++) {
+                outStream.writeInt(rightWalls[a][b].type);
+            }
+        }
+        for(int a=0;a<height+1;a++) {
+            for(int b=0;b<width+1;b++) {
+                outStream.writeInt(leftWalls[a][b].type);
+            }
+        }
+        for(int a=0;a<height;a++) {
+            for(int b=0;b<width;b++) {
+                outStream.writeInt(tileMap[a][b].type);
+            }
+        }
+        
+        outStream.writeInt(entityTable.size());
+        for(int y=0;y<height;y++)
+            for(int x=0;x<width;x++)
+                for(int t=0;t<entityList[y][x].size();t++) {
+                    Entity tempEntity = (Entity) entityList[y][x].get(t);
+                    outStream.writeInt(tempEntity.location.x);
+                    outStream.writeInt(tempEntity.location.y);
+                    outStream.writeByte(tempEntity.type);
+                    outStream.writeInt(tempEntity.ID);
+                }
+    }
+    
+    public void createRoom(Rectangle lasso,byte barState,byte tileType) {
+        for(int y=0;y<height;y++)
+            for(int x=0;x<width;x++) {
+                if(lasso.contains(tileMap[x][y].location)) {
+                    if(barState==0) {
+                        tileMap[x][y].type = tileType;
+                    }
+                    else if(barState==1) {
+                        if(x+1==width||!lasso.contains(tileMap[x+1][y].location))
+                            tileMap[x][y].downLeftWall.type = 0;
+                        if(x==0||!lasso.contains(tileMap[x-1][y].location))
+                            tileMap[x][y].upRightWall.type = 1;
+                        if(y+1==height||!lasso.contains(tileMap[x][y+1].location))
+                            tileMap[x][y].downRightWall.type = 0;
+                        if(y==0||!lasso.contains(tileMap[x][y-1].location))
+                            tileMap[x][y].upLeftWall.type = 1;
+                    }
+                }
+            }
+    }
+    
+    public void deleteWall(Point location,byte wallDirection) {
+        createWall(location,wallDirection, NOWALL);
+        
+    }
+    
+    public void createWall(Point location,byte wallDirection,byte wallType) {
+        switch(wallDirection) {
+            case UPRIGHT:
+                System.out.println("drawUPRIGHT: " + location.x + " " + location.y);
+                tileMap[location.y][location.x].upRightWall.type = wallType;
+                owner.broadcastByte(WALL_CHANGED);
+                owner.broadcastInt(location.x);
+                owner.broadcastInt(location.y);
+                owner.broadcastByte(wallDirection);
+                owner.broadcastByte(wallType);
+                break;
+            case UPLEFT:
+                System.out.println("drawUPLEFT: " + location.x + " " + location.y);
+                tileMap[location.y][location.x].upLeftWall.type = wallType;
+                owner.broadcastByte(WALL_CHANGED);
+                owner.broadcastInt(tileMap[location.y][location.x].upLeftWall.location.x);
+                owner.broadcastInt(tileMap[location.y][location.x].upLeftWall.location.y);
+                owner.broadcastByte(wallType);
+                break;
+            case DOWNLEFT:
+                System.out.println("drawDOWNLEFT: " + location.x + " " + location.y);
+                tileMap[location.y][location.x].downLeftWall.type = wallType;
+                owner.broadcastByte(WALL_CHANGED);
+                owner.broadcastInt(tileMap[location.y][location.x].downLeftWall.location.x);
+                owner.broadcastInt(tileMap[location.y][location.x].downLeftWall.location.y);
+                owner.broadcastByte(wallType);
+                break;
+            case DOWNRIGHT:
+                System.out.println("drawDOWNRIGHT: " + location.x + " " + location.y);
+                tileMap[location.y][location.x].downRightWall.type = wallType;
+                owner.broadcastByte(WALL_CHANGED);
+                owner.broadcastInt(tileMap[location.y][location.x].downRightWall.location.x);
+                owner.broadcastInt(tileMap[location.y][location.x].downRightWall.location.y);
+                owner.broadcastByte(wallType);
+                break;
+                
+        }
+    }
+    
+    public Entity createEntity(Point location,byte entityType) {
+        Integer tempInteger = new Integer(nextID);
+        while(entityTable.containsKey(tempInteger)) {
+            nextID++;
+            if(nextID==java.lang.Integer.MAX_VALUE) nextID=0;
+        }
+        Entity tempEntity = new Entity(location,entityType,nextID++);
+        if(nextID==java.lang.Integer.MAX_VALUE) 
+            nextID=0;
+        entityList[location.y][location.x].add(tempEntity);
+        entityTable.put(new Integer(tempEntity.ID), tempEntity);
+        return tempEntity;
+    }
+}

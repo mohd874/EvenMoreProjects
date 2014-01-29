@@ -1,0 +1,66 @@
+
+
+CREATE TABLE [dbo].[stud_proj_room_SCHEDULE] (
+	[ROOM_CODE] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[BLDG_CODE] [varchar] (6) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[COURSE_CODE] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[CAMPUS_CODE] [varchar] (3) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[COURSE_CRN] [varchar] (5) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[CATEGORY] [varchar] (2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[BEGIN_TIME] [varchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[END_TIME] [varchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[DURATION] [decimal](6, 2) NULL ,
+	[SUNDAY] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[MONDAY] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[TUESDAY] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[WEDNESDAY] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[THURSDAY] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL 
+) ON [PRIMARY]
+
+
+
+
+CREATE TABLE [dbo].[stud_proj_STAFF_INFO] (
+	[USERID] [nvarchar] (9) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[PIDM] [decimal](8, 0) NULL ,
+	[OLDHRSID] [nvarchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[FIRST_NAME] [nvarchar] (25) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[LAST_NAME] [nvarchar] (60) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[EMAIL] [nvarchar] (95) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[POSITION_DESC] [nvarchar] (70) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[GENDER] [nvarchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[DISPLAY_NAME] [nvarchar] (100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[GRADE] [nvarchar] (3) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[USER_TYPE] [nvarchar] (2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[DIVISION_CODE] [decimal](10, 0) NULL ,
+	[DIVISION_DESC] [nvarchar] (100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[SUPERVISORID] [nvarchar] (9) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[CAMPUS_DESC] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[CAMPUS_SHORT] [nvarchar] (5) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[CAMPUS_HR] [nvarchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[CAMPUS_CODE] [nvarchar] (5) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[ACTIVE_IND] [nchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[TELEPHONE] [nvarchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[MOBILE] [nvarchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[NOVELLID] [nvarchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[UDN] [nvarchar] (100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[TEACHER_IND] [nchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[ADVISOR_IND] [nchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[EXT1] [nvarchar] (6) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[EXT2] [nvarchar] (6) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[WEB_PAGE] [nvarchar] (100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[PCATEGORY] [nvarchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[HOUSING_REQUIRED] [nchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[UPD_TEL] [nchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[IS_STUDENT] [nchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL 
+) ON [PRIMARY]
+
+
+
+
+CREATE TABLE [dbo].[stud_proj_courses] (
+	[COURSE_CODE] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[COURSE_TITLE] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL 
+) ON [PRIMARY]
+
+

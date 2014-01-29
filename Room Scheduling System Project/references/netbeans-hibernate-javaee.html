@@ -1,0 +1,468 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head>
+
+           
+ 
+ 
+ <script src="netbeans-hibernate-javaee_files/tigris.js" type="text/javascript"></script>
+ <link rel="stylesheet" type="text/css" href="netbeans-hibernate-javaee_files/netbeans.css"><title>Using Hibernate with the Java Persistence API</title>
+ 
+                                                  
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta http-equiv="Content-Style-Type" content="text/css">
+ <meta name="SourceCastVersion" content="3.5.1.19.11">
+ <link rel="shortcut icon" href="http://www.netbeans.org/favicon.ico" type="image/x-icon">
+
+
+
+
+
+<meta name="description" content="A tutorial showing how to use the Hibernate persistence provider with the Java Persistence API in NetBeans IDE 5.5.">
+
+<link rel="stylesheet" type="text/css" href="netbeans-hibernate-javaee_files/netbeans.css" media="screen">
+<script src="netbeans-hibernate-javaee_files/lang-pulldown.js" type="text/javascript"></script>
+<script src="netbeans-hibernate-javaee_files/loginbox.js" type="text/javascript"></script>
+
+<script src="netbeans-hibernate-javaee_files/switcher.js" type="text/javascript"></script>
+<meta name="keywords" content="java IDE, java editor, java Platform, free, open source, java development, j2ee support, development enviroment, web development, NetBeans, IDE, java">
+
+
+ <script language="JavaScript" type="text/javascript">
+ <!--
+ var username="guest";
+ //-->
+ </script></head><body onload="startList()" class="composite blue-bg">
+     
+ 
+  
+ 
+ 
+ 
+ <!-- begin TopTabs  -->
+
+<!-- end TopTabs -->
+<!-- Begin Content Area -->
+ 
+ 
+
+ 
+
+<!-- Servlet-Specific template -->
+
+
+
+ 
+ 
+ 
+
+        
+                 
+          
+  
+
+ 
+ 
+
+
+<div style="height: 50px;"><div id="floating-logo">
+<div id="search">
+<form method="get" action="http://www.google.com/custom" style="display: inline;">
+<table>
+	<tbody><tr>
+		<td>
+		<a href="http://www.netbeans.org/community/search.html" style="color: rgb(33, 53, 82);">Search:</a> </td><td><input name="q" class="text" style="border: 1px solid rgb(11, 104, 109);" type="text">
+		</td>
+		<td>
+			<input src="netbeans-hibernate-javaee_files/search-button.gif" alt="Search netbeans.org" name="Button" type="image">
+			<input name="cof" value="GIMP:#FF0F12;LW:193;ALC:#FF0F12;L:http://www.netbeans.org/images/logo.gif;GFNT:#8A8DB0;LC:#0E0E76;LH:45;AH:center;VLC:#0E0E76;S:http://www.netbeans.org/;AWFID:a8753e5d03543916;" type="hidden"><input name="domains" value="netbeans.org" type="hidden"><input name="sitesearch" value="netbeans.org" type="hidden">
+		</td>
+	</tr>
+</tbody></table>
+</form>
+</div><div class="lang-dropdown"></div><div class="float-left"><a href="http://www.netbeans.org/index.html"><img src="netbeans-hibernate-javaee_files/nb-logo2.gif" class="logo-link" alt="netbeans.org - go to homepage" title="NetBeans.org - go to the homepage" style="padding-top: 10px;" border="0" height="60" width="159"></a></div></div></div>
+		<div id="center-container"><!-- layer centering whole page -->
+		<div id="floating-page"><!-- margins for whole page -->
+		<table id="wrap-table"><!-- top level table --><tbody><tr><td class="floating-wrap-table">
+			<div id="floating-tabs-container"><img src="netbeans-hibernate-javaee_files/corner-left.png" class="float-left" style="" height="26" width="11"><img src="netbeans-hibernate-javaee_files/corner-right.png" class="float-right" style="" height="26" width="14">
+			<div id="floating-tabs">
+<script src="netbeans-hibernate-javaee_files/rollover.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+op_register("optab1","/images/v6/home-off.png","/images/v6/home-over.png");
+op_register("optab2","/images/v6/products-off.png","/images/v6/products-over.png");
+op_register("optab3","/images/v6/catalogue-off.png","/images/v6/catalogue-over.png");
+op_register("optab4","/images/v6/kb-on.png","/images/v6/kb-over.png");
+op_register("optab5","/images/v6/community-off.png","/images/v6/community-over.png");
+op_register("optab6","/images/v6/partners-off.png","/images/v6/partners-over.png");
+//-->
+</script>
+
+<a href="http://www.netbeans.org/index.html" title=""><img src="netbeans-hibernate-javaee_files/home-off.png" alt="" class="iMenu" id="optab1" onmouseover="op_set_over('optab1')" onmouseout="op_set_normal('optab1')" border="0" height="26" width="120"></a><a href="http://www.netbeans.org/features/index.html" title="Features"><img src="netbeans-hibernate-javaee_files/products-off.png" alt="Features" class="iMenu" id="optab2" onmouseover="op_set_over('optab2')" onmouseout="op_set_normal('optab2')" border="0" height="26" width="120"></a><a href="http://plugins.netbeans.org/PluginPortal/" title="Plugins"><img src="netbeans-hibernate-javaee_files/catalogue-off.png" alt="Plugins" class="iMenu" id="optab3" onmouseover="op_set_over('optab3')" onmouseout="op_set_normal('optab3')" border="0" height="26" width="120"></a><a href="http://www.netbeans.org/kb/index.html" title="Docs&nbsp;&amp;&nbsp;Support"><img src="netbeans-hibernate-javaee_files/kb-on.png" alt="Docs&nbsp;&amp;&nbsp;Support" class="iMenu" id="optab4" border="0" height="26" width="120"></a><a href="http://www.netbeans.org/community/index.html" title="Community"><img src="netbeans-hibernate-javaee_files/community-off.png" alt="Community" class="iMenu" id="optab5" onmouseover="op_set_over('optab5')" onmouseout="op_set_normal('optab5')" border="0" height="26" width="120"></a><a href="http://www.netbeans.org/community/partners/index.html" title="Partners"><img src="netbeans-hibernate-javaee_files/partners-off.png" alt="Partners" class="iMenu" id="optab6" onmouseover="op_set_over('optab6')" onmouseout="op_set_normal('optab6')" border="0" height="26" width="120"></a>
+				</div>
+				</div>
+		<div id="navig-breadcrumbs" style="margin: 0px;"><a href="http://www.netbeans.org/index.html">HOME</a>  / <a href="http://www.netbeans.org/kb/index.html">Docs &amp; Support</a> </div><table id="floating-contenttable" class="colapse">
+		<tbody><tr><td class="valign-top b-right full-width"><!-- main content column -->
+                        <!-- this is hack over the wrong IE box model - fix for problems when using 100% width -->
+                        <div id="ie-width-hack"><!-- IE hack--><div id="print"><a href="#" onclick='window.open("http://testwww.netbeans.org/kb/articles/hibernate-javaee.html","","left=0,top=0,scrollbars=yes,resizable=yes,toolbar=yes,location=yes,menubar=yes");'><img src="netbeans-hibernate-javaee_files/print.gif" alt="" border="0" height="15" width="105"></a></div><div class="f-page-auto-cell" id="doc">
+<!-- Begin Content Area -->
+<h1>Using Hibernate with the Java Persistence API</h1>
+    <div class="feedback-box"><b>Related Docs</b>
+    <ul style="list-style-type: none; list-style-image: none; list-style-position: outside; margin-left: 0pt; padding-left: 1em; text-indent: -1em;">
+        <li><a href="http://wiki.netbeans.org/wiki/view/UsingHibernateWithJPA">Using Hibernate-specific features with JPA</a></li>
+        <li><a href="http://www.netbeans.org/kb/55/persistence.html">Java Persistence in the Java EE 5 Platform</a></li>
+        <li><a href="http://www.netbeans.org/kb/55/persistence-j2se.html">Implementing Stand-alone Persistence in a Java SE Project</a></li>
+        <li><a href="http://www.netbeans.org/kb/55/persistence_ontomcat.html">Using Java Persistence in a J2EE 1.4 Web Application</a></li>
+        <li><a href="http://www.netbeans.org/kb/trails/java-ee.html">Java EE Applications Learning Trail</a></li>
+    </ul>
+    </div>
+<p>One of the main features of the new Java Persistence API that was introduced
+  with the Java EE 5 platform is that you can plug in any persistence provider
+  that you want. The Sun Java System Application Server 9 ships with Oracles's
+  Toplink persistence provider. In this tutorial, we will install the Hibernate
+  persistence provider on the application server and use it to develop a quick
+  application that accesses a database with the Java Persistence API.</p>
+<div class="indent">
+  <h3 class="tutorial">Software Required for this Tutorial</h3>
+  <ul>
+    <li><a href="http://www.netbeans.org/features/ide/index.html">NetBeans IDE 5.5</a> (<a href="http://www.netbeans.info/downloads/index.php">download</a>)</li>
+    <li>Sun Java System Application Server, Platform Edition 9.0 (<a href="http://www.sun.com/software/products/appsrvr_pe/index.xml">download</a>)</li>
+    <li>Hibernate Core 3.2.4.SP1 and Hibernate EntityManager 3.3.1 GA (<a href="http://www.hibernate.org/6.html">download</a>)</li>
+  </ul>
+
+    <h3 class="tutorial">Tutorial Exercises</h3>
+    <ul>
+        <li><a href="#Exercise_1">Setting up your Environment</a></li>
+        <li><a href="#Exercise_2">Creating the Entity Classes and Persistence Unit</a></li>
+        <li><a href="#Exercise_3">Coding the JSF Interface</a></li>
+        <li><a href="#Exercise_4">Testing the Project</a></li>
+    </ul>
+
+</div>
+<a name="#Exercise_1"></a>
+<h2>Setting up your Environment</h2>
+<p>Before we start, we have to register the application server with the IDE and
+  copy over the Hibernate JAR files to the application server's <tt>lib</tt> folder.
+  We also have to create a library in the IDE for the Hibernate entity manager.</p>
+<ol>
+  <li>If the application server is not registered in the IDE, register it by choosing
+    Tools &gt; Server Manager and clicking the Add Server button. You can see
+    all registered application servers by opening the Runtime window and expanding
+    the Servers node.</li>
+  <li>Unzip the Hibernate JAR files to any temporary location and then copy the
+    following JAR files to your application server's <tt>lib</tt> folder:
+    <ul>
+      <li>From Hibernate EntityManager:
+        <ul>
+          <li><tt>hibernate-entitymanager.jar </tt></li>
+          <li><tt>lib/hibernate-annotations.jar</tt></li>
+          <li><tt>lib/hibernate-commons-annotations.jar</tt></li>
+          <li><tt>lib/jboss-archive-browsing.jar </tt></li>
+
+        </ul>
+      </li>
+      <li>From Hibernate Core
+        <ul>
+          <li><tt>hibernate3.jar</tt></li>
+          <li><tt>lib/antlr-2.7.6.jar</tt></li>
+          <li><tt>lib/asm-attrs.jar</tt></li>
+          <li><tt>lib/asm.jar</tt></li>
+          <li><tt>lib/c3p0-0.9.1.jar</tt></li>
+          <li><tt>lib/cglib-2.1.3.jar</tt></li>
+          <li><tt>lib/commons-collections-2.1.1.jar</tt></li>
+          <li><tt>lib/commons-logging-1.0.4.jar</tt></li>
+          <li><tt>lib/concurrent-1.3.2.jar</tt></li>
+          <li><tt>lib/dom4j-1.6.1.jar</tt></li>
+          <li><tt>lib/ehcache-1.2.3.jar</tt></li>
+          <li><tt>lib/javassist.jar</tt></li>
+          <li><tt>lib/log4j-1.2.11.jar</tt></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Restart the server if it is running. You can restart the server by right-clicking
+    its node in the Runtime window and choosing Restart.</li>
+    <li>Choose Tools &gt; Library Manager from the main menu. Click New Library,
+    name the library Hibernate, and click OK.</li>
+    <li>In the Libraries pane of the Library Manager dialog box, select the Hibernate library you just created.
+    Click the Classpath tab and then click Add JAR/Folder and locate the <tt>hibernate-entitymanager.jar</tt>
+    and <tt>javaee.jar</tt> in your application server's <tt>lib</tt> folder. Click Add JAR / Folder and then click OK.
+    <p class="align-center"><img src="netbeans-hibernate-javaee_files/hibernate-library.png" alt="library manager">
+    </p>
+  </li>
+</ol>
+
+<a name="#Exercise_2"></a>
+<h2>Creating the Entity Classes and Persistence Unit</h2>
+<p>Now that we have added the Hibernate libraries to the lib directory of our application server, we can
+  create the entity classes and web interface. We will create
+  a web application named HibernateApp with entity classes and a JSF interface.
+  We will use the NetBeans CRUD facilities.</p>
+<ol>
+    <li>Choose File &gt; New Project (Ctrl-Shift-N). Select Web Application from the Web category.
+    </li><li>Name the project HibernateApp, set the server to Sun Java System Application Server
+      and the Java EE version to Java EE 5. Click Next.</li>
+    <li>Select the JavaServer Faces framework and click Finish.</li>
+    <li>In the Projects window, right-click the project node and choose New &gt; Entity Classes from Database.
+        In the Data Source drop-down, select the <tt>jdbc/sample</tt> database. If
+        prompted for a user name and password, use app and app. Select the <tt>CUSTOMER</tt>
+        table from the list, click Add and then click Next.
+    <p class="align-center"><img src="netbeans-hibernate-javaee_files/hibernate-tables.png" alt="selecting the tables from the database" height="439" width="600"></p></li>
+  <li>Leave the tables and class names as their default, and set the package to
+    <tt>hibernatesample.db</tt>.
+    <p class="align-center"><img src="netbeans-hibernate-javaee_files/hibernate-entity.png" alt="wizard panel displaying the entity classes that will be generated from the selected tables">
+    </p>
+  </li>
+  <li>Now it is time to create the persistence unit. Click the Create Persistence
+    Unit button. Set <tt>HibernateApp </tt>as the persistence unit name, select
+    Hibernate as the persistence provider, and select None as the table generation strategy.
+    Click Create.
+    <p class="align-center"><img src="netbeans-hibernate-javaee_files/hibernate-persistence.png" alt="create persistence unit dialog box" height="282" width="504"></p>
+  </li>
+  <li>Click Finish in the Entity Classes from Database wizard. The IDE creates
+    the persistence unit (<tt>persistence.xml</tt> under Configuration Files node)
+    and the entity classes (under Source Packages). </li>
+  <li>Finally, let's add some Hibernate-specific properties. Double-click <tt>persistence.xml</tt>
+    and click the XML button at the top of the editor to switch to the XML view.
+    Add the following property to the persistence unit:
+    <pre class="examplecode">  &lt;persistence-unit name="HibernateApp" transaction-type="JTA"&gt;
+    &lt;provider&gt;org.hibernate.ejb.HibernatePersistence&lt;/provider&gt;
+    &lt;jta-data-source&gt;jdbc/sample&lt;/jta-data-source&gt;
+    <b>&lt;properties&gt;
+        &lt;property name="hibernate.show_sql" value="true" /&gt;
+    &lt;/properties&gt;</b>
+  &lt;/persistence-unit&gt;
+&lt;/persistence&gt;</pre>
+    <br>
+    This property causes all SQL statements to be printed to the application server's
+    log file.</li>
+</ol>
+
+<a name="#Exercise_3"></a>
+<h2>Coding the JSF Interface</h2>
+<p>Now we can quickly generate JSF pages for the entity classes with the NetBeans
+  IDE CRUD generation. </p>
+<ol>
+  <li>Right-click the project node and choose New &gt; JSF Pages from Entity Class.
+    Add both <tt>Customer.java</tt> and <tt>DiscountCode.java</tt> to the list
+    of selected classes and click Next.
+    <p class="align-center"><img src="netbeans-hibernate-javaee_files/hibernate-jsf.png" alt="New JSF Pages from Entity Class Wizard" height="448" width="600"></p></li>
+  <li>Change the package to <tt>hibernatesample.controller</tt> and click Finish.</li>
+    <li>To make this application work correctly, we need to make some changes to
+        <tt>CustomerController.java</tt> and <tt>DiscountCodeController.java</tt>.
+        We need to modify the <tt>create</tt>, <tt>edit</tt> and <tt>destroy</tt> methods in the files
+        to change the order in which we get the entity manager.
+        <p>Open <tt>CustomerController.java</tt> and <tt>DiscountCodeController.java</tt> in the Source Editor.
+        Each of the files contains <tt>create</tt>, <tt>edit</tt> and <tt>destroy</tt> methods with the following code:</p>
+        <pre class="examplecode">EntityManager em = getEntityManager();
+        try {
+            utx.begin();
+        </pre>
+        <p>Modify the code in each of the methods to change the order in which we get the entity manager.</p>
+
+         <pre class="examplecode"><b>EntityManager em = null;</b>
+        try {
+            utx.begin();
+            <b>em = getEntityManager();</b>
+            </pre>
+            <p>For example, the modified code in the <tt>create</tt> method of <tt>CustomerController.java</tt>
+            should look like the following (changes in bold):</p>
+             <pre class="examplecode">public String create() {
+        <b>EntityManager em = null;</b>
+        try {
+            utx.begin();
+            <b>em = getEntityManager();</b>
+            em.persist(customer);
+            utx.commit();
+            ...
+            </pre>
+
+    </li>
+</ol>
+<p>After creating the JSF pages and modifying the code in the controller classes,
+you should be able to run and test the application.</p>
+
+
+<a name="#Exercise_4"></a>
+<h2>Testing the Project</h2>
+<p>Now we need to run the project to test whether the connection to our database
+  is working correctly.</p>
+<ol>
+  <li>Right-click the project and choose Run Project. The IDE starts the application
+    server, builds and deploys the application, and shows <tt>index.jsp</tt> in
+    the external web browser.</li>
+  <li>Click the List of Customer link and you should see the following web page:
+    <p class="align-center"><img src="netbeans-hibernate-javaee_files/hibernate-result.png" alt="List of Customers JSP Page" border="1" height="526" width="533"></p>
+  </li>
+  <li>Use the New Customer link to create a customer. Then check the server log
+    by right-clicking the application server node in the Runtime window and choosing
+    View Server Log. The SQL statements for creating the customer should be listed
+    in the server log.</li>
+</ol>
+<br>
+            <div class="feedback-box"><a href="http://www.netbeans.org/about/contact_form.html?to=3&amp;subject=Feedback:%20Using%20Hibernate%20with%20Java%20Persistence">Send Us Your Feedback</a></div>
+            <br style="clear: both;">
+<!-- ======================================================================================== -->
+<h2><a name="nextsteps"></a>Next Steps</h2>
+            <p>For more information about using NetBeans IDE 5.5 to develop Java EE applications, see the following resources:</p>
+            <ul>
+                <li><a href="http://www.netbeans.org/kb/trails/java-ee.html">Java EE Applications Learning Trail</a></li>
+                <li><a href="http://www.netbeans.org/kb/55/javaee-intro.html">Introduction to Java EE 5 Technology</a></li>
+                <li><a href="http://www.netbeans.org/kb/55/persistence_ontomcat.html">Using Java Persistence in a J2EE 1.4 Web Application</a></li>
+                <li><a href="http://wiki.netbeans.org/wiki/view/UsingHibernateWithJPA">Using Hibernate-specific features with JPA</a></li>
+            </ul>
+            <p>To send comments and suggestions, get support, and keep informed on the latest
+  developments on the NetBeans IDE Java EE development features, <a href="http://www.netbeans.org/community/lists/top.html">join
+  the<script language="JavaScript" type="text/javascript"><!--
+var user = "&#110;&#98;&#106;&#50;&#101;&#101;";
+var domain = "&#110;&#101;&#116;&#98;&#101;&#97;&#110;&#115;&#46;&#111;&#114;&#103;";
+var at = "&#x40;";
+document.write(user + at + domain);
+//--></script>nbj2ee@netbeans.org<noscript>
+&#110;&#98;&#106;&#50;&#101;&#101;
+&#x40;
+&#110;&#101;&#116;&#98;&#101;&#97;&#110;&#115;&#46;&#111;&#114;&#103;
+</noscript> mailing list</a>.</p>
+    
+<!-- End Content Area -->
+</div>
+	<div id="bookmarks" class="align-center"><p style="padding-bottom: 7px;">Bookmark this page</p>
+	<a href="http://del.icio.us/post?url=http://www.netbeans.org/kb/articles/hibernate-javaee.html" title="Bookmark it in del.icio.us">
+	<img src="netbeans-hibernate-javaee_files/delicious.gif" alt="del.icio.us" border="0" height="16" width="16"></a>
+
+	<a href="http://www.furl.net/storeIt.jsp?t=NetBeans+Page&amp;u=http://www.netbeans.org/kb/articles/hibernate-javaee.html" title="Save to furl">
+	<img src="netbeans-hibernate-javaee_files/furl.png" alt="furl" border="0" height="16" width="16"></a>
+
+	<a href="http://www.simpy.com/simpy/LinkAdd.do?title=NtBeans+Page&amp;href=http://www.netbeans.org/kb/articles/hibernate-javaee.html" title="Save to simpy">
+	<img src="netbeans-hibernate-javaee_files/simpy-icon-16x16.png" alt="simpy" border="0" height="16" width="16"></a>
+
+	<a href="http://slashdot.org/bookmark.pl?url=http://www.netbeans.org/kb/articles/hibernate-javaee.html" title="Submit to slashdot">
+	<img src="netbeans-hibernate-javaee_files/slashdot-13x13.png" alt="slashdot" border="0" height="13" width="13"></a>
+
+	<a href="http://technorati.com/search/http%3A%2F%2Fwww.netbeans.org%2Fkb/articles/hibernate-javaee.html" title="See who links to it">
+	<img src="netbeans-hibernate-javaee_files/technorati-16x15.png" alt="technorati" border="0" height="15" width="16"></a>
+
+	<a href="http://www.digg.com/submit?url=http://www.netbeans.org/kb/articles/hibernate-javaee.html&amp;phase=2" title="Digg this entry">
+	<img src="netbeans-hibernate-javaee_files/digman.gif" alt="digg" border="0" height="14" width="16"></a>
+	</div>
+	</div><!-- end IE hack -->
+	</td><td class="valign-top">
+				   	<div id="floating-col-right"><!-- right content column -->
+<div class="f-page-cell b-bottom bg-face">
+<div style="margin-left: -7px; padding-bottom: 20px;"><a href="http://download.netbeans.org/netbeans/6.0/final/"><img src="netbeans-hibernate-javaee_files/frontpage-download-button.gif" alt="Download NetBeans" title="Download NetBeans" border="0" height="25" width="212"></a></div>
+<h2 style="border: 0px none ;">Documentation</h2>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/trails/java-se.html">Basic Java Programming</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/trails/matisse.html">Java GUIs</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/trails/web.html">Web Applications</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/trails/java-ee.html">Java EE Applications</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/trails/mobility.html">Mobile Applications</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/trails/soa.html">SOA Applications</a></div></div><div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/trails/uml.html">UML Modelling</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/trails/ruby.html">Ruby Applications</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/trails/cnd.html">C/C++ Applications</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/trails/platform.html">NetBeans Modules and Rich-Client Applications</a></div></div>
+<br>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/samples/index.html">Sample Applications</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/60/screencasts.html">Demos and Screencasts</a></div></div>
+</div>
+
+<div class="f-page-cell bg-bege b-bottom">
+<h2 style="border: 0px none ;">Training</h2>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.sun.com/training/catalog/courses/SL-275-SE6.xml?intcmp=1366">Java Programming Language</a></div></div>
+		<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.sun.com/training/catalog/courses/FJ-310.xml?intcmp=1366">Developing Applications for the Java EE Platform</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.sun.com/training/catalog/java/index.xml?intcmp=1366">All Sun Microsystem Training Courses</a></div></div>
+</div>
+
+<div class="f-page-cell bg-bege b-bottom">
+<h2 style="border: 0px none ;">Support</h2>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://wiki.netbeans.info/wiki/view/NetBeansUserFAQ">FAQs</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/support.html">Sun Microsystems Support Plans</a></div></div>
+</div>
+
+<div class="f-page-cell bg-bege b-bottom">
+<h2 style="border: 0px none ;">More</h2>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://wiki.netbeans.org/wiki/view/CommunityDocs">Contribute Documentation!</a></div></div>
+<div class="rrrarticle"><div class="rarticletitle"><a href="http://www.netbeans.org/kb/previous.html">Docs for Earlier Releases</a></div></div>
+</div>
+</div>
+					</td></tr></tbody></table>
+	</td></tr><tr><td class="floating-wrap-table">
+	<!-- flexible page footer -->
+	<div id="floating-footer" class="clear">
+		<img src="netbeans-hibernate-javaee_files/footer-floating-corner-r.png" class="float-right" style="" height="36" width="14">
+		<img src="netbeans-hibernate-javaee_files/footer-floating-corner-l.png" class="float-left" style="" height="36" width="10">
+		<div id="footer-text">
+			<div id="footer-navig" class="float-left font-12">
+				<a href="http://www.cafeshops.com/netbeans/">Shop</a> &nbsp;
+				<a href="http://www.netbeans.org/download/sitemaps/www_map.html">SiteMap</a> &nbsp;
+				<a href="http://www.netbeans.org/about/index.html">About Us</a> &nbsp;
+				<a href="http://www.netbeans.org/about/contact.html">Contact</a> &nbsp;
+				<a href="http://www.netbeans.org/about/legal/index.html">Legal</a> &nbsp;
+			</div>
+		<div id="tof" class="float-right">
+			By use of this website, you agree to the <a href="http://www.netbeans.org/about/legal/terms-of-use.html">NetBeans Policies and Terms of Use</a>
+		</div>
+		</div>
+	</div>
+	</td></tr></tbody></table></div>
+<div id="companion-projects">
+	<center>
+	<table>
+	<tbody><tr>
+	<td class="companions-left b-green-left valign-center">Companion <br>Projects: </td>
+        <td class="valign-center">
+	 <a href="http://www.mysql.com/"><img src="netbeans-hibernate-javaee_files/mysql_logo.gif" title="MySQL - Open Source Database Server" alt="MySQL Database Server" border="0" height="30" width="58"></a>&nbsp;&nbsp;
+	</td>
+	<td class="valign-center">
+	<a href="https://openjdk.dev.java.net/"><img alt="Open JDK: an Open SourceJDK" src="netbeans-hibernate-javaee_files/openjdk.gif" title="Open JDK: an Open SourceJDK" border="0" height="19" width="63"></a>&nbsp;&nbsp;
+	</td>
+	<td class="valign-center">
+		<a href="https://glassfish.dev.java.net/"><img alt="GlassFish Community: an Open Source Application Server" src="netbeans-hibernate-javaee_files/glassfish.gif" title="GlassFish Community: an Open Source Application Server" border="0" height="27" width="56"></a>&nbsp;&nbsp;&nbsp;
+	</td>
+	<td class="valign-center">
+		<a href="http://community.java.net/mobileandembedded/"><img alt="Mobile &amp; Embedded Community" src="netbeans-hibernate-javaee_files/mobile-duke.gif" heigh="35" title="Mobile &amp; Embedded Community" border="0" width="37"></a>&nbsp;&nbsp;&nbsp;
+	</td>
+	<td class="valign-center">
+		<a href="http://opensolaris.org/"><img alt="Open Solaris" src="netbeans-hibernate-javaee_files/opensolaris.gif" title="OpenSolaris" border="0" height="17" width="95"></a>&nbsp;&nbsp;
+	</td>
+	<td class="valign-center">
+		<a href="http://java.net/"><img alt="java.net - The Source for Java Technology Collaboration" title="java.net - The Source for Java Technology Collaboration" src="netbeans-hibernate-javaee_files/javanet.gif" heigh="36" border="0" width="80"></a>&nbsp;&nbsp;
+	</td>
+	<td class="valign-center b-green-right" style="padding-right: 20px;">
+		<a href="https://open-esb.dev.java.net/"><img alt="Open ESB - The Open Enterprise Service Bus" title="Open ESB - The Open Enterprise Service Bus" src="netbeans-hibernate-javaee_files/open-esb.gif" heigh="30" border="0" width="143"></a>
+	</td>
+	<td class="companions-right b-green-right valign-center align-center">Powered by<br>&nbsp;<img src="netbeans-hibernate-javaee_files/poweredby.gif" height="14" width="70">&nbsp;</td>
+      </tr>
+	</tbody></table>
+	</center>
+</div>
+
+	</div>
+	<!-- /Servlet-Specific template -->
+<!-- end of right navigation -->
+
+<!-- servlets and anything not on www or testwww -->
+
+
+
+
+
+ 
+ 
+ 
+
+ 
+ 
+
+<!-- Begin SiteCatalyst code -->
+<script language="JavaScript" src="netbeans-hibernate-javaee_files/s_code_remote.js"></script>
+<!-- End SiteCatalyst code -->
+<!-- Begin Google webtracking analytics -->
+<script src="netbeans-hibernate-javaee_files/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+_uacct = "UA-2149007-1";
+urchinTracker();
+</script>
+<!-- End Google webtracking analytics -->
+<!-- test issue # 121549 -->
+
+
+
+</body></html>

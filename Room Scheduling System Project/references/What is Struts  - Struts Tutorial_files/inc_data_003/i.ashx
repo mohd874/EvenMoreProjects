@@ -1,0 +1,1 @@
+document.write("<a href=\"http://a.lakequincy.com/c.ashx?channel=1&format=5&pageid=DF5344AE-E37F-946C-C7E4-7244847E78D0&publisher=132&zone=1&country=AE&placement=2028&creative=833&\" target=\"_top\" ><img src=\"http://a.lakequincy.com/img/DundasChart-ASPAlliance_125x125.gif\" border=\"0\" /></a>");

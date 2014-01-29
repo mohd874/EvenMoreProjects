@@ -1,0 +1,106 @@
+/*
+ * Avatar.java
+ *
+ * Created on July 1, 2003, 9:07 AM
+ */
+
+package IsometricGame;
+
+import java.util.Timer;
+import java.util.TimerTask;
+import java.awt.*;
+import java.awt.image.*;
+import java.awt.geom.*;
+import java.awt.event.*;
+import java.awt.event.KeyEvent.*;
+import java.awt.image.BufferedImage;
+import java.util.*;
+import java.net.*;
+import java.lang.Math.*;
+import javax.sound.sampled.*;
+
+/**
+ *
+ * @author  Jason
+ */
+public class Avatar {
+    int ownerID;
+    int avatarID;
+    boolean facingRight;
+    Point3D.Int location,destination;
+    LinkedList path;
+    Color avatarColor;
+    
+    
+    /** Creates a new instance of Avatar */
+    public Avatar(Point3D.Int location,int ownerID,int avatarID) {
+        this.ownerID = ownerID;
+        facingRight=true;
+        this.location = location;
+        this.avatarID = avatarID;
+        avatarColor = new Color(avatarID,false);
+        System.out.println("CREATING AVATAR WITH ID: " + avatarID + " AND COLOR " + (avatarColor.getRGB() & 511) );
+    }
+    
+    /*public Point avatarToMapCoord() {
+        System.out.println("LOCATION: " + location);
+        return new Point(Theme.tileWidth/2*location.x-Theme.tileWidth/2*location.y -Theme.tileWidth/2
+        ,Theme.tileLength/2*location.x+Theme.tileLength/2*location.y - Theme.wallHeight+Theme.tileLength);
+    }*/
+    
+    public void draw(Graphics2D g,PixelImage key,Point cameraLoc) {
+        //if(facingRight)
+        BufferedImage tempImage = Theme.avatarTypes[0].rightImage;
+        
+        
+        g.drawImage(Theme.avatarTypes[0].rightImage, Theme.tileWidth/2*location.x-Theme.tileWidth/2*location.y -Theme.tileWidth/2- cameraLoc.x,
+        Theme.tileLength/2*location.x+Theme.tileLength/2*location.y - Theme.wallHeight+Theme.tileLength- cameraLoc.y-location.z*Theme.floorHeight, null);
+
+        int[] pixels = new int[tempImage.getWidth()*tempImage.getHeight()];
+        tempImage.getRGB(0, 0, tempImage.getWidth(), tempImage.getHeight(), pixels, 0, tempImage.getWidth());
+        int xShift = Theme.tileWidth/2*location.x-Theme.tileWidth/2*location.y -Theme.tileWidth/2- cameraLoc.x;
+        int yShift = Theme.tileLength/2*location.x+Theme.tileLength/2*location.y - Theme.wallHeight+Theme.tileLength- cameraLoc.y-location.z*Theme.floorHeight;
+        key.fillImage(xShift,yShift,pixels,tempImage.getWidth(),tempImage.getHeight(),avatarColor);
+        //key.setComposite(AlphaComposite.Src);
+        //key.setColor(Color.WHITE);
+        //Composite temp = key.getComposite();
+        //key.setComposite(AlphaComposite.DstOver);
+        //PixelImage avatarImage = new PixelImage(key,
+        //xShift,
+        //yShift,
+        //Theme.avatarTypes[0].rightImage.getWidth(),
+        //Theme.avatarTypes[0].rightImage.getHeight()
+        //,true);
+        
+        //avatarGrabber.setAlp
+        //key.fillRect(Theme.tileWidth/2*location.x-Theme.tileWidth/2*location.y -Theme.tileWidth/2- cameraLoc.x,
+        //Theme.tileLength/2*location.x+Theme.tileLength/2*location.y - Theme.wallHeight+Theme.tileLength- cameraLoc.y-location.z*Theme.floorHeight,
+        //Theme.avatarTypes[0].rightImage.getWidth(),
+        //Theme.avatarTypes[0].rightImage.getHeight());
+        //key.setComposite(AlphaComposite.DstIn);
+        //key.drawImage(Theme.avatarTypes[0].rightImage, Theme.tileWidth/2*location.x-Theme.tileWidth/2*location.y -Theme.tileWidth/2- cameraLoc.x,
+        //Theme.tileLength/2*location.x+Theme.tileLength/2*location.y - Theme.wallHeight+Theme.tileLength- cameraLoc.y-location.z*Theme.floorHeight, null);
+        //key.setComposite(temp);
+        //g.setColor(Color.BLACK);
+        //else
+        //            g.drawImage(Theme.avatarTypes[0].leftImage, Theme.tileWidth/2*location.x-Theme.tileWidth/2*location.y -Theme.tileWidth/2- cameraLoc.x,
+        //            Theme.tileLength/2*location.x+Theme.tileLength/2*location.y - Theme.wallHeight+Theme.tileLength- cameraLoc.y-location.z*Theme.floorHeight, null);
+    }
+    
+    public void fillBox(Graphics2D g,Point cameraLoc) {
+        //        if(facingRight)
+        //g.fillRect(Theme.tileWidth/2*location.x-Theme.tileWidth/2*location.y -Theme.tileWidth/2- cameraLoc.x,
+        //Theme.tileLength/2*location.x+Theme.tileLength/2*location.y - Theme.wallHeight+Theme.tileLength- cameraLoc.y-location.z*Theme.floorHeight,
+        //Theme.avatarTypes[0].rightImage.getWidth(),
+        //Theme.avatarTypes[0].rightImage.getHeight());
+        //        else
+        //            g.drawImage(Theme.avatarTypes[0].leftImage, Theme.tileWidth/2*location.x-Theme.tileWidth/2*location.y -Theme.tileWidth/2- cameraLoc.x,
+        //            Theme.tileLength/2*location.x+Theme.tileLength/2*location.y - Theme.wallHeight+Theme.tileLength- cameraLoc.y-location.z*Theme.floorHeight, null);
+        g.setColor(Color.WHITE);
+        g.drawRect(Theme.tileWidth/2*location.x-Theme.tileWidth/2*location.y -Theme.tileWidth/2- cameraLoc.x,
+        Theme.tileLength/2*location.x+Theme.tileLength/2*location.y - Theme.wallHeight+Theme.tileLength- cameraLoc.y-location.z*Theme.floorHeight,
+        Theme.avatarTypes[0].rightImage.getWidth(),
+        Theme.avatarTypes[0].rightImage.getHeight());
+    }
+    
+}

@@ -1,0 +1,24 @@
+/*
+ * Player.java
+ *
+ * Created on July 7, 2003, 7:56 PM
+ */
+
+package IsometricGame;
+
+import java.awt.*;
+import java.awt.geom.*;
+
+/**
+ *
+ * @author  jgauci
+ */
+public class Player extends Avatar {
+    
+    
+    /** Creates a new instance of Player */
+   public Player(Point startLoc,int ID) {
+        super(startLoc,ID);
+    }
+    
+}

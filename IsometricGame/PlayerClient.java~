@@ -1,0 +1,176 @@
+/*
+ * PlayerClient.java
+ *
+ * Created on July 8, 2003, 9:22 PM
+ */
+
+package IsometricGame;
+
+import javax.swing.*;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.awt.*;
+import java.awt.image.*;
+import java.awt.geom.*;
+import java.awt.event.*;
+import java.awt.event.KeyEvent.*;
+import java.awt.image.BufferedImage;
+import java.util.*;
+import java.net.*;
+import java.io.*;
+
+/**
+ *
+ * @author  jgauci
+ */
+public class PlayerClient extends GameClient {
+    Item playerItem;
+    final static int VIEW_RADIUS = 15;
+    Vector avatars;
+    
+    /** Creates a new instance of PlayerClient */
+    public PlayerClient(JPanel gameWindow, javax.swing.JTabbedPane sideBar, Loader owner,Hashtable tabNames,String hostName) {
+        super(gameWindow, sideBar, owner, tabNames,hostName);
+        avatars = new Vector();
+        try {
+            dout.writeByte(CREATE_AVATAR);
+            dout.writeInt(4);
+            dout.writeInt(4);
+            dout.writeInt(onHeight);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void initButtons() {
+        super.initButtons();
+    }
+    
+    public void mouseMoved(java.awt.event.MouseEvent evt) {
+        //System.out.println("Moved to " + evt.getPoint());
+        currentPoint.x = evt.getX();
+        currentPoint.y = evt.getY();
+        screenToTile(evt.getPoint());
+        //System.out.println(tileCurrent);
+    }
+    
+    public void mousePressed(java.awt.event.MouseEvent evt) {
+    }
+    
+    public void mouseEntered(java.awt.event.MouseEvent evt) {
+    }
+    
+    public void mouseExited(java.awt.event.MouseEvent evt) {
+    }
+    
+    public void mouseReleased(java.awt.event.MouseEvent evt) {
+    }
+    
+    public void mouseClicked(java.awt.event.MouseEvent evt) {
+        try {
+            System.out.println("Clicked " + evt.getPoint());
+            screenToTile(evt.getPoint());
+            if(evt.getButton()==evt.BUTTON1) {
+				//System.out.println(avatarImage.getpixel(evt.getX(),evt.getY())&511);
+                if(true/*(avatarImage.getRGB(evt.getX(),evt.getY())&511)!=0*/) {
+                  //  avatarSelected = (Avatar)currentMap.avatarTable.get(new Integer(avatarImage.getRGB(evt.getX(),evt.getY())&511));
+                }
+                else {
+                    if(avatarSelected!=null) {
+                        dout.writeByte(MOVE_AVATAR);
+                        dout.writeInt(avatarSelected.avatarID);
+                        dout.writeInt(tileCurrent.x);
+                        dout.writeInt(tileCurrent.y);
+                        dout.writeInt(tileCurrent.z);
+                        tileSelected.setLocation(tileCurrent);
+                        System.out.println("DONE");
+                    }
+                }
+            }
+            else {
+                if(avatarSelected!=null) {
+                    if(tileCurrent.distance(tileSelected)>0) {
+                    /*        dout.writeByte(FIRE_SHOT);
+                            dout.writeInt(tileSelected.x);
+                            dout.writeInt(tileSelected.y);
+                            dout.writeInt(tileSelected.z);
+                            dout.writeInt(tileCurrent.x);
+                            dout.writeInt(tileCurrent.y);
+                            dout.writeInt(tileCurrent.z);*/
+                    }
+                }
+                
+            }
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void mouseDragged(java.awt.event.MouseEvent evt) {
+    }
+    
+    public void actionPerformed(ActionEvent e) {
+        System.out.println(e.getActionCommand());
+        if(e.getActionCommand().equals("R1")) {
+            if(onHeight+1<currentMap.height) {
+                cameraLoc.y-=Theme.floorHeight;
+                onHeight++;
+            }
+            if(onHeight>viewHeight)
+                viewHeight=onHeight;
+            return;
+        }
+        if(e.getActionCommand().equals("L1")) {
+            if(onHeight>0) {
+                cameraLoc.y+=Theme.floorHeight;
+                onHeight--;
+                viewHeight--;
+            }
+            return;
+        }
+        if(e.getActionCommand().equals("R2")) {
+            if(viewHeight+1<currentMap.height)
+                viewHeight++;
+            return;
+        }
+        if(e.getActionCommand().equals("L2")) {
+            if(viewHeight>onHeight&&viewHeight>0)
+                viewHeight--;
+            return;
+        }
+        switch(e.getActionCommand().charAt(0)) {
+            case 'G':
+                gridOn = !gridOn;
+                break;
+            case 'T':
+                alphaOn = !alphaOn;
+                break;
+            case 'N':
+                wallsOn = !wallsOn;
+                break;
+            case 'S':
+                try {
+                    dout.writeByte(SAVE_MAP_REQUEST);
+                    dout.writeChars("myMap.imp");
+                    //((MapBuilderStandalone)ioLoader).saveMap(gameMap,"myMap.imp");
+                }
+                catch(Exception exp) {
+                    exp.printStackTrace();
+                }
+                break;
+            case 'L':
+                try {
+                    dout.writeByte(LOAD_MAP_REQUEST);
+                    dout.writeChars("myMap.imp");
+                    //((MapBuilderStandalone)ioLoader).loadMap(gameMap,"myMap.imp");
+                }
+                catch(Exception exp) {
+                    exp.printStackTrace();
+                }
+                break;
+        }
+    }
+}
+

@@ -1,0 +1,36 @@
+/*
+ * Entity.java
+ *
+ * Created on July 3, 2003, 5:20 PM
+ */
+
+package IsometricGame;
+
+import java.awt.*;
+
+/**
+ *
+ * @author  jgauci
+ */
+public class Entity implements java.io.Serializable {
+    byte type;
+    Point location;
+    Point renderPoint;
+    
+    /** Creates a new instance of Entity */
+    public Entity(Point location,byte type) {
+        System.out.println("ENTITY MADE AT " + location);
+        this.location = location;
+        this.type = type;
+        renderPoint = entityToMapCoord(location);
+    }
+    
+    public Point entityToMapCoord(Point a) {
+        return new Point(IsometricMap.tileWidth/2*a.x-IsometricMap.tileWidth/2*a.y -IsometricMap.tileWidth/2
+        ,IsometricMap.tileHeight/2*a.x+IsometricMap.tileHeight/2*a.y - IsometricMap.wallHeight+IsometricMap.tileHeight);
+    }
+    
+    public void draw(Graphics2D g,Point cameraLoc) {
+        g.drawImage(Theme.entityTypes[type].leftImage, renderPoint.x- cameraLoc.x, renderPoint.y- cameraLoc.y, null);
+    }
+}

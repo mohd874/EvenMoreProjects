@@ -1,0 +1,233 @@
+/*
+ * GameClient.java
+ *
+ * Created on July 8, 2003, 9:22 PM
+ */
+
+package IsometricGame;
+
+import javax.swing.*;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.awt.*;
+import java.awt.image.*;
+import java.awt.geom.*;
+import java.awt.event.*;
+import java.awt.event.KeyEvent.*;
+import java.awt.image.BufferedImage;
+import java.util.*;
+import java.net.*;
+import java.io.*;
+
+/**
+ *
+ * @author  jgauci
+ */
+public class BuilderClient extends GameClient {
+    
+    /** Creates a new instance of GameClient */
+    public BuilderClient(JPanel gameWindow, javax.swing.JTabbedPane sideBar, Loader owner) {
+        super(gameWindow, sideBar, owner);
+    }
+    
+    public void initButtons() {
+                sideButtons[0] = new JButton[Theme.tileTypes.length];
+                for(int a=0;a<Theme.tileTypes.length;a++)
+                    makeButton(0,a,Theme.tileTypes[a].tileImage,"0"+a);
+                sideButtons[1] = new JButton[Theme.wallTypes.length];
+                for(int a=0;a<Theme.wallTypes.length;a++)
+                    makeButton(1,a,Theme.wallTypes[a].leftImage,"1"+a);
+                sideButtons[3] = new JButton[Theme.entityTypes.length+1];
+                for(int a=0;a<Theme.entityTypes.length;a++)
+                    makeButton(3,a,Theme.entityTypes[a].leftImage,"3"+a);
+                sideButtons[4] = new JButton[5];
+                makeButton(4, 0, "Grid","G");
+                makeButton(4, 1, "Transparent","T");
+                makeButton(4, 2, "No Walls", "N");
+                makeButton(4, 3, "Save", "S");
+                makeButton(4, 4, "Load", "L");
+    }
+    
+    public void makeButton(int tabNumber,int position,String name,String actionName) {
+        sideButtons[tabNumber][position] = new JButton();
+        sideButtons[tabNumber][position].setText(name);
+        sideButtons[tabNumber][position].setActionCommand(actionName);
+        sideButtons[tabNumber][position].setLocation(position*100,0);
+        sideButtons[tabNumber][position].setSize(100,50);
+        sideButtons[tabNumber][position].addActionListener(this);
+        ((JPanel)sideBar.getComponentAt(tabNumber)).add(sideButtons[tabNumber][position]);
+        ((JPanel)sideBar.getComponentAt(tabNumber)).repaint();
+    }
+    
+    public void makeButton(int tabNumber,int position,BufferedImage icon,String actionName) {
+        sideButtons[tabNumber][position] = new JButton();
+        sideButtons[tabNumber][position].setIcon(new ImageIcon(icon));
+        sideButtons[tabNumber][position].setActionCommand(actionName);
+        sideButtons[tabNumber][position].setLocation(position*100,0);
+        sideButtons[tabNumber][position].setSize(100,50);
+        sideButtons[tabNumber][position].addActionListener(this);
+        ((JPanel)sideBar.getComponentAt(tabNumber)).add(sideButtons[tabNumber][position]);
+        ((JPanel)sideBar.getComponentAt(tabNumber)).repaint();
+    }
+    
+    public void mouseMoved(java.awt.event.MouseEvent evt) {
+        //System.out.println("Moved to " + evt.getPoint());
+        currentPoint.x = evt.getX();
+        currentPoint.y = evt.getY();
+        screenToTile(evt.getPoint());
+        //System.out.println(tileCurrent);
+    }
+    
+    public void mousePressed(java.awt.event.MouseEvent evt) {
+        System.out.println("Pressed " + (evt.getX()+cameraLoc.x) + "," + (evt.getY()+cameraLoc.y));
+        clickPoint.x = evt.getX();
+        clickPoint.y = evt.getY();
+        screenToTile(evt.getPoint());
+        tilePressed.setLocation(tileCurrent);
+        
+    }
+    
+    public void mouseEntered(java.awt.event.MouseEvent evt) {
+    }
+    public void mouseExited(java.awt.event.MouseEvent evt) {
+        
+    }
+    
+    public void mouseReleased(java.awt.event.MouseEvent evt) {
+        System.out.println("Released " + evt.getPoint());
+        isDragging=false;
+        screenToTile(evt.getPoint());
+        tileReleased.setLocation(tileCurrent);
+        System.out.println(tileReleased.x+"   "+tileReleased.y);
+        lasso.setFrameFromDiagonal(tilePressed, tileReleased);
+        if(lasso.height!=0||lasso.width!=0||barState!=1) {
+            lasso.height++;
+            lasso.width++;
+        }
+        System.out.println(lasso);
+        if(barState==0||barState==1&&!isDragging) {
+            //gameMap.createRoom();
+            try {
+                dout.writeByte(CREATE_TILE);
+                dout.write(lasso.x);
+                dout.write(lasso.y);
+                dout.write(lasso.width);
+                dout.write(lasso.height);
+                dout.writeByte(barState);
+                dout.writeByte(tileType);
+            }
+            catch(IOException ie) {
+                ie.printStackTrace();
+            }
+            
+        }
+        else if(barState==2||barState==3)
+            Geometry.lineOfSight(tilePressed,tileReleased);
+        
+        lasso.setFrameFromDiagonal(-1,-1,-1,-1);
+    }
+    
+    public void mouseClicked(java.awt.event.MouseEvent evt) {
+        try {
+            System.out.println("Clicked " + evt.getPoint());
+            screenToTile(evt.getPoint());
+            tileReleased.setLocation(tileCurrent);
+            if(barState==1) {
+                if(evt.getButton()==evt.BUTTON1) {
+                    dout.writeByte(CREATE_WALL);
+                    dout.write(tileReleased.x);
+                    dout.write(tileReleased.y);
+                    dout.writeByte(wallCurrent);
+                    dout.writeByte(wallType);
+                    //gameMap.createWall(tileReleased,wallCurrent,wallType);
+                }
+                else if(evt.getButton()==evt.BUTTON3||evt.getButton()==evt.BUTTON2) {
+                    dout.writeByte(DELETE_WALL);
+                    dout.write(tileReleased.x);
+                    dout.write(tileReleased.y);
+                    dout.writeByte(wallCurrent);
+                    //gameMap.deleteWall(tileReleased,wallCurrent);
+                }
+            }
+            else if(barState==3) {
+                if(evt.getButton()==evt.BUTTON1) {
+                    dout.writeByte(CREATE_OBJECT);
+                    dout.write(tileReleased.x);
+                    dout.write(tileReleased.y);
+                    dout.writeByte(entityType);
+                    ///gameMap.createObject(new Point(tileReleased),entityType);
+                }
+                else if(evt.getButton()==evt.BUTTON3||evt.getButton()==evt.BUTTON2) {
+                    dout.writeByte(DELETE_OBJECT);
+                    dout.write(tileReleased.x);
+                    dout.write(tileReleased.y);
+                    //gameMap.deleteObjectsAt(tileReleased);
+                }
+            }
+        }
+        catch(IOException e) {
+            System.out.println("Error sending data!!!");
+        }
+    }
+    
+    public void mouseDragged(java.awt.event.MouseEvent evt) {
+        //System.out.println("Dragged " + evt.getPoint()+ "Line of Angle: " + 180/Math.PI*Math.atan2(currentPoint.y-clickPoint.y,currentPoint.x-clickPoint.x));
+        currentPoint.x = evt.getX();
+        currentPoint.y = evt.getY();
+        screenToTile(evt.getPoint());
+        tileReleased.setLocation(tileCurrent);
+        System.out.println(tileReleased.x+"   "+tileReleased.y);
+        lasso.setFrameFromDiagonal(tilePressed, tileReleased);
+        lasso.height++;
+        lasso.width++;
+        System.out.println(lasso);
+        //highlight.setFrameFromDiagonal(clickPoint.x, clickPoint.y, evt.getX(), evt.getY());
+        isDragging=true;
+    }
+    
+    public void actionPerformed(ActionEvent e) {
+        System.out.println(e.getActionCommand());
+        switch(e.getActionCommand().charAt(0)) {
+            case '0':
+                tileType = (int)(e.getActionCommand().charAt(1)-'0');
+                break;
+            case '1':
+                wallType = ((int)(e.getActionCommand().charAt(1)-'0'));
+                break;
+            case '3':
+                entityType = ((int)(e.getActionCommand().charAt(1)-'0'));
+                
+                break;
+            case 'G':
+                gridOn = !gridOn;
+                break;
+            case 'T':
+                alphaOn = !alphaOn;
+                break;
+            case 'N':
+                wallsOn = !wallsOn;
+                break;
+            case 'S':
+                try {
+                    dout.writeByte(SAVE_MAP_REQUEST);
+                    dout.writeChars("myMap.imp");
+                    //((MapBuilderStandalone)ioLoader).saveMap(gameMap,"myMap.imp");
+                }
+                catch(Exception exp) {
+                    exp.printStackTrace();
+                }
+                break;
+            case 'L':
+                try {
+                    dout.writeByte(LOAD_MAP_REQUEST);
+                    dout.writeChars("myMap.imp");
+                    //((MapBuilderStandalone)ioLoader).loadMap(gameMap,"myMap.imp");
+                }
+                catch(Exception exp) {
+                    exp.printStackTrace();
+                }
+                break;
+        }
+    }
+}    
+    

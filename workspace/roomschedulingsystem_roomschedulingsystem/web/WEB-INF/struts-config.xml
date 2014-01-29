@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+
+<struts-config>
+    <form-beans>
+        <form-bean name="ReportRoomsListActionForm" type="ae.hct.admc.actionFormBeans.ReportRoomsListActionForm"/>
+        <form-bean name="UserActionForm" type="ae.hct.admc.actionFormBeans.UserActionForm"/>
+        <form-bean name="EventActionForm" type="ae.hct.admc.actionFormBeans.EventActionForm"/>
+        <form-bean name="CourseActionForm" type="ae.hct.admc.actionFormBeans.CourseActionForm"/>
+        <form-bean name="SemesterActionForm" type="ae.hct.admc.actionFormBeans.SemesterActionForm"/>
+        <form-bean name="RoomsListForm" type="ae.hct.admc.actionFormBeans.RoomsListForm"/>
+        <form-bean name="EventScheduleActionBean" type="ae.hct.admc.actionFormBeans.EventScheduleActionBean"/>
+        <form-bean name="BlockActionForm" type="ae.hct.admc.actionFormBeans.BlockActionForm"/>
+        <form-bean name="RoomActionForm" type="ae.hct.admc.actionFormBeans.RoomActionForm"/>
+        <form-bean name="RoomSchedule" type="ae.hct.admc.actionFormBeans.RoomScheduleActionBean"/>
+        <form-bean name="Login" type="ae.hct.admc.actionFormBeans.LoginActionBean"/>
+    </form-beans>
+    
+    <global-exceptions>
+    
+    </global-exceptions>
+
+    <global-forwards>
+        <forward name="welcome"  path="/Welcome.do"/>
+    </global-forwards>
+
+    <action-mappings>
+        <action input="/login.jsp" name="Login" path="/login" scope="request" type="ae.hct.admc.actions.LoginAction">
+            <forward name="admin" path="/Administration.jsp"/>
+            <forward name="rooms" path="/roomsList.do"/>
+            <forward name="login" path="/login.jsp"/>
+        </action>
+        <!--action path="/roomSchedule" type="ae.hct.admc.actions.RoomScheduleAction">
+            <forward name="success" path="/roomSchedule.jsp" />
+        </action-->
+        <action input="/roomSchedule.jsp" name="RoomSchedule" path="/roomSchedule" 
+            scope="request" type="ae.hct.admc.actions.RoomScheduleAction">
+            <forward name="success" path="/roomSchedule.jsp" />
+        </action>
+        <action path="/reservations" type="ae.hct.admc.actions.ReservationRequests">
+            <forward name="success" path="/reservationRequests.jsp" />
+        </action>
+        <action input="/roomsList.jsp" name="RoomsListForm" path="/roomsList" scope="request" type="ae.hct.admc.actions.RoomsList">
+            <forward name="success" path="/roomsList.jsp"/>
+        </action>
+        <action path="/administration" type="ae.hct.admc.actions.AdministrationAction">
+            <forward name="room" path="/roomManagement.do"/>
+            <forward name="block" path="/blockManagement.do"/>
+            <forward name="users" path="/userManagement.do"/>
+            <forward name="events" path="/eventManagement.do"/>
+            <forward name="courses" path="/courseManagement.do"/>
+            <forward name="semesters" path="/semesterManagement.do"/>
+        </action>
+        <action input="/room.jsp" name="RoomActionForm" path="/room" scope="request" type="ae.hct.admc.actions.RoomAction">
+            <forward name="success" path="/roomManagement.do"/>
+            <forward name="edit" path="/room.jsp"/>
+        </action>
+        <action path="/roomManagement" type="ae.hct.admc.actions.RoomManagementAction">
+            <forward name="edit" path="/room.do"/>
+            <forward name="success" path="/RoomManagement.jsp"/>
+        </action>
+        <action path="/blockManagement" type="ae.hct.admc.actions.BlockManagementAction">
+            <forward name="edit" path="/block.do"/>
+            <forward name="success" path="/blockManagement.jsp"/>
+        </action>
+        <action path="/semesterManagement" type="ae.hct.admc.actions.SemesterManagement">
+            <forward name="edit" path="/semester.do"/>
+            <forward name="success" path="/SemesterManagement.jsp"/>
+        </action>
+        <action input="/block.jsp" name="BlockActionForm" path="/block" scope="request" type="ae.hct.admc.actions.BlockAction">
+            <forward name="success" path="/blockManagement.do"/>
+            <forward name="edit" path="/block.jsp"/>
+        </action>
+        <action input="/eventSchedule.jsp" name="EventScheduleActionBean" path="/eventSchedule" scope="request" type="ae.hct.admc.actions.EventScheduleAction">
+            <forward name="success" path="/eventSchedule.jsp"/>
+        </action>
+        <action input="/semester.jsp" name="SemesterActionForm" path="/semester" scope="request" type="ae.hct.admc.actions.SemesterAction">
+            <forward name="success" path="/semesterManagement.do"/>
+            <forward name="edit" path="/semester.jsp"/>
+        </action>
+        <action path="/courseManagement" type="ae.hct.admc.actions.CourseManagementAction">
+            <forward name="edit" path="/course.do"/>
+            <forward name="success" path="/CourseManagement.jsp"/>
+        </action>
+        <action input="/course.jsp" name="CourseActionForm" path="/course" scope="request" type="ae.hct.admc.actions.CourseAction">
+            <forward name="success" path="/courseManagement.do"/>
+            <forward name="edit" path="/course.jsp"/>
+        </action>
+        <action path="/eventManagement" type="ae.hct.admc.actions.EventManagementAction">
+            <forward name="edit" path="/event.do"/>
+            <forward name="success" path="/EventManagement.jsp"/>
+        </action>
+        <action input="/event.jsp" name="EventActionForm" path="/event" scope="request" type="ae.hct.admc.actions.EventAction">
+            <forward name="success" path="/eventManagement.do"/>
+            <forward name="edit" path="/event.jsp"/>
+        </action>
+        <action path="/userManagement" type="ae.hct.admc.actions.UserManagement">
+            <forward name="success" path="/UserManagement.jsp"/>
+            <forward name="edit" path="/user.do"/>
+        </action>
+        <action input="/user.jsp" name="UserActionForm" path="/user" scope="request" type="ae.hct.admc.actions.UserAction">
+            <forward name="success" path="/userManagement.do"/>
+            <forward name="edit" path="/user.jsp"/>
+        </action>
+        <action input="/reportRoomsList.jsp" name="ReportRoomsListActionForm" path="/report" scope="request" type="ae.hct.admc.actions.ReportRoomsListAction">
+            <forward name="Filter" path="/reportRoomsList.jsp" />
+            <forward name="Generate" path="/reportRoom.jsp" />
+        </action>
+        <action path="/Welcome" forward="/welcomeStruts.jsp"/>
+    </action-mappings>
+    
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+
+    <message-resources parameter="com/myapp/struts/ApplicationResource"/>    
+    
+    <!-- ========================= Tiles plugin ===============================-->
+    <!--
+    This plugin initialize Tiles definition factory. This later can takes some
+    parameters explained here after. The plugin first read parameters from
+    web.xml, thenoverload them with parameters defined here. All parameters
+    are optional.
+    The plugin should be declared in each struts-config file.
+    - definitions-config: (optional)
+    Specify configuration file names. There can be several comma
+    separated file names (default: ?? )
+    - moduleAware: (optional - struts1.1)
+    Specify if the Tiles definition factory is module aware. If true
+    (default), there will be one factory for each Struts module.
+    If false, there will be one common factory for all module. In this
+    later case, it is still needed to declare one plugin per module.
+    The factory will be initialized with parameters found in the first
+    initialized plugin (generally the one associated with the default
+    module).
+    true : One factory per module. (default)
+    false : one single shared factory for all modules
+    - definitions-parser-validate: (optional)
+    Specify if xml parser should validate the Tiles configuration file.
+    true : validate. DTD should be specified in file header (default)
+    false : no validation
+
+    Paths found in Tiles definitions are relative to the main context.
+    -->
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />      
+        <set-property property="moduleAware" value="true" />
+    </plug-in>
+    
+    <!-- ========================= Validator plugin ================================= -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+            property="pathnames"
+            value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+  
+</struts-config>

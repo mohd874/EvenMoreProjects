@@ -1,0 +1,36 @@
+07 Jun 2010 12:15:05,000 INFO  ~ Starting d:\workspace\FullTextSearch
+07 Jun 2010 12:15:05,000 INFO  ~ Module search is available (D:\play-1.0.2.1\modules\search)
+07 Jun 2010 12:15:05,671 INFO  ~ 
+07 Jun 2010 12:15:05,671 INFO  ~ Go to http://localhost:9000/@tests to run the tests
+07 Jun 2010 12:15:05,687 INFO  ~ 
+07 Jun 2010 12:15:05,687 WARN  ~ You're running Play! in DEV mode
+07 Jun 2010 12:15:05,812 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+07 Jun 2010 12:15:17,218 INFO  ~ Connected to jdbc:hsqldb:mem:playembed
+07 Jun 2010 12:15:17,968 INFO  ~ Application 'Full Text Search' is now started !
+07 Jun 2010 12:15:18,218 INFO  ~ Rebuild index finished
+07 Jun 2010 12:20:47,734 INFO  ~ Rebuild index finished
+07 Jun 2010 12:20:50,765 ERROR ~ 
+
+@62m6blgmn
+Internal Server Error (500) for request POST /application/search
+
+Oops: UnexpectedException
+An unexpected error occured caused by exception UnexpectedException: Unexpected Error
+
+play.exceptions.UnexpectedException: Unexpected Error
+	at play.modules.search.Search$Query.fetch(Search.java:165)
+	at controllers.Application.search(Application.java:35)
+	at play.utils.Java.invokeStatic(Java.java:129)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:139)
+	at Invocation.HTTP Request(Play!)
+Caused by: play.exceptions.UnexpectedException: Unexpected Error
+	at play.modules.search.Search$Query.executeQuery(Search.java:246)
+	at play.modules.search.Search$Query.fetch(Search.java:158)
+	... 4 more
+Caused by: play.exceptions.UnexpectedException: Cannot open index
+	at play.modules.search.Search.getIndexReader(Search.java:343)
+	at play.modules.search.Search$Query.executeQuery(Search.java:206)
+	... 5 more
+Caused by: play.exceptions.UnexpectedException: Could not find models.Post index. Please re-index
+	at play.modules.search.Search.getIndexReader(Search.java:338)
+	... 6 more

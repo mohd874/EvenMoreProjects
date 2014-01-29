@@ -1,0 +1,12 @@
+Jason Gauci
+jgmath2000@hotmail.com
+TODO's
+
+-First of all, if anyone can help with any of these, please let me know.  I'd love to have some experienced java people working on this.
+-Second, if you know anyone who can do graphics, please let me know, I need some sprites.
+
+THINGS TO DO:
+Optimization
+
+Projectiles / bullets
+Weapon Support

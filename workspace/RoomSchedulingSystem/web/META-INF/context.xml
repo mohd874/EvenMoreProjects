@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/RoomSchedulingSystem">
+  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" 
+  maxActive="20" maxIdle="10" maxWait="-1" 
+  name="RoomSchedulingSystemDataSource" password="123" type="javax.sql.DataSource" 
+  url="jdbc:mysql://localhost:3306/room_scheduling_system" username="root"/>
+</Context>

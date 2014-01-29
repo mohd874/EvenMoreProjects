@@ -1,0 +1,292 @@
+/*
+ * GameServer.java
+ *
+ * Created on July 8, 2003, 8:03 PM
+ */
+
+package IsometricGame;
+
+import java.net.*;
+import java.io.*;
+import java.util.*;
+import java.awt.*;
+import java.awt.image.*;
+
+
+/**
+ *
+ * @author  jgauci
+ */
+public class GameServer  implements PacketOperator {
+    ServerSocket serverSocket;
+    Socket tempSocket;
+    Vector connections;
+    MediaTracker tracker;
+    String fileBase;
+    GameServer thisServer;
+    GameEngine thisEngine;
+    
+    /** Creates a new instance of GameServer */
+    public GameServer(int port) throws IOException {
+        thisServer = this;
+        fileBase = "./IsometricGame/";
+        connections = new Vector();
+        javax.swing.JPanel myWindow = new javax.swing.JPanel();
+        tracker = new MediaTracker(myWindow);
+        thisEngine = new GameEngine(thisServer);
+        
+        // Create the serverSocket
+        serverSocket = new ServerSocket( port );
+        
+        // Tell the world we're ready to go
+        System.out.println( "Listening on "+serverSocket );
+        
+        
+        // Keep accepting connections forever
+        while (true) {
+            
+            // Grab the next incoming connection
+            tempSocket = serverSocket.accept();
+            
+            // Tell the world we've got it
+            System.out.println( "Connection from "+tempSocket );
+            
+            
+            // Create a new thread for this connection
+            connections.add(new GameConnection( tempSocket));
+        }
+    }
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) throws Exception {
+        GameServer myGameServer = new GameServer(7766);
+    }
+    
+    public java.awt.image.BufferedImage loadImage(String location) {
+        System.out.println("Loading" + location);
+        Image tempImage = Toolkit.getDefaultToolkit().getImage(fileBase + "images/" + location);
+        tracker.addImage(tempImage,0);
+        try {
+            tracker.waitForAll();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        BufferedImage tempBuffImage = new BufferedImage(tempImage.getWidth(null), tempImage.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+        tempBuffImage.createGraphics().drawImage(tempImage,null,null);
+        System.out.println("Done!");
+        return tempBuffImage;
+    }
+    
+    public void saveMap(final IsometricMap map, String filename) throws Exception {
+        /*BufferedWriter outStream;
+        outStream = new BufferedWriter(new FileWriter(new File(fileBase+"maps/"+filename)));
+        outStream.writeInt(map.height);
+        outStream.writeInt(map.width);
+        for(int a=0;a<map.height;a++) {
+            for(int b=0;b<map.width;b++) {
+                outStream.writeInt(map.tileMap[a][b].type);
+            }
+        }
+        for(int a=0;a<map.height+1;a++) {
+            for(int b=0;b<map.width+1;b++) {
+                outStream.writeInt(map.rightWalls[a][b].type);
+            }
+        }
+        for(int a=0;a<map.height+1;a++) {
+            for(int b=0;b<map.width+1;b++) {
+                outStream.writeInt(map.leftWalls[a][b].type);
+            }
+        }
+        for(int a=0;a<map.height;a++) {
+            for(int b=0;b<map.entityList[a][b].size();b++) {
+                outStream.writeInt(map.entityList[a][b].size());
+                for(int t=0;t<map.entityList[a][b].size();t++) {
+                    Entity tempEntity = ((Entity)map.entityList[a][b].get(t));
+                    outStream.writeInt(tempEntity.location.x);
+                    outStream.writeInt(tempEntity.location.y);
+                    outStream.writeByte(tempEntity.entityType);
+                    outStream.writeInt(tempEntity.ID);
+                }
+            }
+        }
+        outStream.close();
+        System.out.println("Saved!");
+        */
+    }
+    
+    public void loadMap(IsometricMap map, String filename) throws Exception {
+        /*BufferedReader inStream;
+        inStream = new BufferedReader(new FileReader(new File(fileBase+"maps/"+filename)));
+        //inStream.println(""+map.height+" "+map.width);
+        map.height = inStream.read();
+        map.width = inStream.read();
+        System.out.println(map.height + " " + map.width);
+        for(int a=0;a<map.height;a++) {
+            for(int b=0;b<map.width;b++) {
+                map.tileMap[a][b].type = (byte)inStream.read();
+                //                inStream.print(map.tileMap[a][b].type);
+                //                outStream.print(" ");
+            }
+            //            outStream.println();
+        }
+        for(int a=0;a<map.height+1;a++) {
+            for(int b=0;b<map.width+1;b++) {
+                map.rightWalls[a][b].type = (byte)inStream.read();
+                //                outStream.print(map.rightWalls[a][b].type);
+                //                outStream.print(" ");
+            }
+            //            outStream.println();
+        }
+        for(int a=0;a<map.height+1;a++) {
+            for(int b=0;b<map.width+1;b++) {
+                map.leftWalls[a][b].type = (byte)inStream.read();
+                //                outStream.print(map.leftWalls[a][b].type);
+                //                outStream.print(" ");
+            }
+            //            outStream.println();
+        }
+        map.entityList = new Vector[map.height];
+        for(int a=0;a<map.height;a++)
+            map.entityList[a] = new Vector();
+        
+        for(int a=0;a<map.height;a++) {
+            int tempSize = inStream.read();
+            for(int b=0;b<tempSize;b++) {
+                Point tempLocation = new Point(inStream.read(),a);
+                Entity tempEntity = new Entity(tempLocation,(byte)inStream.read());
+                map.entityList[a].add(tempEntity);
+            }
+        }
+        inStream.close();
+        
+        */
+    }
+    
+    public void broadcastByte(byte data) {
+        try {
+            for(int a=0;a<connections.size();a++) {
+                ((GameConnection)connections.elementAt(a)).dout.writeByte(data);
+                ((GameConnection)connections.elementAt(a)).dout.flush();
+            }
+        }
+        catch(Exception e) {
+        }
+    }
+    
+    public void broadcastInt(int data) {
+        try {
+            for(int a=0;a<connections.size();a++) {
+                ((GameConnection)connections.elementAt(a)).dout.writeInt(data);
+                ((GameConnection)connections.elementAt(a)).dout.flush();
+            }
+        }
+        catch(Exception e) {
+        }
+    }
+    
+    
+    public class GameConnection extends Thread {
+        Socket clientSocket;
+        DataOutputStream dout;
+        DataInputStream din;
+        
+        // Constructor.
+        public GameConnection(Socket clientSocket) {
+            System.out.println("Making a new thread");
+            this.clientSocket = clientSocket;
+            
+            //Start the thread
+            start();
+        }
+        
+        // This runs in a separate thread when start() is called in the
+        // constructor.
+        public void run() {
+            boolean done;
+            try {
+                // Create an DataOutputStream for writing data to the
+                // other side
+                dout = new DataOutputStream(clientSocket.getOutputStream());
+                din = new DataInputStream(clientSocket.getInputStream());
+                
+                InetAddress clientAddress=null;
+                
+                
+                clientAddress = clientSocket.getInetAddress();
+                System.out.println("Creating new player");
+                System.out.println("MAKING PLAYER FOR " + clientSocket);
+                
+                done=false;
+                
+                while (!done) {
+                    
+                    // ... read the next message ...
+                    int header = din.readByte();
+                    switch(header) {
+                        case CREATE_WALL:
+                            Point location = new Point(din.read(),din.read());
+                            byte wallCurrent = din.readByte();
+                            byte wallType = din.readByte();
+                            System.out.println("CREATING WALL " + location + " " + wallCurrent + " " + wallType);
+                            thisEngine.gameMap.createWall(location, wallCurrent, wallType);
+                            System.out.println("WALL CREATED");
+                            broadcastInt(location.x);
+                            broadcastInt(location.y);
+                            broadcastByte(wallCurrent);
+                            broadcastByte(wallType);
+                            break;
+                        case CREATE_TILE:
+                            Rectangle tempRect = new Rectangle(din.read(),din.read(),din.read(),din.read());
+                            byte arg1,arg2;
+                            arg1 = din.readByte();
+                            arg2 = din.readByte();
+                            System.out.println("Creating room:" + tempRect + ' ' + arg1 + ' ' + arg2);
+                            thisEngine.gameMap.createRoom(tempRect,arg1,arg2);
+                            broadcastByte(ROOM_CREATED);
+                            broadcastInt(tempRect.x);
+                            broadcastInt(tempRect.y);
+                            broadcastInt(tempRect.width);
+                            broadcastInt(tempRect.height);
+                            broadcastByte(arg1);
+                            broadcastByte(arg2);
+                            break;
+                        case CREATE_ENTITY:
+                            Point tempPoint = new Point(din.read(),din.read());
+                            byte entityType = din.readByte();
+                            int ID = din.readInt();
+                            thisEngine.gameMap.createEntity(tempPoint,entityType,ID);
+                            broadcastByte(ENTITY_CREATED);
+                            broadcastInt(tempPoint.x);
+                            broadcastInt(tempPoint.y);
+                            broadcastByte(entityType);
+                            broadcastInt(ID);
+                            break;
+                        case MOVE_ENTITY:
+                            break;
+                        case SEND_MAP:
+                            System.out.println("Sending Map");
+                            dout.writeByte(MAP_SENT);
+                            thisEngine.gameMap.sendMap(dout);
+                            break;
+                            
+                    }
+                }
+                
+                // The connection is closed for one reason or another,
+                // so have the server dealing with it
+                thisServer.connections.remove(this);
+            }
+            catch(SocketException se) {
+                return;
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+                return;
+            }
+        }
+    }
+    
+}

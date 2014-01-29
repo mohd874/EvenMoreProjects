@@ -1,0 +1,27 @@
+jIsoMan
+Jason G
+jgmath200@hotmail.com
+http://sourceforge.net/
+
+To run jIsoMan, unzip the zip file into a directory, go to the directory, and run 
+
+java IsometricGame/Server/GameServer
+
+for the server and then
+
+java IsometricGame/Client/GameStandalone
+
+You need to run the java command from the previous 
+directory because of the package situation.  If anyone knows how to make
+the packaging better or how to set up jars to work with file I/O, please tell me, thanks.
+
+TEST USERS:
+
+username: test   password:test
+This account is a test player
+
+username: testbuilder  password: testbuilder
+This account is a test builder
+
+If you have any questions/comments or trouble with this, PLEASE contact me, instead of giving up. You can
+post a message in the sourceforge forum or e-mail me (my address is up top), thanks =)

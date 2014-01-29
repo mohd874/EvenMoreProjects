@@ -1,0 +1,47 @@
+body { font: 11px Verdana, Helvetica, Arial, sans-serif; }
+
+a:link { text-decoration: underline; }
+a:visited { text-decoration: underline; }
+
+h1 { }
+h2 { }
+h3 { }
+
+strong { }
+em { }
+
+p { }
+pre { }
+code { }
+
+hr { }
+
+
+.hide { display: none;}
+
+
+/* hide screen navigation */
+#TopMenu, #ControlMenu, #LeftMenu, #LeftAds, #MemberMenu, #WhosOnline  { display: none; }
+.pn-normal, .quickstart-box { display: none; }
+
+
+/* reformat breadcrumb for reference */
+#Breadcrumb { display: none; /* for now */}
+#Breadcrumb { border-top: 1px solid #6e6e6e; margin-bottom: 30px; padding-top: 10px;}
+#Breadcrumb ul { padding-left: 0px; margin: 0px; display: inline; }
+#Breadcrumb li { list-style: none; color: #333333; font: 11px Verdana, Helvetica, Arial, sans-serif; display: inline; }
+#Breadcrumb li.root { color: #666666; font-weight: bold; }
+#Breadcrumb a { color: #005EB6; text-decoration: none; }
+#Breadcrumb a:hover { text-decoration: underline; }
+#Breadcrumb li:before { content: "\00BB \0020"; }
+#Breadcrumb li.root:before { content: " "; }
+
+
+/* format general text */
+#BodyTable td.topheader { height: 0px; }
+#BodyTable td.leftside { height: 0px; }
+#BodyTable td.bodycell { font: 11px verdana, arial, helvetica; }
+
+
+/* reformat copyright */
+#PageFooter #Copyright { font: 11px Verdana, Helvetica, Arial, sans-serif; margin-top: 30px; opacity: .5}

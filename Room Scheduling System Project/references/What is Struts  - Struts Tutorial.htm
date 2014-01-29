@@ -1,0 +1,1285 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head>
+
+
+<link rel="shortcut icon" href="http://www.visualbuilder.com/favicon1.ico"><title>What is Struts? - Struts Tutorial</title><!--VisualBuilder.com-->
+
+
+<meta name="description" content="The JSP Struts Tutorial will help new JSP developers understand the benefits of struts and how to program their first struts program.
+
+Also included are JSP Struts movies to learn Struts by example. Struts source code is also included for download.
+
+This is Part 1 of a 3 Part Struts tutorial. See the left hand menu for the other parts when you finish this part of the Struts tutorial."> 
+<meta name="keywords" content="JSP struts tutorial, learn struts, struts code, struts examples, JSP struts, Struts tutorial, source code">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+@import url(../../../../../css/default.css);
+-->
+.whiteColor{
+	color:#000000;
+	font-weight:bold;
+}
+</style>
+<script type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+<script>
+function open_pop()
+{
+	window.open('popup.php','Refer_Friend','width=500 height=250');
+}
+
+</script>
+<script src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/printVersion.js" language="javascript"></script>
+<style type="text/css">
+										<!--
+										.style1 {
+											color: #FFFFFF;
+											font-weight: bold;
+										}
+										-->
+										</style></head><body>
+<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+  <tbody><tr>
+    <td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+          <td width="280">
+			<a href="http://www.visualbuilder.com/"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/Tut_Logo.jpg" alt="VisualBuilder" border="0" height="101" width="280"></a></td>
+		  <td background="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/topright_background_.jpg" width="954">
+		  <table border="0" cellpadding="2" cellspacing="2" width="100%">
+   <tbody><tr>
+     <td><!-- 728x90 Leaderboard Ad Tag Start -->
+		<div style="padding-left: 5px;">
+		  <iframe id="headerBanner" src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/inc.htm" align="left" frameborder="0" height="90" scrolling="no" width="730"></iframe>
+		  </div>
+		
+		<!-- 728x90 Leaderboard Ad Tag End -->
+     </td>
+   </tr>
+ </tbody></table></td>
+ </tr>
+        <tr>
+          <td colspan="2">
+		  <div>
+			&nbsp;&nbsp;<a href="http://www.visualbuilder.com/"><b>Home</b></a> &gt; <a href="http://www.visualbuilder.com/jsp"><b>Jsp</b></a> &gt; <a href="http://www.visualbuilder.com/learn/"><b>Tutorials</b></a>  &gt; <b>What is Struts? - Struts Tutorial</b>			</div>
+		  </td>
+        </tr>
+      </tbody></table>    </td>
+  </tr>
+<tr>
+    <td height="5"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/shim.gif" height="5" width="34"></td>
+</tr>  
+<script>
+function newurl(url)
+{
+//alert(url);
+window.location.href = url; 
+}
+</script>
+<tr>
+    <td height="7"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/shim.gif" height="7" width="34"></td>
+</tr>
+<tr>
+	<td>
+	  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+          <td style="padding-left: 8px;" width="17%"><table border="0" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/topleft_smallbox_left.jpg" height="61" width="28"></td>
+                <td background="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/topleft_smallbox_mid.jpg" width="120"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody><tr>
+                      <td height="18"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/tellafriend_icon.jpg" align="absmiddle" height="11" width="10"> <a href="http://www.visualbuilder.com/email_friend.php">Tell a friend</a> </td>
+                    </tr>
+                    <tr>
+                      <td><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/linktous_icon.gif" align="absmiddle" height="12" width="10"> <a href="http://www.visualbuilder.com/linktous.php">Link to us</a></td>
+                    </tr>
+                </tbody></table></td>
+                <td><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/topleft_smallbox_right.jpg" height="61" width="3"></td>
+              </tr>
+          </tbody></table></td>
+          <td align="center" width="66%">
+		  <div style="padding-left: 5px;">
+			  <iframe id="subHeaderBanner" src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/inc_002.htm" align="middle" frameborder="0" height="60" scrolling="no" width="468"></iframe>
+			</div>
+		  </td>
+          <td style="padding-right: 8px;" align="right" width="17%"><table border="0" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/topright_smallbox_left.jpg" height="61" width="3"></td>
+                <td align="right" background="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/topright_smallbox_mid.jpg" valign="middle" width="120"><table border="0" cellpadding="0" cellspacing="0" width="96%">
+                    <tbody><tr>
+                      <td height="20"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/currentlyonline_icon.jpg" height="10" width="13"> Total Members</td>
+                    </tr>
+                    <tr>
+                      <td><table>
+                          <tbody><tr>
+                            <td height="18">
+								                <table>
+	                 <tbody><tr>
+                      <td height="18">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="redText">Members: 
+					  84618	</span></td>
+                    </tr>
+                    
+                   <!--  <tr>
+                      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="blueText">Guests: 1</span></td>
+                    </tr> -->
+	              </tbody></table>
+        
+      </td>
+                          </tr>
+                          <!--  <tr>
+                      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="blueText">Guests: 53</span></td>
+                    </tr> -->
+                      </tbody></table></td>
+                    </tr>
+                </tbody></table></td>
+                <td><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/topright_smallbox_right.jpg" height="61" width="28"></td>
+              </tr>
+          </tbody></table></td>
+        </tr>
+        <tr>
+          <td style="padding-left: 8px;">&nbsp;</td>
+          <td align="center">&nbsp;</td>
+          <td style="padding-right: 8px;" align="right">&nbsp;</td>
+        </tr>
+      </tbody></table>	</td>
+</tr>  
+<tr>
+	<td valign="top">
+			<table border="0" cellpadding="2" cellspacing="0" height="100%" width="100%">
+			  <tbody><tr>
+				<td valign="top" width="18%">
+		 		<table border="0" cellpadding="0" cellspacing="0" height="100%" width="220">
+				<tbody><tr> 
+				  <td align="center" background="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/leftpanel_back.jpg" valign="top">
+									<table background="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/rightpanel_back.jpg" border="0" cellpadding="0" cellspacing="0" width="100%">
+			
+									  <tbody><tr>
+			
+										<td align="left" height="37" width="13"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/titlebar_left.jpg" height="37" width="13"></td>
+			
+										<td background="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/titlebar_mid.jpg"><table border="0" cellpadding="1" cellspacing="0" height="28" width="100%">
+										  <tbody><tr>
+											<td><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/sitemap_icon.jpg" align="absmiddle" height="11" width="12"> <a href="http://www.visualbuilder.com/sitemap.php">Sitemap</a></td>
+											<td><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/linktous_icon.jpg" align="absmiddle" height="12" width="10"> <a href="http://www.visualbuilder.com/forum/">Forum</a></td>
+											<td align="right"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/tellafriend_icon.jpg" align="absmiddle" height="11" width="10"> <a href="http://www.visualbuilder.com/chat/" title=" PEOPLE CHATING"> Chat</a></td>
+										  </tr>
+										</tbody></table>
+										</td>
+										<td align="right" width="21"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/titlebar_right.jpg" height="37" width="21"></td>
+									  </tr>
+			
+									</tbody></table>
+									<table align="center" border="0" cellpadding="0" cellspacing="0" width="95%">
+									  <tbody><tr>
+										<td !class="smallPanelContents"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+											  <td !class="ContentsPanelInner">
+											  	
+											  <table style="border-collapse: collapse;" border="1" bordercolor="#000000" cellpadding="2" cellspacing="0" width="100%">
+												  <tbody><tr>
+													<td align="center"><a href="http://www.visualbuilder.com/"><font color="#ffffff"><b>Home</b></font></a></td>
+												  </tr>
+												  <tr>
+													<td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/jsp/struts/tutorial/">Struts Tutorial Home</a></td>
+												  </tr>
+																										 <tr>
+														<td bgcolor="#ffffff"><b>1 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/1/"><span class="whiteColor">What is Struts?</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>2 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/2/"><span>Why do we need Struts?</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>3 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/3/"><span>Advantages of Struts</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>4 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/4/"><span>Setting up Eclipse for Web Development</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>5 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/5/"><span>Registration Case Study</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>6 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/6/"><span>Setting up Struts project in Eclipse</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>7 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/7/"><span>Creating an ODBC Data source</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>8 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/8/"><span>Configuring Application Server</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>9 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/9/"><span>Struts Configuration</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>10 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/10/"><span>Writing the User class</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>11 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/11/"><span>ResourceManager</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>12 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/12/"><span>Writing the Struts Business Component</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>13 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/13/"><span>Creating the Action Class</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>14 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/14/"><span>Adding ActionForward</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>15 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/15/"><span>Deploy the Struts Application</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>16 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/16/"><span>Adding the Form bean</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>17 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/17/"><span>Configuring Form Bean in struts-config.xml</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>18 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/18/"><span>Using Struts Tag Libraries</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>19 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/19/"><span>Listing all Users - Struts Iterator Looping</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>20 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/20/"><span>Add User Action - New Struts Action Class</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>21 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/21/"><span>Add User View</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>22 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/22/"><span>Validating Struts Form Bean</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>23 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/23/"><span>Review of the Struts Tutorial</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>24 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/24/"><span>Introduction</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>25 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/25/"><span>DispatchAction</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>26 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/26/"><span>DispatchAction Example Continued...</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>27 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/27/"><span>Introduction to DynaActionForm</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>28 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/28/"><span>DynaActionForm Example Continued...</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>29 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/29/"><span>Struts solution to Duplicate Form Submission (Token mechanism)</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>30 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/30/"><span>Introduction to Validation framework</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>31 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/31/"><span>Example Continued Validation Framework.</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>32 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/32/"><span>Client Side Validation</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>33 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/33/"><span>Introduction to Standard Validator-Rules.xml</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>34 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/34/"><span>Creating custom Valdator rules</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>35 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/35/"><span>Extending the Validator Rules with the inherited SubForm Classes.-2</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>36 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/36/"><span>Internationalization in struts application</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>37 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/37/"><span>Exception Handling in Struts</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>38 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/38/"><span>Creating Custom Exception Handlers in Struts-1</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>39 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/39/"><span>Creating Custom Exception Handlers in Struts.-2</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>40 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/40/"><span>Creating Plugin for the Struts Application. -1</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>41 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/41/"><span>Creating Plugin for the Struts Application. -2</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>42 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/42/"><span>WildCard Character mapping for the Actions-1.</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>43 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/43/"><span>WildCard Character mapping for the Actions-2.</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>44 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/44/"><span>WildCard Character mapping for the Actions-3.</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>45 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/45/"><span>Uploading the Files to Server Using Struts-1</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>46 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/46/"><span>Uploading the Files to Server Using Struts-2</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>47 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/47/"><span>Introduction to Modules in Struts Application</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>48 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/48/"><span>Modules Example-1</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>49 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/49/"><span>Modules Example-2</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>50 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/50/"><span>Customizing the ActionServlet Class for the application-1.</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>51 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/51/"><span>Customizing the ActionServlet Class for the application-2.</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>52 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/52/"><span>Customizing the ActionServlet Class for the application-3.</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>53 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/53/"><span>Customizing the ActionServlet Class for the application-3.</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>54 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/54/"><span>Customizing RequestProcessor Class for the application-1.</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>55 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/55/"><span>Customizing RequestProcessor Class for the application.-2</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>56 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/56/"><span>ComposableRequestProcessor in Struts 1.3</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>57 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/57/"><span>Adding New Command Objects in Struts CoR Pattern</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>58 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/58/"><span>Security in Struts</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>59 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/59/"><span>Example for the Application Managed Security-1</span></a></td>
+													</tr> 
+																										 <tr>
+														<td bgcolor="#ffffff"><b>60 .</b>&nbsp;<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/60/"><span>Example for the Application Managed Security-2</span></a></td>
+													</tr> 
+																								  </tbody></table>
+											  											  </td>
+											</tr>
+										</tbody></table></td>
+									  </tr>
+									</tbody></table>
+									
+									<table align="center" border="0" cellpadding="0" cellspacing="0" width="95%">
+							<tbody><tr>
+							  <td>&nbsp;</td>
+							  </tr>
+							<tr> 
+								<td !class="smallPanelContents"> 
+									<table style="border-collapse: collapse;" border="1" bordercolor="#000000" cellpadding="2" cellspacing="0" width="100%">
+										<tbody><tr>
+										  <td>
+										  										  <a href="http://www.visualbuilder.com/jsp"><font color="#ffffff"><strong>Jsp Group Home</strong></font></a></td>
+									  </tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/forum_desc.php?group_id=4">Jsp Discussion
+										  (71)										  </a></td>
+									  </tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/member-listing.php?group_id=4">Jsp Members
+										  (18679)										  </a></td>
+									  </tr>
+										<tr>
+										  <td bgcolor="#cccccc"><strong>Jsp Resources</strong> </td>
+									  </tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/sourcecode_listing.php?group_id=4">Jsp Source Code (172)
+										  </a></td>
+									  </tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/article_listing.php?group_id=4">Jsp Articles (3)
+										  </a></td>
+									  </tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/viewlist.php?group_id=4&amp;type=1">Jsp Blogs</a></td>
+									  </tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/viewlist.php?group_id=4&amp;type=2">Jsp Jobs</a></td>
+									  </tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/component_listing.php?group_id=4">Jsp Components (10)
+										  </a></td>
+									  </tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/books_listing.php?group_id=4">Jsp Books</a></td>
+									  </tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/weblinks_listing.php?group_id=4">Jsp Websites (13)
+										  </a></td>
+									  </tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/news_listing.php?group_id=4">Jsp News (12)
+										  </a></td>
+									  </tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/LatestQA.php?group_id=4">Jsp Q &amp; A (79)
+										  </a></td>
+									  </tr>
+										<tr>
+										  <td bgcolor="#ffffff"> - <a href="http://www.visualbuilder.com/submitQA.php?group_id=4">Jsp Ask Question</a></td>
+									  </tr>
+										<tr>
+										  <td bgcolor="#ffffff"> - <a href="http://www.visualbuilder.com/viewQuestion.php?group_id=4">Jsp Questions</a></td>
+									  </tr>
+										<tr>
+										  <td bgcolor="#ffffff"> - <a href="http://www.visualbuilder.com/viewUAQuestion.php?group_id=4">Jsp Unanswered Questions</a></td>
+									  </tr>
+									</tbody></table>
+								</td>
+							</tr>
+					  </tbody></table>
+						  <table align="center" border="0" cellpadding="0" cellspacing="0" width="95%">
+							  <tbody><tr>
+								<td>&nbsp;</td>
+							</tr>
+								<tr> 
+									<td !class="smallPanelContents"> 
+									  <table style="border-collapse: collapse;" border="1" bordercolor="#000000" cellpadding="2" cellspacing="0" width="100%">
+										<tbody><tr>
+										  <td><font color="#ffffff"><b>GROUPS</b></font></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#cccccc"><strong>.NET</strong></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/aspnet/">ASP.NET</a></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/net/">.NET</a></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/csharp/">C#</a></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/asp/">ASP</a></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/vb/">Visual Basic</a></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#cccccc"><strong>Java</strong></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/java/">Java</a></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/jsp/">JSP</a></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/ejb/">EJB</a></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#cccccc"><strong>Other</strong></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/delphi/">Delphi</a></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/cplus/">C++</a></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/ajax/">Ajax</a></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/uml/">UML</a></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/javascript/">JavaScript</a></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/php/">PHP</a></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/webdesign/">Web Design</a></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/webhosting/">Web Hosting</a></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/sqlserver/">SQL Server</a></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/oracle/">Oracle</a></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/projectmanagement/">Project Management</a></td>
+										</tr>
+										<tr>
+										  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/directory_listing.php">More Groups</a></td>
+										</tr>
+									  </tbody></table></td>
+							</tr>
+					  </tbody></table>
+					  <br>
+						  <table align="center" border="0" cellpadding="0" cellspacing="0" width="95%">
+							  <tbody><tr>
+								<td>&nbsp;</td>
+							</tr>
+								<tr> 
+									<td !class="smallPanelContents"> 
+									  <table style="border-collapse: collapse;" border="1" bordercolor="#000000" cellpadding="2" cellspacing="0" width="100%">
+	<tbody><tr>
+	  <td><a href="http://www.visualbuilder.com/learn/"><span class="style1">LEARNING CENTER</span></a></td>
+	</tr>
+	<tr>
+	  <td bgcolor="#cccccc"><b> TUTORIALS</b></td>
+	</tr>
+				<tr>
+			  <td bgcolor="#cccccc"><strong>.NET</strong></td>
+			</tr>
+					<tr>
+		  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/aspnet/database/tutorial/">ASP.NET Database Tutorial</a></td>
+		</tr>
+				<tr>
+		  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/csharp/tutorial/">CSharp Tutorial</a></td>
+		</tr>
+				<tr>
+		  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/aspnet/tutorial/">Learn ASP.NET Tutorial</a></td>
+		</tr>
+				<tr>
+		  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/asp/tutorial/">ASP Tutorial</a></td>
+		</tr>
+				<tr>
+		  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/dotnet/tutorial/">.NET Tutorial</a></td>
+		</tr>
+					<tr>
+			  <td bgcolor="#cccccc"><strong>Web Development</strong></td>
+			</tr>
+					<tr>
+		  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/php/tutorial/">PHP Tutorial</a></td>
+		</tr>
+				<tr>
+		  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/html/tutorial/">HTML tutorial</a></td>
+		</tr>
+				<tr>
+		  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/ajax/tutorial/">Learn AJAX Tutorial</a></td>
+		</tr>
+					<tr>
+			  <td bgcolor="#cccccc"><strong>Software Development</strong></td>
+			</tr>
+					<tr>
+		  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/uml/tutorial/">UML Tutorial</a></td>
+		</tr>
+				<tr>
+		  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/database/tutorial/">Database Tutorial</a></td>
+		</tr>
+					<tr>
+			  <td bgcolor="#cccccc"><strong>Java</strong></td>
+			</tr>
+					<tr>
+		  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/jsp/tutorial/">JSP Tutorial</a></td>
+		</tr>
+				<tr>
+		  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/jsp/struts/tutorial/">Struts Tutorial</a></td>
+		</tr>
+				<tr>
+		  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/java/tutorial/">Java Tutorial</a></td>
+		</tr>
+				<tr>
+		  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/java/jdbc/tutorial/">JDBC Tutorial</a></td>
+		</tr>
+				<tr>
+		  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/java/ant/tutorial/">Ant Java tutorial</a></td>
+		</tr>
+				<tr>
+		  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/java/hibernate/tutorial/">Hibernate Tutorial</a></td>
+		</tr>
+				<tr>
+		  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/ejb/tutorial/">EJB 3 Tutorial</a></td>
+		</tr>
+				<tr>
+		  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/jsp/design/">JSP and J2EE Design Tutorial</a></td>
+		</tr>
+				<tr>
+		  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/java/xml/tutorial/">Java XML Tutorial</a></td>
+		</tr>
+				<tr>
+		  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/jsp/webcomponent/">Java Web Component Tutorial</a></td>
+		</tr>
+				<tr>
+		  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/java/spring/tutorial/">Spring tutorial</a></td>
+		</tr>
+		</tbody></table>
+									</td>
+							</tr>
+					  </tbody></table>
+					  <br>
+					<!-- Add BAnner Code End HERE-->
+					<table style="border-collapse: collapse;" align="center" border="1" bordercolor="#000000" cellpadding="2" cellspacing="0" width="95%">
+						<tbody><tr>
+						  <td><span class="style1">RESOURCES</span></td>
+						</tr>
+			
+			
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/questions/">Q &amp; A (432						  )</a> </td>
+						</tr>
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/sourcecode/">Source Code (3276						  )</a> </td>
+						</tr>
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/articles/">Articles (11						  ) </a></td>
+						</tr>
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/components/">Components (1589						  ) </a></td>
+						</tr>
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/news/">News (880						  ) </a></td>
+						</tr>
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/websitelinks/">Websites (1207						  ) </a></td>
+						</tr>
+					  </tbody></table>
+					  <br>
+					  <table style="border-collapse: collapse;" align="center" border="1" bordercolor="#000000" cellpadding="2" cellspacing="0" width="95%">
+						<tbody><tr>
+						  <td><span class="style1">SUBMISSIONS</span></td>
+						</tr>
+			
+			
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/article_write.php">Submit Article </a></td>
+						</tr>
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/submitwebsite.php">Submit Website </a></td>
+						</tr>
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/addnews.php">Submit News </a></td>
+						</tr>
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/submit_sourcecode.php">Submit Source Code</a></td>
+						</tr>
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/component_link.php">Submit Component </a></td>
+						</tr>
+					  </tbody></table>
+					  
+					  <br>
+					  <table style="border-collapse: collapse;" align="center" border="1" bordercolor="#000000" cellpadding="2" cellspacing="0" width="95%">
+						<tbody><tr>
+						  <td><span class="style1">COMMUNITY</span></td>
+						</tr>
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/member-listing.php">Members Directory </a></td>
+						</tr>
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/forum/">Discussion Forum </a></td>
+						</tr>
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/chat/">Chat</a> </td>
+						</tr>
+					  </tbody></table>
+					  
+					  <br>
+					  <table style="border-collapse: collapse;" align="center" border="1" bordercolor="#000000" cellpadding="2" cellspacing="0" width="95%">
+						<tbody><tr>
+						  <td><span class="style1">SITE</span></td>
+						</tr>
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/about.php">About Us </a></td>
+						</tr>
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/sitemap.php">Sitemap</a></td>
+						</tr>
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/searchall.php">Search</a> </td>
+						</tr>
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/contactus.php">Contact Us</a></td>
+						</tr>
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/linktous.php">Link To Us</a></td>
+						</tr>
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/contactus.php">Feedback</a></td>
+						</tr>
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/email_friend.php">Tell a Friend</a></td>
+						</tr>
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/partner_list.php">Partners</a></td>
+						</tr>
+						<tr>
+						  <td bgcolor="#ffffff"><a href="http://www.visualbuilder.com/advertise.php">Advertise</a></td>
+						</tr>
+					</tbody></table>
+					<div align="center"><br>
+					  <div style="padding-left: 5px;">
+						  <iframe id="lhsBannerTut125125" src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/inc_003.htm" align="middle" frameborder="0" height="125" scrolling="no" width="125"></iframe>
+						</div>
+					  </div><br>
+					</td>
+				</tr>
+			</tbody></table>
+				</td>
+          <td align="center" valign="top" width="82%">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+              <tbody><tr> 
+                <td align="center" valign="top">
+				<table border="0" cellpadding="0" cellspacing="0" width="99%">
+                    <tbody><tr> 
+                      <td background="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/contentpanel_blueback.jpg">
+					  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                          <tbody><tr> 
+                            <td width="3"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/contentpanel_left.jpg" height="25" width="8"></td>
+                            <td class="contentsPanelTitle"><font color="#ffffff"><b>Jsp struts Tutorial</b></font></td>
+                            <td width="35"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/contentpanel_boxes.jpg" height="25" width="37"></td>
+                            <td align="right" background="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/contentpanel_grayback.jpg"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/forumright_icon.jpg" height="25" width="35"></td>
+                          </tr>
+                        </tbody></table></td>
+                    </tr>
+                    <tr> 
+                      <td class="ContentsPanelOuter" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody><tr>
+                          <td background="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/contentpanel_shadow.jpg"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/shim.gif" height="7" width="34"></td>
+                        </tr>
+                        <tr>
+                          <td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              <tbody><tr>
+                                <td>
+								<table bgcolor="#eeeeee" border="0" cellspacing="0" height="50" width="100%">
+									<tbody><tr>
+                                      <td align="left"><b>&nbsp;<font size="5">What is Struts?</font></b></td>
+                                    </tr>
+                      			</tbody></table>
+					  			</td>
+                              </tr>
+                              <tr>
+                                <td class="ContentsPanelInner"><table border="0" cellspacing="0" width="100%">
+                                    <tbody><tr>
+                                      <td colspan="2"></td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="2"><table style="border-collapse: collapse;" align="right" border="1" bordercolor="#000000" width="100%">
+                                          										  <tbody><tr>
+                                            <td style="border-color: rgb(51, 51, 51);" align="left" bgcolor="#fefefe" width="10%">&nbsp;
+																						<a href="http://www.visualbuilder.com/jsp/struts/tutorial/"><b>&lt;&lt; Jsp Struts Tutorial Home</b></a>
+																						</td>
+                                            <td style="border-color: rgb(51, 51, 51);" align="right" bgcolor="#fefefe" width="10%">
+																						<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/2/"><b>Next: Why do we need Struts? &gt;&gt;</b></a>
+																						</td>
+                                          </tr>
+                                      </tbody></table></td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="2"><table border="0" cellpadding="4" cellspacing="0" width="100%">
+                                          <tbody><tr>
+                                            <td colspan="2" class="blktext" align="left" valign="top">
+											<h3><font size="3"></font></h3><br>
+<p class="MsoNormal" style="text-align: justify;"><font face="Verdana" size="3">Struts<i> </i>is
+a popular open source framework from Apache Software Foundation to
+build web applications that integrate with standard technologies such
+as Servlets, Java Beans and Java Server pages. </font></p><br>
+<p class="MsoNormal" style="text-align: justify;"><font face="Verdana" size="3">Struts
+offers many benefits to the web application developer,including the
+Model-View-Controller (MVC) design patterns (best practice) in web
+applications. </font></p><br>
+<p class="MsoNormal" style="text-align: justify;"><font face="Verdana" size="3">The
+Model-View-Controller paradigm applied to web applications lets you
+separately display code (for example, HTML and tag libraries) from flow
+control logic (action classes) from the data model to be displayed and
+updated by the application. </font></p><br>
+<p class="MsoNormal" style="text-align: justify;"><font face="Verdana" size="3">Struts offers a set of tag libraries to support the faster development of the different layers of the web application.</font></p><br>
+<p class="MsoNormal" style="text-align: justify;"><font size="3">&nbsp;</font></p><br>
+<p class="MsoNormal" style="text-align: justify;"><font face="Verdana" size="3">The
+basic idea of the MVC architecture is to divide the application into
+three layers: Model that represents the data layer, a view layer that
+represents the data processed by the model component; and a Controller
+component that is responsible for interaction between the model and the
+controller. </font></p><br>
+<p class="MsoNormal" style="text-align: justify;"><font face="Verdana" size="3">So
+when we say Struts is an MVC framework for web based applications, we
+actually mean that it facilitates the rapid development of applications
+by providing a Controller that helps interaction between the model and
+the view so that an application developer has not to worry about how to
+make view and the model independent of each other and yet exist in
+coordination.</font></p><br>
+<p class="MsoNormal" style="text-align: justify;"><br><br><font size="3"><img alt="MVC" src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/struts-img1.gif" height="306" width="600"><br></font></p><br>
+<p><strong></strong><br></p><br>
+<p class="MsoNormal" style="text-align: justify;"><font face="Verdana" size="3">Struts
+is basically a Controller. It depends on other things for the model and
+the view. It can communicate with Hibernate, Enterprise Java Beans or
+any other java components for the model. JSP/Servlets are used for the
+view which use html front end internally. Struts provides several tag
+libraries to support the rapid development for the view layer. </font></p><br>
+<p class="MsoNormal" style="text-align: justify;"><font size="3">&nbsp;</font></p>											</td>
+                                          </tr>
+                                          <tr>
+                                            <td colspan="2" height="1"><hr></td>
+                                          </tr>
+										  <tr>
+										<td colspan="2"><table style="border-collapse: collapse;" align="right" border="1" bordercolor="#000000" width="100%">
+                                          <tbody><tr>
+                                            <td style="border-color: rgb(51, 51, 51);" align="left" bgcolor="#fefefe" width="10%">&nbsp;
+																						<a href="http://www.visualbuilder.com/jsp/struts/tutorial/"><b>&lt;&lt; Jsp Struts Tutorial Home</b></a>
+																						</td>
+                                            <td style="border-color: rgb(51, 51, 51);" align="right" bgcolor="#fefefe" width="10%">
+																						<a href="http://www.visualbuilder.com/jsp/struts/tutorial/pageorder/2/"><b>Next: Why do we need Struts? &gt;&gt;</b></a>
+																						</td>
+                                          </tr>
+                                          <tr>
+                                            <td colspan="2" style="border-color: rgb(51, 51, 51);" align="center" bgcolor="#fefefe">
+											<a href="http://www.visualbuilder.com/jsp/struts/tutorial/"><b>Jsp Struts Tutorial Home</b></a></td>
+                                            </tr>
+											<tr>
+                                            <td colspan="2" style="border-color: rgb(51, 51, 51);" align="center" bgcolor="#fefefe">
+											<a href="javascript: void(0)" onclick="MM_openBrWindow('http://www.visualbuilder.com/feedback.php','Feedback','scrollbars=yes,width=500,height=500')">Give feedback and win a prize.</a>
+											</td>
+                                            </tr>
+                                        </tbody></table>
+										</td>
+                                          </tr>
+                                      </tbody></table></td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="2">
+									  <br>
+										<table border="0" cellpadding="2" cellspacing="2" width="100%">
+										  <tbody><tr>
+											<td align="center" valign="top">
+											<div style="padding-left: 5px;">
+											  <iframe id="bodyBanner250239" src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/inc_004.htm" align="middle" frameborder="0" height="239" scrolling="no" width="250"></iframe>
+											</div>
+											</td>
+											<td align="center" valign="top">
+											<div style="padding-left: 5px;">
+												<div>
+												  <iframe id="bodyTopBanner340280" src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/inc_005.htm" frameborder="0" height="280" scrolling="no" width="340"></iframe>
+												</div>
+											</div>
+											</td>
+										  </tr>
+										  
+										  <tr>
+											<td colspan="2" align="center">&nbsp;</td>
+										  </tr>
+										</tbody></table>
+									  </td>
+                                    </tr>
+                                  </tbody></table>
+                                    <!--[!article_preview]//-->                                </td>
+                              </tr>
+                              <tr>
+                                <td><table bgcolor="#eeeeee" border="0" cellspacing="0" height="50" width="100%">
+                                    <tbody><tr>
+                                      <td width="3%">&nbsp;</td>
+                                      <td colspan="2"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/logo_print.gif"><a href="http://www.visualbuilder.com/article_print.php?art_id=31804" target="_blank">&nbsp;<strong>Printer Friendly</strong></a></td>
+                                    </tr>
+                                    <tr>
+                                      <td>&nbsp;</td>
+                                      <td colspan="2"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/logo_emailarticle.gif"> <a href="javascript: void(0)" onclick="MM_openBrWindow('','','')">&nbsp;<strong>Email to a friend</strong></a> </td>
+                                    </tr>
+                                    <tr>
+                                      <td>&nbsp;</td>
+                                      <td width="85%"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/logo_addtofav.gif"><a href="http://www.visualbuilder.com/addfavourites.php?type=article&amp;art_id=31804">&nbsp;<strong>Add to my Favourites</strong> </a> </td>
+                                      <td width="6%">&nbsp;</td>
+                                      <td width="6%">&nbsp;</td>
+                                    </tr>
+									                                    <tr>
+                                      <td>&nbsp;</td>
+                                      <td colspan="2"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/pdf.jpg" border="0"><a href="http://www.visualbuilder.com/make_pdf.php?page=article_pdf.php&amp;art_id=31804"><b>Download PDF version</b></a> </td>
+                                    </tr>
+                                    <tr>
+                                      <td>&nbsp;</td>
+                                      <td colspan="2"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/icon-report.gif"><a href="http://www.visualbuilder.com/bad_submissions.php">&nbsp;<strong>Report Bad Submissions </strong></a></td>
+                                    </tr>
+                                    <tr>
+                                      <td>&nbsp;</td>
+                                      <td colspan="2"><a href="http://www.visualbuilder.com/contactus.php"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/logo_emailarticle.gif" border="0">&nbsp;<strong>Submit Feedback </strong></a></td>
+                                    </tr>
+                                </tbody></table></td>
+                              </tr>
+                              <tr>
+                                <td height="10">&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td align="center"><table bgcolor="#eeeeee" border="0" cellspacing="0" height="50" width="100%">
+                                    <tbody><tr>
+                                      <td>&nbsp;</td>
+                                      <td align="center"><a href="http://del.icio.us/post?url=http://www.visualbuilder.com/viewpages_url.php?art_id=31804&amp;pageorder=1&amp;title=Struts%20Tutorial" target="_blank"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/delicious.gif" border="0"> Delicious</a>&nbsp;&nbsp;<a href="http://digg.com/submit?phase=2&amp;url=http://www.visualbuilder.com/viewpages_url.php?art_id=31804&amp;pageorder=1" target="_blank"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/digg.gif" border="0"> Digg</a>&nbsp;&nbsp;<a href="http://technorati.com/cosmos/search.html?url=http://www.visualbuilder.com/viewpages_url.php?art_id=31804&amp;pageorder=1" target="_blank"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/technorati.gif" border="0"> Technorati</a>&nbsp;&nbsp;<a href="http://blinklist.com/index.php?Action=Blink/addblink.php&amp;Description=Struts%20Tutorial&amp;url=http://www.visualbuilder.com/viewpages_url.php?art_id=31804&amp;pageorder=1" target="_blank"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/blinklist.gif" border="0"> Blink</a>&nbsp;&nbsp;<a href="http://furl.net/storeIt.jsp?t=Struts%20Tutorial&amp;u=http://www.visualbuilder.com/viewpages_url.php?art_id=31804&amp;pageorder=1" target="_blank"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/furl.gif" border="0"> Furl</a>&nbsp;&nbsp;<a href="http://reddit.com/submit?url=http://www.visualbuilder.com/viewpages_url.php?art_id=31804&amp;pageorder=1&amp;title=Struts%20Tutorial" target="_blank"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/reddit.gif" border="0"> Reddit</a>&nbsp;&nbsp;<a href="http://www.newsvine.com/_tools/seed&amp;save?u=http://www.visualbuilder.com/viewpages_url.php?art_id=31804&amp;pageorder=1&amp;h=Struts%20Tutorial" target="_blank"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/newsvine.gif" border="0"> Newsvine</a>&nbsp;&nbsp;<a href="http://www.google.com/bookmarks/mark?op=edit&amp;output=popup&amp;bkmk=http://www.visualbuilder.com/viewpages_url.php?art_id=31804&amp;pageorder=1&amp;title=Struts%20Tutorial" target="_blank"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/favicon.ico" border="0"> Google</a> </td>
+                                      <td><strong class="Heading">Click each image to add<br>
+                                        this page to each site.</strong> </td>
+                                    </tr>
+                                </tbody></table></td>
+                              </tr>
+                          </tbody></table></td>
+                        </tr>
+                        <tr>
+                          <td align="center">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                        </tr>
+                      </tbody></table></td>
+                    </tr>
+			  
+  		<!-- Code End here-->
+			<!-- code to add rating starts here -->
+			<!-- code to add rating ends here -->
+            </tbody></table>            </td>
+			  </tr>
+			</tbody></table>	</td>
+							<td align="right" valign="top" width="18%">
+                <table border="0" cellpadding="0" cellspacing="0" height="100%" width="220">
+
+	<tbody><tr> 
+				
+				  <td height="37">
+
+    			<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+
+                    <tbody><tr> 
+
+                      <td align="left" height="37" width="12"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/titlebar1_left.jpg" height="37" width="12"></td>
+
+                      <td background="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/titlebar_mid.jpg" valign="middle"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                  	<tbody><tr>
+
+                          	<td class="MemberName">Welcome Guest</td>
+
+                          	<td align="right"><a href="http://www.visualbuilder.com/registration.php">Signup</a></td>
+
+                          	</tr>
+						
+						                        </tbody></table></td>
+                      <td align="right" width="16"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/titlebar1_right.jpg" height="37" width="16"></td>
+
+                    </tr>
+
+                  </tbody></table>
+			</td>
+
+              </tr>
+			  <tr> 
+
+                <td height="8"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/titlebar1_shadow.jpg" height="9" width="222"></td>
+
+              </tr>
+	<tr>
+		<td style="padding-left: 7px;" align="left" background="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/leftpanel_back.jpg" valign="top">
+			<table border="0" cellpadding="0" cellspacing="0" width="100%">
+				<tbody><tr> 
+					<td>
+						<!--Login Table-->
+						<table border="0" cellpadding="0" cellspacing="0" width="95%">
+						<tbody><tr> 
+						  <td height="20">
+						                                   
+							<font type="Arial" color="white"><strong>MEMBER'S PANEL</strong></font>						  </td>
+						</tr>
+						<tr> 
+							<td class="smallPanelContents"> 
+								<table border="0" cellpadding="0" cellspacing="0" width="100%">
+									<tbody><tr> 
+										<td class="ContentsPanelInner">
+										 
+										
+																					<table border="0" cellpadding="2" cellspacing="0" width="100%">
+												<form name="MembersPanel" method="post" action="../../../../../login.php"></form>
+												<tbody><tr>
+													<td colspan="2"><font color="red">
+																												</font>													</td>
+												</tr>
+												<tr> 
+													<td class="graySmallText" width="33%">EMAIL</td>
+													<td width="67%"><input name="txtUserName" id="username2" size="20" class="TextField" type="text"></td>
+												</tr>
+												<tr> 
+													<td class="graySmallText">PASSWORD</td>
+													<td><input name="txtPassword" id="password2" size="20" class="TextField" type="password"></td>
+												</tr>
+												<tr> 
+													<td colspan="2">
+														<table border="0" cellpadding="0" cellspacing="0" width="100%">
+															<tbody><tr> 
+																<td width="60%"><a href="http://www.visualbuilder.com/forget_password.php">Forgot your password?</a>																</td>
+																<td align="right" width="40%"><input name="image3" onmouseover="this.src='../../../../../images/login_over.jpg'" onmouseout="this.src='../../../../../images/login_up.jpg'" src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/login_up.jpg" alt="Login" border="0" type="image">																</td>
+															</tr>
+															<tr> 
+																<td colspan="2"><a href="http://www.visualbuilder.com/registration.php">New User? Click Here!</a>																</td>
+															</tr>
+															<tr> 
+																<td colspan="2">&nbsp;</td>
+															</tr>
+															<tr> 
+																<td colspan="2"><a href="http://www.visualbuilder.com/forget_password.php?code=true">Resend Activation Email!</a>																</td>
+															</tr>
+														</tbody></table>													</td>
+												</tr>
+												
+											</tbody></table>
+																					</td>
+									</tr>
+								</tbody></table>							</td>
+						</tr>
+					</tbody></table>
+						<!--End Login Table-->
+						<table border="0" cellpadding="0" cellspacing="0" width="95%">
+							<tbody><tr>
+							  <td height="20">&nbsp;</td>
+						  </tr>
+							<tr> 
+								<td height="20"><font color="#ffffff"><b>SEARCH</b></font></td>
+							</tr>
+							<tr> 
+								<td class="smallPanelContents"> 
+									<table border="0" cellpadding="0" cellspacing="0" width="100%">
+										
+										<tbody><tr> 
+											<td class="ContentsPanelInner">
+												<table border="0" cellpadding="0" cellspacing="0" width="100%">
+													<tbody><tr> 
+														<td colspan="2" align="center">
+														  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                            <tbody><tr>
+                                                              <td align="center"><!-- SiteSearch Google -->
+                                                                  <form method="get" action="http://www.visualbuilder.com/searchresults.php" target="_top">
+                                                                    <table bgcolor="#ffffff" border="0">
+                                                                      <tbody><tr>
+                                                                        <td align="left" height="32" nowrap="nowrap" valign="top"></td>
+                                                                        <td nowrap="nowrap"><input name="domains" value="www.visualbuilder.com" type="hidden">
+                                                                            
+                                                                            <label for="sbi" style="display: none;">Enter your search terms</label>
+                                                                            <input name="q" size="27" maxlength="255" value="" id="sbi" type="text">
+                                                                          
+                                                                            <label for="sbb" style="display: none;">Submit search form</label>
+                                                                            <div align="center">
+                                                                              <input name="sa" value="Google Search" id="sbb" type="submit">
+                                                                              
+                                                                            </div></td>
+                                                                      </tr>
+                                                                      <tr>
+                                                                        <td>&nbsp;</td>
+                                                                        <td nowrap="nowrap"><table>
+                                                                            <tbody><tr>
+                                                                              <td><input name="sitesearch" id="ss1" value="www.visualbuilder.com" checked="checked" type="radio">
+                                                                                  
+                                                                                  <label for="ss1" title="Search www.visualbuilder.com"><font color="#000000" size="-1">Site</font></label>
+                                                                                  <label for="ss0" title="Search the Web"></label></td>
+                                                                              <td><label for="ss1" title="Search www.visualbuilder.com">
+                                                                                <input name="sitesearch" value="" id="ss0" type="radio">
+                                                                                
+                                                                                <font color="#000000" size="-1">Web</font></label></td>
+                                                                            </tr>
+                                                                          </tbody></table>
+                                                                            <input name="client" value="pub-5229766847819596" type="hidden">
+                                                                          
+                                                                            <input name="forid" value="1" type="hidden">
+                                                                          
+                                                                            <input name="channel" value="4166132955" type="hidden">
+                                                                          
+                                                                            <input name="ie" value="ISO-8859-1" type="hidden">
+                                                                          
+                                                                            <input name="oe" value="ISO-8859-1" type="hidden">
+                                                                          
+                                                                            <input name="cof" value="GALT:#008000;GL:1;DIV:#336699;VLC:663399;AH:center;BGC:FFFFFF;LBGC:336699;ALC:0000FF;LC:0000FF;T:000000;GFNT:0000FF;GIMP:0000FF;FORID:11" type="hidden">
+                                                                          
+                                                                            <input name="hl" value="en" type="hidden">
+</td>
+                                                                      </tr>
+                                                                    </tbody></table>
+                                                                  </form>
+                                                                <!-- SiteSearch Google -->                                                              </td>
+                                                            </tr>
+                                                          </tbody></table></td>
+													</tr>
+												</tbody></table>											</td>
+										</tr>
+									</tbody></table>								</td>
+							</tr>
+						</tbody></table>					</td>
+				</tr>
+				<!-- End code for Google Adsense -->
+				<tr> 
+					<td>
+						<table border="0" cellpadding="0" cellspacing="0" width="95%">
+							<tbody><tr> 
+								<td height="20"><font color="#ffffff"><b></b></font></td>
+							</tr>
+							<tr> 
+								<td class="smallPanelContents"> 
+									<table border="0" cellpadding="0" cellspacing="0" width="100%">
+										
+										<tbody><tr> 
+											<td class="ContentsPanelInner">
+												
+											<div style="padding-left: 5px;">
+											  <iframe id="rhsGroupBanner200200" src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/inc_006.htm" align="middle" frameborder="0" height="200" scrolling="no" width="200"></iframe>
+											</div>
+											</td>
+										</tr>
+									</tbody></table>								</td>
+							</tr>
+						</tbody></table>					</td>
+				</tr>
+				<tr>
+				  <td align="center">&nbsp;</td>
+			  </tr>
+					<!-- LATEST TOPICS -->
+					<!-- code for table of Sponsored Links -->
+				<tr> 
+					<td>
+						<table border="0" cellpadding="0" cellspacing="0" width="95%">
+							<tbody><tr> 
+								<td height="20"><font color="#ffffff"><b>LINKS</b></font></td>
+							</tr>
+							<tr> 
+								<td class="smallPanelContents"> 
+									<table border="0" cellpadding="0" cellspacing="0" width="100%">
+										
+										<tbody><tr> 
+											<td class="ContentsPanelInner">
+												
+												
+												<a href="http://a1securitycameras.com/" target="new">Video Surveillance</a><br>
+<a href="http://www.re-inks.com/" target="new">Lexmark Ink Cartridges</a><br>
+<a href="http://www.sipcall-voip.de/" target="new">VoIP Internettelefonie DE</a><br>
+<a href="http://www.pospaper.com/guestcheck.html" target="new">Restaurant Guest Checks</a><br>
+												<a href="http://www.gift2pakistan.com/" target="new">Gift to Pakistan</a><br>											
+												</td>
+										</tr>
+									</tbody></table>								</td>
+							</tr>
+						</tbody></table>					</td>
+				</tr>
+				<!-- End code for table of Sponsored Links -->
+				<tr> 
+                      <td>
+					  <table border="0" cellpadding="0" cellspacing="0" width="97%">
+                          <tbody><tr>
+                            <td height="20">&nbsp;</td>
+                          </tr>
+                          <tr> 
+                            <td height="20"><font color="#ffffff"><b>ADVERTISEMENT</b></font></td>
+                         </tr>
+                          <tr> 
+                            <td class="smallPanelContents"> 
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tbody><tr> 
+                                  <td background="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/contentpanel_shadow.jpg"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/shim.gif" height="7" width="34"></td>
+                                </tr>
+                                <tr> 
+                                  <td class="ContentsPanelInner" align="center">
+								  <div style="padding-left: 5px;">
+								  <iframe id="rhsGroupBanner160600" src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/inc_007.htm" align="middle" frameborder="0" height="600" scrolling="no" width="160"></iframe>
+								</div>							  
+									</td>
+                                </tr>
+                              </tbody></table></td>
+                          </tr>
+                        </tbody></table>                        </td>
+                    </tr>
+					<tr> 
+                      <td>
+					  <table border="0" cellpadding="2" cellspacing="0" width="97%">
+							<tbody><tr>
+							  <td height="20">&nbsp;</td>
+						  </tr>
+							<tr> 
+								<td height="20"><font color="#ffffff"><b>PARTNER LIST </b></font></td>
+							</tr>
+							<tr> 
+								<td class="smallPanelContents"> 
+									<div><a href="http://www.codeproject.com/" target="_blank">Code Project</a></div>
+									<div><a href="http://www.devguru.com/" target="_blank">DevGuru</a></div>
+									<div><a href="http://www.programmersheaven.com/" target="_blank">Programmers Heaven</a></div>
+									<div><a href="http://www.tek-tips.com/" target="_blank">Tek-Tips Forums</a></div>
+									<div><a href="http://www.resourceindex.com/" target="_blank">Resource Index</a></div>
+									<div><a href="http://www.planet-source-code.com/" target="_blank">Planet Source Code</a></div>
+									<div><a href="http://www.topxml.com/" target="_blank">What is XML?</a></div>
+									<div><a href="http://www.aspalliance.com/" target="_blank">ASP Alliance</a></div>
+									<div><a href="http://www.developerfusion.com/" target="_blank">Developer Fusion</a></div>
+									<div><a href="http://www.zvon.org/" target="_blank">ZVON</a></div>
+									<br><div align="right"><a href="http://www.visualbuilder.com/partner_list.php"><img src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/more_up.jpg" alt="More " onmouseover="this.src='../../../../../images/more_over.jpg'" onmouseout="this.src='../../../../../images/more_up.jpg'" align="absbottom" border="0"></a></div>								</td>
+							</tr>
+						</tbody></table>					  </td>
+                    </tr>
+					<tr>
+					  <td>&nbsp;</td>
+			  </tr>
+			</tbody></table>		</td>
+	</tr>
+</tbody></table>
+				</td>
+  
+</tr>
+<tr>
+  <td colspan="3">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+		<td bgcolor="Gray"></td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<table cellpadding="4" cellspacing="0" width="100%">
+				<tbody><tr>
+					<td width="22%">&nbsp;</td>
+					<td valign="top" width="55%"> 
+						<table cellpadding="0" cellspacing="0" width="100%">
+						<tbody><tr>
+							<td align="center">
+								<!-- Kontera ContentLink -->
+								<script type="text/javascript">
+								var dc_UnitID = 14;
+								var dc_PublisherID = 39415;
+								var dc_AdLinkColor = 'blue';
+								var dc_isBoldActive= 'no';
+								var dc_adprod='ADL';
+								</script>
+								<script type="text/javascript" src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/KonaLibInline.js"></script>
+							<!-- Kontera ContentLink -->
+								
+								<script src="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/urchin.js" type="text/javascript"></script>
+								<script type="text/javascript">
+								_uacct = "UA-733078-1";
+								urchinTracker();
+								document.getElementById("headerBanner").src='http://www.visualbuilder.com/includes/inc.header.banner.php';
+								document.getElementById("subHeaderBanner").src='http://www.visualbuilder.com/includes/inc.subheader.banner.php?groupParentCat_iframe=&page_iframe=';
+								document.getElementById("rhsGroupBanner160600").src='http://www.visualbuilder.com/includes/inc.rhsGroup160600.banner.php?groupParentCat_iframe=';
+								document.getElementById("rhsGroupBanner200200").src='http://www.visualbuilder.com/includes/inc.rhsGroup200200.banner.php';
+								document.getElementById("lhsBannerTut125125").src='http://www.visualbuilder.com/includes/inc.lhsTut125125.banner.php';
+								document.getElementById("bodyTopBanner340280").src='http://www.visualbuilder.com/includes/inc.bodyTut340280.banner.php';
+								document.getElementById("bodyBanner250239").src='http://www.visualbuilder.com/includes/inc.bodyTut250239.banner.php';
+								
+								</script>						</td>
+						</tr>
+						</tbody></table>				</td>
+					<td width="22%">&nbsp;</td>
+				</tr>
+			</tbody></table>	</td>
+	</tr>
+	<tr>
+	  <td align="center" height="46">
+	  <br>
+	  </td>
+	</tr>
+	<tr>
+	<td align="center" background="What%20is%20Struts%20%20-%20Struts%20Tutorial_files/footer_back.jpg" height="46">
+		<table border="0" cellpadding="2" cellspacing="0" width="80%">
+			<tbody><tr>
+				<td align="center"><a href="http://www.visualbuilder.com/" class="footer">Home</a> | <a href="http://www.visualbuilder.com/userlogin.php" class="footer">Login</a> |<a href="http://www.visualbuilder.com/about.php" class="footer"> About Us</a> | <a href="http://www.visualbuilder.com/contactus.php" class="footer">Contact Us</a> | <a href="http://www.visualbuilder.com/privacypolicy.php" class="footer"> Privacy Policy</a> | <a href="http://www.visualbuilder.com/advertise.php" class="footer">Advertising</a>			</td>
+			</tr>
+			<tr>
+				<td align="center"><p class="copyright">© copyright 1999-2008 VisualBuilder.com</p></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+	</tbody></table>  </td>
+</tr>
+</tbody></table>
+</td></tr></tbody></table></body></html>

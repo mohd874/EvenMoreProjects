@@ -1,0 +1,15 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<div style="margin-bottom: 20px;">
+
+    #{form @Application.search()}
+    <p>
+        <input type="text" name="search" id="search" />
+
+        <input type="submit" value="Search" />
+    </p>
+    #{/form}
+
+
+</div>

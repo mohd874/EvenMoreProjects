@@ -1,0 +1,112 @@
+body { margin: 0px; padding: 0px; }
+
+a:link { text-decoration: none; }
+a:active { text-decoration: none; }
+a:visited { text-decoration: underline; }
+a:hover { text-decoration: underline; }
+
+
+/* TOP MENU -------------------------------------------- */
+#TopLogo { position: absolute; left: 0px; top: 0px; z-index: 5; }
+#TopMenu { position: absolute; right: 0px; top: 0px; z-index: 5; }
+#TopMenu td { height:22px; text-align: center; border-left: solid 1px white; font: bold 9pt Verdana, Helvetica, Arial, sans-serif; }
+#TopMenu a { display: block; width: 120px; height:20px; padding-top: 2px; color: white; text-decoration: none; }
+#TopMenu td.menu_JBnetwork { background: #EB1A24 url(/tpl/jboss/img/bg_topmenu_red.gif) repeat; }
+#TopMenu td.menu_JBjems { background: #008FD6 url(/tpl/jboss//img/bg_topmenu_blue.gif) repeat; }
+#TopMenu td.menu_JBcom { background: #9BCD4B url(/tpl/jboss//img/bg_topmenu_green.gif) repeat; }
+#TopMenu td.menu_JBfed { background: #E5b335 url(/tpl/jboss//img/bg_topmenu_yellow.gif) repeat; }
+#TopMenu td.menu_JBnetwork a:hover { background: #cc1d2e url(/tpl/jboss//img/bg_topmenu_red_over.gif) repeat; }
+#TopMenu td.menu_JBjems a:hover { background: #057baa url(/tpl/jboss//img/bg_topmenu_blue_over.gif) repeat; }
+#TopMenu td.menu_JBcom a:hover { background: #82a53f url(/tpl/jboss//img/bg_topmenu_green_over.gif) repeat; }
+#TopMenu td.menu_JBfed a:hover { background: #bc9131 url(/tpl/jboss//img/bg_topmenu_yellow_over.gif) repeat; }
+
+
+/* CONTROL MENU ----------------------------------------*/
+#ControlMenu { position: absolute; top: 30px; right: 10px; z-index: 5; text-align: right; }
+#ControlMenu ul { padding-left: 0px; margin: 0px; display: inline; }
+#ControlMenu li { list-style: none; color: #d8d8d8; font: 11px Verdana, Helvetica, Arial, sans-serif; display: inline; }
+#ControlMenu a { color: #666666; text-decoration: none; margin-left: 5px; margin-right: 5px; }
+#ControlMenu a:hover { text-decoration: underline; }
+#ControlMenu form { margin: 0px; padding: 0px; }
+#ControlMenu input.searchbutton { height: 21px; width: 24px; margin-left:-2px; margin-top:-2px; border: none; }
+
+
+/* BREADCRUMB ------------------------------------------*/
+#Breadcrumb { position: absolute; min-width: 600px; top: 50px; right: 0px; left: 360px; border: 0px solid #6e6e6e; z-index: 5; padding-top: 5px;}
+#Breadcrumb ul { padding-left: 0px; margin: 0px; display: inline; }
+#Breadcrumb li { list-style: none; color: #333333; font: 11px Verdana, Helvetica, Arial, sans-serif; display: inline; }
+#Breadcrumb li.root { color: #666666; font-weight: normal; }
+#Breadcrumb a { color: #005EB6; text-decoration: none; }
+#Breadcrumb a:hover { text-decoration: underline; }
+
+/* BODY ------------------------------------------------*/
+#BodyTable { height: 100%; width: 100%}
+#BodyTable td { vertical-align: top; }
+#BodyTable td.topheader { height: 102px; }
+#BodyTable td.leftside { padding-bottom: 114px; width: 219px; /*234*/}
+#BodyTable td.bodycell { font: 11px Verdana, Helvetica, Arial, sans-serif; padding: 0px 30px 40px 0px; }
+#ContentContainer { }
+#ContentContainer h1:first-child { margin-top: 5px; }
+
+
+/* LEFT MENU -------------------------------------------*/
+/*1  10/179/0, 20/166/3, +45 = 226 */
+/*2  8/167/0, 18/154/3, +44 = 219 */
+#LeftMenu { margin-right: 44px; border-right: solid 1px white; padding-bottom: 13px; }
+#LeftMenu div a {border-top: solid 1px white; background:#ffffff;padding:0px;margin:0px;width:175px; }
+#LeftMenu ul { padding: 0px; margin: 0px; }
+#LeftMenu li { list-style: none; }
+#LeftMenu ul li a { width: 167px; font-weight: bold; padding: 4px 0px 4px 8px; border-top: solid 1px white; }
+#LeftMenu ul ul li a { width: 154px; font-weight: normal; padding: 3px 3px 3px 18px; border-top: none;}
+#LeftMenu ul ul { padding-bottom: 8px; }
+#LeftMenu a { display: block; font: 10px Verdana, Helvetica, Arial, sans-serif; text-decoration: none; }
+#LeftMenu a:link, #LeftMenu a:visited { color: #ffffff; }
+#LeftMenu a:hover { background-color: #cccccc; color: #000000; }
+#LeftMenu ul li a img { padding: 0px; margin: 0px; }
+
+
+/* ADS ------------------------------------------------*/
+#LeftAds {}
+#LeftAds .item { margin-top: 10px; margin-bottom: 10px; }
+
+
+
+/* FOOTER ----------------------------------------------*/
+#PageFooter { position: absolute; bottom: 10px; left:220px;}
+#PageFooter #Copyright { }
+#PageFooter a { text-decoration: none; }
+
+
+
+/* -------------------------------------------------------------------------
+		BRANDING
+	------------------------------------------------------------------------- */
+div.brand_JEMS #BodyTable { background: #ffffff url(/tpl/jboss/img/bg_top_blue.gif) top left no-repeat; }
+div.brand_JEMS #BodyTable td.leftside { background: transparent url(/tpl/jboss/img/bg_bottom_blue.gif) bottom left no-repeat; }
+div.brand_JEMS #LeftMenu { background: #777777 url(/tpl/jboss/img/bg_side_btm_blue.gif) bottom right no-repeat; }
+div.brand_JEMS #TopSearch input.searchbutton { background: #ffffff url(/tpl/jboss/img/btn_go_blue.gif) right no-repeat; } 
+div.brand_DOTCOM #BodyTable { background: #ffffff url(/tpl/jboss/img/bg_top_green.gif) top left no-repeat; }
+div.brand_DOTCOM #BodyTable td.leftside { background: transparent url(/tpl/jboss/img/bg_bottom_green.gif) bottom left no-repeat; }
+div.brand_DOTCOM #LeftMenu { background: #777777 url(/tpl/jboss/img/bg_side_btm_green.gif) bottom right no-repeat; }
+div.brand_DOTCOM #TopSearch input.searchbutton { background: #ffffff url(/tpl/jboss/img/btn_go_green.gif) right no-repeat; } 
+div.brand_FED #BodyTable { background: #ffffff url(/tpl/jboss/img/bg_top_yellow.gif) top left no-repeat; }
+div.brand_FED #BodyTable td.leftside { background: transparent url(/tpl/jboss/img/bg_bottom_yellow.gif) bottom left no-repeat; }
+div.brand_FED #LeftMenu { background: #777777 url(/tpl/jboss/img/bg_side_btm_yellow.gif) bottom right no-repeat; }
+div.brand_FED #TopSearch input.searchbutton { background: #ffffff url(/tpl/jboss/img/btn_go_yellow.gif) right no-repeat; } 
+
+div.brand_HIB #BodyTable { background: #ffffff url(/tpl/jboss/img/bg_top_brown.gif) top left no-repeat; }
+div.brand_HIB #BodyTable td.leftside { background: transparent url(/tpl/jboss/img/bg_bottom_brown.gif) bottom left no-repeat; }
+div.brand_HIB #LeftMenu { background: #777777 url(/tpl/jboss/img/bg_side_btm_brown.gif) bottom right no-repeat; }
+div.brand_HIB #TopSearch input.searchbutton { background: #ffffff url(/tpl/jboss/img/btn_go_brown.gif) right no-repeat; } 
+
+
+
+/* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+	 fancy positioning for footer - DO NOT change unless you know what you're doing
+	 */
+
+html, body { height: 100%; }
+#container {  position: relative; min-height: 100%; height: 100%; margin: 0px; padding: 0px;}
+#BodyTable {  position: relative; min-height: 100%; height: 100%; }
+html>body #container { height: auto; }
+

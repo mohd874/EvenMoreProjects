@@ -1,0 +1,8 @@
+function SearchFocus(obj){
+	obj.className='focus';
+	if (obj.value == 'Search...') obj.value = '';
+}
+function SearchBlur(obj){
+	obj.className='';
+	if (obj.value == '') obj.value = 'Search...';
+}

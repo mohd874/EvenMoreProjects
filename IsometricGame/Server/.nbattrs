@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="IsometricMapServer.java">
+        <attr name="class_dependency_IsometricGame.Net.PacketOperator" stringvalue="IsometricMapServer"/>
+        <attr name="class_dependency_IsometricGame.Map.IsometricMap" stringvalue="IsometricMapServer"/>
+    </fileobject>
+    <fileobject name="GameServer.java">
+        <attr name="class_dependency_IsometricGame.Net.PacketOperator" stringvalue="GameServer"/>
+        <attr name="class_dependency_java.lang.Thread" stringvalue="GameServer.GameConnection"/>
+        <attr name="class_dependency_IsometricGame.Net.Loader" stringvalue="GameServer"/>
+    </fileobject>
+    <fileobject name="GameEngine.java">
+        <attr name="class_dependency_java.util.TimerTask" stringvalue="GameEngine.GameTask"/>
+    </fileobject>
+</attributes>

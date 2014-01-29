@@ -1,0 +1,6 @@
+document.write('<object type=\"application/x-shockwave-flash\" data=\"http://content.yieldmanager.edgesuite.net/atoms/ff/3d/ff3d106c84339146213589e3a0078163.swf?clickTAG=http%3A%2F%2Fads%2Ekomli%2Ecom%2Fclick%2CTQgBAL3QBACmTggAeBwDAAIAAAAAAP8AAAAHDwIABgMtPwYA9XMBAH3DBAAAAAAAAAAAAAAAAAAAAAAAAAAAABpS90cAAAAA%2C%2Chttp%253A%252F%252Fwww%2Eroseindia%2Enet%252Fstruts%252Fhibernate%2Dspring%252Fstruts%2Dhibernate%2Dspring%2Eshtml%2C\" height=\"90\" width=\"728\" loop=\"false\" bgcolor=\"#FFFFFF\" wmode=\"transparent\"><param name=\"wmode\" value=\"transparent\"><param name=\"movie\" value=\"http://content.yieldmanager.edgesuite.net/atoms/ff/3d/ff3d106c84339146213589e3a0078163.swf?clickTAG=http%3A%2F%2Fads%2Ekomli%2Ecom%2Fclick%2CTQgBAL3QBACmTggAeBwDAAIAAAAAAP8AAAAHDwIABgMtPwYA9XMBAH3DBAAAAAAAAAAAAAAAAAAAAAAAAAAAABpS90cAAAAA%2C%2Chttp%253A%252F%252Fwww%2Eroseindia%2Enet%252Fstruts%252Fhibernate%2Dspring%252Fstruts%2Dhibernate%2Dspring%2Eshtml%2C\" /></object>');
+var rm_data = new Object();
+rm_data.creative_id = 544422;
+rm_data.offer_type = 55;
+rm_data.entity_id = 49224;
+if (window.rm_crex_data) {rm_crex_data.push(544422);}

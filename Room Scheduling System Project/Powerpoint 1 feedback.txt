@@ -1,0 +1,7 @@
+- faculty receive report
+
+- banner DB feed the local DB
+
+- business rule
+
+- faculty ==> staff

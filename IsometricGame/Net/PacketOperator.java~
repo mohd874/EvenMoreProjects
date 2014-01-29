@@ -1,0 +1,29 @@
+/*
+ * PacketOperator.java
+ *
+ * Created on July 9, 2003, 9:50 AM
+ */
+
+package IsometricGame.IO;
+
+/**
+ *
+ * @author  jgauci
+ */
+public interface PacketOperator {
+    //for server
+    final byte CREATE_WALL=0,DELETE_WALL=1,CREATE_TILE=2,CREATE_ITEM=3,DELETE_ITEM=4,SAVE_MAP_REQUEST=5,LOAD_MAP_REQUEST=6,SEND_MAP=7,MOVE_ITEM=8,CREATE_AVATAR=9,CHANGE_AVATAR_OBJECTIVE=10,CLIENT_EXIT=11,FIRE_SHOT=12,CREATE_DOODAD=13,DELETE_DOODAD=14,ATTACK_AVATAR=15;
+	
+	//for login
+	final byte LOGIN_FAILED=0,LOGIN_PLAYER=1,LOGIN_BUILDER=2;
+    
+    //for client
+    final byte ROOM_CREATED=-1,WALL_CHANGED=-2,ITEM_CREATED=-3,ITEM_DELETED=-4,MAP_SENT=-5,ITEM_MOVED=-6,AVATAR_CREATED=-8,AVATAR_MOVED=-9,AVATAR_DELETED=-10,WALL_DELETED=-11,SHOT_FIRED=-12,DOODAD_CREATED=-13,DOODAD_DELETED=-14;
+    final byte WAIT_OBJECTIVE=0,MOVE_OBJECTIVE=1,ATTACK_OBJECTIVE=2;
+	
+    //Avatar Types
+    final byte NONE=-1,ACTOR=0;
+    
+    //Doodad Types
+    final byte DOODAD=0;
+}
